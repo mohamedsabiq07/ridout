@@ -5,7 +5,7 @@ export const WhyUs: React.FC = () => {
   const pillars = [
     {
       title: 'Fast Response',
-      desc: 'Rapid 60-minute emergency dispatch across major urban areas in Dubai and Sharjah.',
+      desc: 'Rapid 60-minute emergency dispatch across major urban areas in Dubai, Sharjah, and Ajman.',
       icon: Clock,
     },
     {

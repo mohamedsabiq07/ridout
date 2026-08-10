@@ -13,10 +13,10 @@ export const ServiceAreas: React.FC = () => {
               Service Coverage
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-['Montserrat'] text-white mt-2">
-              Serving Dubai & Sharjah
+              Serving Dubai, Sharjah, and Ajman
             </h2>
-            <p className="text-neutral-300 text-sm max-w-xl mt-1">
-              Active mobile dispatch units covering residential communities, apartments, villas, and commercial premises across Dubai and Sharjah.
+            <p className="text-[#5A5A5A] text-sm">
+              Active mobile dispatch units covering residential communities, apartments, villas, and commercial premises across Dubai, Sharjah, and Ajman.
             </p>
           </div>
 

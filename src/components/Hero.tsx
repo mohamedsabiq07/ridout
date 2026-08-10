@@ -36,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
             >
               <div className="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
               <img src="/favicon.png" alt="RP Shield" className="w-4 h-4 object-contain shrink-0 relative z-10" />
-              <span className="relative z-10">Certified Professional Pest Control • Dubai & Sharjah</span>
+              <span className="relative z-10">Certified Professional Pest Control • Dubai, Sharjah, and Ajman</span>
             </motion.div>
 
             {/* Headline */}
@@ -67,7 +67,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
               transition={{ delay: 0.6, duration: 0.8 }}
               className="text-lg sm:text-xl text-neutral-300 max-w-2xl font-normal leading-relaxed"
             >
-              Professional, eco-friendly pest management for apartments, villas, offices, and commercial properties across Dubai and Sharjah. Safe for families, pets, and the environment.
+              Professional, eco-friendly pest management for apartments, villas, offices, and commercial properties across Dubai, Sharjah, and Ajman. Safe for families, pets, and the environment.
             </motion.p>
 
             {/* CTAs */}
@@ -127,12 +127,12 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
                 <div className="text-xs text-neutral-400 mt-1 font-medium">UAE Properties Treated</div>
               </div>
               <div>
-                <div className="text-2xl lg:text-3xl font-black text-white font-['Montserrat']">Dubai & Sharjah</div>
+                <div className="text-2xl lg:text-3xl font-black text-white font-['Montserrat']">Dubai, Sharjah, and Ajman</div>
                 <div className="text-xs text-neutral-400 mt-1 font-medium">Service Coverage</div>
               </div>
               <div>
                 <div className="text-2xl lg:text-3xl font-black text-white font-['Montserrat']">
-                  <AnimatedCounter value={5} suffix=" Months" duration={1.5} />
+                  <AnimatedCounter value={4} suffix=" Months" duration={1.5} />
                 </div>
                 <div className="text-xs text-neutral-400 mt-1 font-medium">Guarantee Warranty</div>
               </div>
@@ -166,7 +166,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
                 </div>
 
                 <div className="absolute top-4 right-4 px-2.5 py-1 rounded bg-[#0A0A0A]/90 border border-neutral-800 text-[10px] font-mono text-neutral-300 backdrop-blur-md">
-                  Dubai & Sharjah
+                  Dubai, Sharjah, and Ajman
                 </div>
 
                 <div className="absolute bottom-3 left-4 right-4">
@@ -201,7 +201,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
                   <div className="flex items-start gap-3 bg-[#0A0A0A] p-3 rounded border border-neutral-800 hover:border-[#7A9E7E]/50 transition-colors">
                     <MapPin className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5" />
                     <div>
-                      <div className="font-semibold text-white">Serving Dubai & Sharjah</div>
+                      <div className="font-semibold text-white">Serving Dubai, Sharjah, and Ajman</div>
                       <div className="text-xs text-neutral-400">Fast arrival across all residential & commercial zones</div>
                     </div>
                   </div>
@@ -272,7 +272,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
                   SAME-DAY DISPATCH
                 </div>
                 <div className="text-xs text-neutral-400 mt-0.5 font-medium">
-                  Across Dubai & Sharjah
+                  Across Dubai, Sharjah, and Ajman
                 </div>
               </div>
             </div>
@@ -283,7 +283,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
               <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5 relative z-10" />
               <div className="relative z-10">
                 <div className="text-sm font-bold text-white uppercase tracking-wide font-['Montserrat']">
-                  5-MONTH GUARANTEE
+                  4-MONTH GUARANTEE
                 </div>
                 <div className="text-xs text-neutral-400 mt-0.5 font-medium">
                   Backed by full coverage

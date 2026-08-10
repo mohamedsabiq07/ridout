@@ -156,7 +156,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
           <div className="bg-[#0A0A0A] text-white p-6 border-b border-neutral-800 flex items-center justify-between">
             <div>
               <h3 className="text-lg font-bold font-['Montserrat']">Instant Service Request</h3>
-              <p className="text-xs text-neutral-300">Serving Dubai & Sharjah • 5-Month Guarantee</p>
+              <p className="text-xs text-neutral-300">Serving Dubai, Sharjah, and Ajman • 4-Month Guarantee</p>
             </div>
             <span className="text-xs font-mono font-bold bg-[#E8871E] text-white px-3 py-1 rounded uppercase">
               No Deposit Needed

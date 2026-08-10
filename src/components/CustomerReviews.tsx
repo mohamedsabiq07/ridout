@@ -41,7 +41,7 @@ export const CustomerReviews: React.FC = () => {
             What Our Customers Say
           </h2>
           <p className="text-[#5A5A5A] text-sm">
-            Trusted by over 1,000+ homeowners, property managers, and businesses across Dubai & Sharjah.
+            Trusted by over 1,000+ homeowners, property managers, and businesses across Dubai, Sharjah, and Ajman.
           </p>
         </div>
 

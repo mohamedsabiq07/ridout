@@ -49,6 +49,16 @@ export const UAE_LOCATIONS: UAEEmirateLocations[] = [
       'University City Sharjah',
       'Al Mamzar Sharjah'
     ]
+  },
+  {
+    emirate: 'Ajman',
+    areas: [
+      'Ajman Downtown',
+      'Al Nuaimiya',
+      'Al Rashidiya',
+      'Al Jurf',
+      'Emirates City'
+    ]
   }
 ];
 

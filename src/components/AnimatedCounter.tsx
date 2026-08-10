@@ -15,7 +15,7 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   duration = 2
 }) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const inView = useInView(ref, { once: true, margin: "0px", amount: 0.1 });
   
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, {

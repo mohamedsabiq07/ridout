@@ -33,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               Why Us
             </a>
             <a href="#service-areas" className="hover:text-white transition-colors">
-              Dubai & Sharjah
+              Dubai, Sharjah & Ajman
             </a>
             <button
               onClick={onBookClick}

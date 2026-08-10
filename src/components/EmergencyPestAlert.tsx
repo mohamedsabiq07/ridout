@@ -69,7 +69,7 @@ export const EmergencyPestAlert: React.FC<EmergencyPestAlertProps> = ({
                   Need Urgent Pest Control?
                 </h3>
                 <p className="text-xs text-neutral-400">
-                  Priority 60-min dispatch across Dubai & Sharjah
+                  Priority 60-min dispatch across Dubai, Sharjah, and Ajman
                 </p>
               </div>
             </div>
