@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
-import { Menu, X, PhoneCall, LayoutDashboard, AlertTriangle } from 'lucide-react';
+import { Menu, X, PhoneCall, AlertTriangle } from 'lucide-react';
 
 interface NavbarProps {
   onBookClick: () => void;
-  onAdminClick: () => void;
   onEmergencyClick: () => void;
-  pendingCount?: number;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onBookClick,
-  onAdminClick,
   onEmergencyClick,
-  pendingCount = 0,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -29,14 +25,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#2A2A2A] text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-28">
           
           {/* Official Business Logo */}
-          <a href="#hero" className="flex items-center gap-3 group py-1">
+          <a href="#hero" className="flex items-center gap-3 group py-1 shrink-0">
             <img
-              src="/logo-trimmed.png"
+              src="/logo-white.png"
               alt="Rid Out Pest Control Services"
-              className="h-11 sm:h-13 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-20 sm:h-32 w-auto object-contain -ml-4 sm:-ml-8 shrink-0 transition-transform scale-[1.6] sm:scale-[2] origin-left group-hover:scale-[1.7] sm:group-hover:scale-[2.1]"
             />
           </a>
 
@@ -66,20 +62,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Alert</span>
             </button>
 
-            {/* Admin Portal Toggle */}
-            <button
-              onClick={onAdminClick}
-              className="relative flex items-center gap-2 px-3 py-1.5 rounded bg-[#171717] border border-[#2A2A2A] text-xs font-medium text-neutral-300 hover:text-white hover:border-neutral-500 transition-all cursor-pointer"
-              title="Open Admin Service Request Manager"
-            >
-              <LayoutDashboard className="w-3.5 h-3.5" />
-              <span>Admin</span>
-              {pendingCount > 0 && (
-                <span className="w-4 h-4 rounded-full bg-[#E8871E] text-white text-[10px] font-bold flex items-center justify-center">
-                  {pendingCount}
-                </span>
-              )}
-            </button>
 
             {/* Primary Book CTA */}
             <button
@@ -100,13 +82,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <AlertTriangle className="w-4 h-4" />
             </button>
 
-            <button
-              onClick={onAdminClick}
-              className="p-2 text-neutral-300 bg-neutral-900 border border-neutral-800 rounded-sm"
-              title="Admin Portal"
-            >
-              <LayoutDashboard className="w-4 h-4" />
-            </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

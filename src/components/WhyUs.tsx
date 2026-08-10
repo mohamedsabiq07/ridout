@@ -57,15 +57,16 @@ export const WhyUs: React.FC = () => {
             return (
               <div
                 key={pillar.title}
-                className="bg-white border border-[#E2DFD7] p-6 rounded-lg space-y-4 hover:border-[#0A0A0A] transition-all hover:shadow-lg group"
+                className="bg-white border border-[#E2DFD7] p-6 rounded-lg space-y-4 hover:border-[#0A0A0A] transition-all hover:shadow-lg group relative overflow-hidden"
               >
-                <div className="w-10 h-10 bg-[#0A0A0A] text-white rounded flex items-center justify-center transition-colors group-hover:bg-[#E8871E]">
+                <div className="absolute inset-0 bg-[radial-gradient(#00000008_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
+                <div className="w-10 h-10 bg-[#0A0A0A] text-white rounded flex items-center justify-center transition-colors group-hover:bg-[#E8871E] relative z-10">
                   <IconComponent className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold font-['Montserrat'] text-[#0A0A0A]">
+                <h3 className="text-lg font-bold font-['Montserrat'] text-[#0A0A0A] relative z-10">
                   {pillar.title}
                 </h3>
-                <p className="text-xs text-[#5A5A5A] leading-relaxed">
+                <p className="text-xs text-[#5A5A5A] leading-relaxed relative z-10">
                   {pillar.desc}
                 </p>
               </div>
@@ -73,50 +74,7 @@ export const WhyUs: React.FC = () => {
           })}
         </div>
 
-        {/* Visual Inspection Showcase Banner */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 bg-white border border-[#E2DFD7] rounded-lg overflow-hidden p-3 shadow-sm">
-          
-          <div className="relative rounded overflow-hidden h-56 group">
-            <img
-              src="/pest-commercial-warehouse.png"
-              alt="Commercial Warehouse Pest Management"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-[#0A0A0A]/40 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#7A9E7E]">
-                Commercial Facility Coverage
-              </span>
-              <h4 className="text-base font-extrabold font-['Montserrat'] mt-0.5">
-                Industrial & Warehouse Pest Proofing
-              </h4>
-              <p className="text-xs text-neutral-300">
-                Tamper-proof safety baiting stations and architectural exclusion sealing.
-              </p>
-            </div>
-          </div>
 
-          <div className="relative rounded overflow-hidden h-56 group">
-            <img
-              src="/pest-thermal-steam.png"
-              alt="Thermal Dry Steam Treatment"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-[#0A0A0A]/40 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#E8871E]">
-                Thermal Elimination
-              </span>
-              <h4 className="text-base font-extrabold font-['Montserrat'] mt-0.5">
-                Superheated Bed Bug Eradication
-              </h4>
-              <p className="text-xs text-neutral-300">
-                180°C dry steam injection paired with micro-encapsulated growth regulators.
-              </p>
-            </div>
-          </div>
-
-        </div>
 
       </div>
     </section>

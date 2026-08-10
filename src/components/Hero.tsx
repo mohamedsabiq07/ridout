@@ -1,5 +1,7 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2, Clock, MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { AnimatedCounter } from './AnimatedCounter';
 
 interface HeroProps {
   onBookClick: () => void;
@@ -18,52 +20,110 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Main Hero Content */}
-          <div className="lg:col-span-7 space-y-8 text-left">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-7 space-y-8 text-left"
+          >
             
             {/* Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#171717] border border-[#2A2A2A] text-xs font-semibold text-neutral-300">
-              <img src="/favicon.png" alt="RP Shield" className="w-4 h-4 object-contain shrink-0" />
-              <span>Certified Professional Pest Control • Dubai & Sharjah</span>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#171717] border border-[#2A2A2A] text-xs font-semibold text-neutral-300 relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
+              <img src="/favicon.png" alt="RP Shield" className="w-4 h-4 object-contain shrink-0 relative z-10" />
+              <span className="relative z-10">Certified Professional Pest Control • Dubai & Sharjah</span>
+            </motion.div>
 
             {/* Headline */}
             <div className="space-y-3">
-              <span className="block text-xl sm:text-2xl font-bold uppercase tracking-wider text-[#7A9E7E] font-['Montserrat']">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="block text-xl sm:text-2xl font-bold uppercase tracking-wider text-[#7A9E7E] font-['Montserrat']"
+              >
                 PESTS OUT. PEACE IN.
-              </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-['Montserrat'] tracking-tight leading-tight text-white">
-                Protecting Your Home, <br />
-                <span className="text-[#E8871E]">Naturally & Safely.</span>
-              </h1>
+              </motion.span>
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-['Montserrat'] tracking-tight leading-tight text-white"
+              >
+                24 Hours Pest Control Services <br />
+                <span className="text-[#E8871E]">Protecting You.</span>
+              </motion.h1>
             </div>
 
             {/* Subtext */}
-            <p className="text-lg sm:text-xl text-neutral-300 max-w-2xl font-normal leading-relaxed">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="text-lg sm:text-xl text-neutral-300 max-w-2xl font-normal leading-relaxed"
+            >
               Professional, eco-friendly pest management for apartments, villas, offices, and commercial properties across Dubai and Sharjah. Safe for families, pets, and the environment.
-            </p>
+            </motion.p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
+            >
               <button
                 onClick={onBookClick}
-                className="flex items-center justify-center gap-3 bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold text-base tracking-wide transition-all shadow-xl hover:shadow-2xl active:scale-98 cursor-pointer group uppercase font-['Montserrat']"
+                className="flex items-center justify-center gap-3 bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold text-base tracking-wide transition-all shadow-xl hover:shadow-2xl active:scale-98 cursor-pointer group uppercase font-['Montserrat'] relative overflow-hidden"
               >
-                <span>Get a Free Quote</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <div className="absolute inset-0 bg-[radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:10px_10px] pointer-events-none" />
+                <span className="relative z-10">Get a Free Quote</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
               </button>
 
               <button
                 onClick={onViewServicesClick}
-                className="flex items-center justify-center gap-2 bg-[#171717] hover:bg-neutral-800 text-white border border-[#2A2A2A] px-7 py-4 rounded font-semibold text-base transition-all cursor-pointer uppercase font-['Montserrat']"
+                className="flex items-center justify-center gap-2 bg-[#171717] hover:bg-neutral-800 text-white border border-[#2A2A2A] px-7 py-4 rounded font-semibold text-base transition-all cursor-pointer uppercase font-['Montserrat'] relative overflow-hidden"
               >
-                View Services
+                <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:10px_10px] pointer-events-none" />
+                <span className="relative z-10">View Services</span>
               </button>
-            </div>
+            </motion.div>
+
+            {/* Certifications Logo Strip */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9, duration: 1 }}
+              className="pt-6"
+            >
+              <p className="text-xs text-neutral-400 mb-3 uppercase tracking-wider font-semibold">Trusted & Approved By</p>
+              <div className="bg-white/95 px-5 py-3 inline-block rounded shadow-xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMCIvPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-50 pointer-events-none" />
+                <img 
+                  src="/certifications.png" 
+                  alt="Dubai Municipality Approved, ISO 9001, ISO 14001, NPMA" 
+                  className="h-14 sm:h-20 object-contain relative z-10"
+                />
+              </div>
+            </motion.div>
 
             {/* Micro Trust Counters */}
-            <div className="pt-8 border-t border-[#2A2A2A] grid grid-cols-2 sm:grid-cols-4 gap-6">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.8 }}
+              className="pt-8 border-t border-[#2A2A2A] grid grid-cols-2 sm:grid-cols-4 gap-6"
+            >
               <div>
-                <div className="text-2xl lg:text-3xl font-black text-white font-['Montserrat']">1,000+</div>
+                <div className="text-2xl lg:text-3xl font-black text-white font-['Montserrat']">
+                  <AnimatedCounter value={1000} suffix="+" duration={2.5} />
+                </div>
                 <div className="text-xs text-neutral-400 mt-1 font-medium">UAE Properties Treated</div>
               </div>
               <div>
@@ -71,16 +131,18 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
                 <div className="text-xs text-neutral-400 mt-1 font-medium">Service Coverage</div>
               </div>
               <div>
-                <div className="text-2xl lg:text-3xl font-black text-white font-['Montserrat']">5 Months</div>
+                <div className="text-2xl lg:text-3xl font-black text-white font-['Montserrat']">
+                  <AnimatedCounter value={5} suffix=" Months" duration={1.5} />
+                </div>
                 <div className="text-xs text-neutral-400 mt-1 font-medium">Guarantee Warranty</div>
               </div>
               <div>
                 <div className="text-2xl lg:text-3xl font-black text-white font-['Montserrat']">Same-Day</div>
                 <div className="text-xs text-neutral-400 mt-1 font-medium">Rapid Dispatch</div>
               </div>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
           {/* Hero Visual Card with Real Technician Photo */}
           <div className="lg:col-span-5">
@@ -174,9 +236,10 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
             {/* Card 1 */}
-            <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5" />
-              <div>
+            <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors relative overflow-hidden group">
+              <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
+              <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5 relative z-10" />
+              <div className="relative z-10">
                 <div className="text-sm font-bold text-white uppercase tracking-wide font-['Montserrat']">
                   FREE RE-TREATMENT
                 </div>
@@ -187,9 +250,10 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
             </div>
 
             {/* Card 2 */}
-            <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5" />
-              <div>
+            <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors relative overflow-hidden group">
+              <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
+              <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5 relative z-10" />
+              <div className="relative z-10">
                 <div className="text-sm font-bold text-white uppercase tracking-wide font-['Montserrat']">
                   ECO-FRIENDLY & SAFE
                 </div>
@@ -200,9 +264,10 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
             </div>
 
             {/* Card 3 */}
-            <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5" />
-              <div>
+            <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors relative overflow-hidden group">
+              <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
+              <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5 relative z-10" />
+              <div className="relative z-10">
                 <div className="text-sm font-bold text-white uppercase tracking-wide font-['Montserrat']">
                   SAME-DAY DISPATCH
                 </div>
@@ -213,9 +278,10 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
             </div>
 
             {/* Card 4 */}
-            <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5" />
-              <div>
+            <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors relative overflow-hidden group">
+              <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
+              <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5 relative z-10" />
+              <div className="relative z-10">
                 <div className="text-sm font-bold text-white uppercase tracking-wide font-['Montserrat']">
                   5-MONTH GUARANTEE
                 </div>

@@ -40,7 +40,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
               {/* Photo Banner Header */}
               <div className="relative h-48 sm:h-52 overflow-hidden border-b border-[#2A2A2A]">
                 <img
-                  src="/pest-cleaning-kitchen.png"
+                  src="/kitchen-cleaning.jpg"
                   alt="Kitchen Cleaning Service"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -119,7 +119,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
               {/* Photo Banner Header */}
               <div className="relative h-48 sm:h-52 overflow-hidden border-b border-[#2A2A2A]">
                 <img
-                  src="/pest-thermal-steam.png"
+                  src="/bathroom-cleaning.jpg"
                   alt="Bathroom Cleaning & Sanitization Service"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />

@@ -8,19 +8,13 @@ import {
   RefreshCw,
   MessageSquare,
   PhoneCall,
-  X,
+  LogOut,
   Camera
 } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
-interface AdminDashboardProps {
-  onClose: () => void;
-  onRequestStatusUpdated?: () => void;
-}
-
-export const AdminDashboard: React.FC<AdminDashboardProps> = ({
-  onClose,
-  onRequestStatusUpdated,
-}) => {
+export const AdminDashboard: React.FC = () => {
+  const { signOut } = useAuth();
   const [requests, setRequests] = useState<ServiceRequest[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -64,7 +58,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         if (selectedRequest?.id === id) {
           setSelectedRequest(updated);
         }
-        if (onRequestStatusUpdated) onRequestStatusUpdated();
       }
     } catch (err) {
       console.error('Failed to update status:', err);
@@ -134,7 +127,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#0A0A0A] text-white flex flex-col overflow-hidden animate-fadeIn">
+    <div className="min-h-screen bg-[#0A0A0A] text-white flex flex-col overflow-hidden animate-fadeIn">
       
       {/* Top Admin Header Bar */}
       <header className="bg-[#171717] border-b border-[#2A2A2A] px-6 py-4 flex items-center justify-between">
@@ -169,11 +162,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           </button>
 
           <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-full bg-neutral-800 hover:bg-neutral-700 text-white flex items-center justify-center transition-colors cursor-pointer"
-            title="Exit Admin Portal"
+            onClick={signOut}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-red-950/30 hover:bg-red-900/50 border border-red-900/50 rounded text-xs font-mono text-red-400 hover:text-red-300 transition-colors cursor-pointer"
+            title="Secure Logout"
           >
-            <X className="w-5 h-5" />
+            <LogOut className="w-3.5 h-3.5" />
+            <span>Logout</span>
           </button>
         </div>
       </header>

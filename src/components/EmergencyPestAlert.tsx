@@ -30,8 +30,8 @@ export const EmergencyPestAlert: React.FC<EmergencyPestAlertProps> = ({
 
   return (
     <>
-      {/* Floating Circular Trigger Button (Bottom Right) */}
-      <div className="fixed bottom-6 right-6 z-40">
+      {/* Floating Circular Trigger Button (Bottom Left) */}
+      <div className="fixed bottom-6 left-6 z-40">
         <button
           onClick={() => setInternalOpen(true)}
           className="group relative flex items-center gap-2 bg-[#E8871E] hover:bg-[#d47817] text-white p-3.5 sm:px-4 sm:py-3 rounded-full border border-amber-400 shadow-2xl transition-all cursor-pointer hover:scale-105 active:scale-95"
