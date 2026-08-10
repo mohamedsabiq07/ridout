@@ -4,7 +4,6 @@ import { PublicHome } from './pages/PublicHome';
 import { AdminLogin } from './pages/AdminLogin';
 import { AdminRoute } from './components/AdminRoute';
 import { AdminDashboard } from './components/AdminDashboard';
-import { FloatingContact } from './components/FloatingContact';
 
 export function App() {
   return (
