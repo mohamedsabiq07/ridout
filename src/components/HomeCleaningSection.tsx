@@ -58,9 +58,6 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/30 to-transparent" />
-                <span className="absolute top-4 right-4 text-xs font-mono font-bold text-amber-300 bg-[#0A0A0A]/90 border border-neutral-700 px-3 py-1 rounded backdrop-blur-md">
-                  From AED 189
-                </span>
                 <div className="absolute bottom-3 left-4 flex items-center gap-2">
                   <div className="w-8 h-8 bg-[#E8871E] text-white rounded flex items-center justify-center font-bold">
                     <UtensilsCrossed className="w-4 h-4" />
@@ -143,9 +140,6 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/30 to-transparent" />
-                <span className="absolute top-4 right-4 text-xs font-mono font-bold text-amber-300 bg-[#0A0A0A]/90 border border-neutral-700 px-3 py-1 rounded backdrop-blur-md">
-                  From AED 169
-                </span>
                 <div className="absolute bottom-3 left-4 flex items-center gap-2">
                   <div className="w-8 h-8 bg-[#7A9E7E] text-white rounded flex items-center justify-center font-bold">
                     <Sparkles className="w-4 h-4" />

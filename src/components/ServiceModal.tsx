@@ -48,14 +48,8 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({
         <div className="p-6 space-y-6">
           
           {/* Key Quick Info Grid */}
-          <div className="grid grid-cols-3 gap-3 bg-[#F7F7F7] p-4 rounded border border-neutral-200 text-center">
-            <div>
-              <div className="text-xs text-neutral-500 font-medium">Starting Price</div>
-              <div className="text-base font-extrabold font-['Outfit'] text-[#0A0A0A]">
-                {service.startingPrice}
-              </div>
-            </div>
-            <div className="border-x border-neutral-300">
+          <div className="grid grid-cols-2 gap-3 bg-[#F7F7F7] p-4 rounded border border-neutral-200 text-center">
+            <div className="border-r border-neutral-300">
               <div className="text-xs text-neutral-500 font-medium">Est. Duration</div>
               <div className="text-sm font-bold text-[#0A0A0A] flex items-center justify-center gap-1 mt-0.5">
                 <Clock className="w-3.5 h-3.5" />

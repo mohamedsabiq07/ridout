@@ -111,14 +111,11 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
                 className="bg-white/60 backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] rounded-lg p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-xl group relative"
               >
                 <div>
-                  {/* Icon & Starting Price */}
+                  {/* Icon */}
                   <div className="flex items-center justify-between mb-5">
                     <div className="w-12 h-12 bg-[#0A0A0A] text-white rounded-md flex items-center justify-center group-hover:scale-105 transition-all shadow-sm">
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-mono font-bold text-[#0A0A0A] bg-[#0A0A0A]/10 border border-[#7A9E7E]/30 px-2.5 py-1 rounded">
-                      {service.startingPrice}
-                    </span>
                   </div>
 
                   {/* Title */}
