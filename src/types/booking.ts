@@ -41,6 +41,7 @@ export interface ServiceRequest {
   service_id: string[];
   service_name: string[];
   property_type: PropertyType;
+  apartment_size?: string;
   location: string;
   preferred_date: string;
   preferred_time: string;
@@ -59,6 +60,7 @@ export interface BookingFormData {
   email: string;
   service_id: string[];
   property_type: PropertyType;
+  apartment_size?: string;
   location: string;
   preferred_date: string;
   preferred_time: string;

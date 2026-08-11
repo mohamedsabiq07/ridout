@@ -157,7 +157,9 @@ export async function createServiceRequest(formData: BookingFormData): Promise<S
     location: formData.location,
     preferred_date: formData.preferred_date,
     preferred_time: formData.preferred_time,
-    notes: formData.notes,
+    notes: formData.property_type === 'Apartment' && formData.apartment_size
+      ? `[Apartment Size: ${formData.apartment_size}]\n${formData.notes}`.trim()
+      : formData.notes,
     status: 'Pending',
     created_at: new Date().toISOString(),
     is_urgent: Boolean(formData.is_urgent),

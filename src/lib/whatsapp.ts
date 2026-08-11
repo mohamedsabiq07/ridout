@@ -21,7 +21,10 @@ export function formatWhatsAppMessage(request: Partial<ServiceRequest> | Booking
   const name = request.customer_name || 'N/A';
   const mobile = request.mobile || 'N/A';
   const service = 'service_name' in request && request.service_name ? request.service_name : (request.service_id || 'Service Request');
-  const property = request.property_type || 'Apartment';
+  const baseProperty = request.property_type || 'Apartment';
+  const property = baseProperty === 'Apartment' && request.apartment_size
+    ? `${baseProperty} (${request.apartment_size})`
+    : baseProperty;
   const location = request.location || 'N/A';
   const date = request.preferred_date || 'As soon as possible';
   const time = request.preferred_time || 'Morning';

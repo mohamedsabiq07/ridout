@@ -21,6 +21,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     email: '',
     service_id: preselectedServiceId ? [preselectedServiceId] : [],
     property_type: 'Apartment',
+    apartment_size: '1 BHK',
     location: '',
     preferred_date: new Date().toISOString().split('T')[0],
     preferred_time: '10:00 AM',
@@ -345,6 +346,30 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                   </select>
                 </div>
               </div>
+
+              {/* Apartment Size (Conditional) */}
+              {formData.property_type === 'Apartment' && (
+                <div>
+                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                    Size <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <Building className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <select
+                      name="apartment_size"
+                      value={formData.apartment_size}
+                      onChange={handleChange}
+                      className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors cursor-pointer"
+                    >
+                      <option value="Studio">Studio</option>
+                      <option value="1 BHK">1 BHK</option>
+                      <option value="2 BHK">2 BHK</option>
+                      <option value="3 BHK">3 BHK</option>
+                      <option value="4+ BHK">4+ BHK</option>
+                    </select>
+                  </div>
+                </div>
+              )}
 
               {/* Location / Area */}
               <div>
