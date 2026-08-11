@@ -185,7 +185,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
                   <div className="flex items-start gap-3 bg-[#0A0A0A] p-3 rounded border border-neutral-800 hover:border-[#7A9E7E]/50 transition-colors">
                     <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5" />
                     <div>
-                      <div className="font-semibold text-white">Guaranteed Nest Elimination</div>
+                      <div className="font-semibold text-white">Guaranteed Pest Elimination</div>
                       <div className="text-xs text-neutral-400">German Cockroaches, Ants, Bed Bugs & Rodents</div>
                     </div>
                   </div>
