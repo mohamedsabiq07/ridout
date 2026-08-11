@@ -99,7 +99,7 @@ export const AdminDashboard: React.FC = () => {
       req.customer_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       req.mobile.includes(searchQuery) ||
       req.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (Array.isArray(req.service_name) ? req.service_name.join(', ') : req.service_name || '').toLowerCase().includes(searchQuery.toLowerCase());
+      (Array.isArray(req.service_name) ? req.service_name.join(', ') : (req.service_name as unknown as string) || '').toLowerCase().includes(searchQuery.toLowerCase());
 
     const matchesStatus = statusFilter === 'All' || req.status === statusFilter;
 
@@ -305,9 +305,9 @@ export const AdminDashboard: React.FC = () => {
 
                         <td className="p-3.5 text-neutral-300 font-medium whitespace-nowrap">
                           <div className="flex items-center gap-1">
-                            {Array.isArray(req.service_id) ? (req.service_id.some(id => id.includes('cleaning')) ? '🧹 ' : '🐜 ') : (req.service_id.includes('cleaning') ? '🧹 ' : '🐜 ')}
-                            <span className="truncate max-w-[200px]" title={Array.isArray(req.service_name) ? req.service_name.join(', ') : req.service_name}>
-                              {Array.isArray(req.service_name) ? req.service_name.join(', ') : req.service_name}
+                            {Array.isArray(req.service_id) ? (req.service_id.some(id => id.includes('cleaning')) ? '🧹 ' : '🐜 ') : ((req.service_id as unknown as string).includes('cleaning') ? '🧹 ' : '🐜 ')}
+                            <span className="truncate max-w-[200px]" title={Array.isArray(req.service_name) ? req.service_name.join(', ') : (req.service_name as unknown as string)}>
+                              {Array.isArray(req.service_name) ? req.service_name.join(', ') : (req.service_name as unknown as string)}
                             </span>
                           </div>
                         </td>
@@ -421,7 +421,7 @@ export const AdminDashboard: React.FC = () => {
               {/* Booking Info */}
               <div className="bg-[#0A0A0A] p-4 rounded border border-neutral-800 space-y-2 text-xs">
                 <div className="text-neutral-400 font-mono text-[10px] uppercase font-bold">Service & Location</div>
-                <div className="text-white font-bold">{Array.isArray(selectedRequest.service_name) ? selectedRequest.service_name.join(', ') : selectedRequest.service_name}</div>
+                <div className="text-white font-bold">{Array.isArray(selectedRequest.service_name) ? selectedRequest.service_name.join(', ') : (selectedRequest.service_name as unknown as string)}</div>
                 <div className="text-neutral-300">{selectedRequest.property_type} • {selectedRequest.location}</div>
                 <div className="text-neutral-400 font-mono">Date: {selectedRequest.preferred_date} ({selectedRequest.preferred_time})</div>
                 {selectedRequest.notes && (
