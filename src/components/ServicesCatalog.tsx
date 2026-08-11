@@ -108,7 +108,7 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/60 backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] rounded-lg p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-xl group relative"
+                className="bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] rounded-lg p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-xl group relative"
               >
                 <div>
                   {/* Icon */}

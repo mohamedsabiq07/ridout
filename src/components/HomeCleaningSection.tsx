@@ -47,7 +47,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white/5 backdrop-blur-md border border-white/10 hover:border-[#7A9E7E] rounded-lg flex flex-col justify-between transition-all duration-300 hover:shadow-2xl group relative overflow-hidden"
+              className="bg-white/5 bg-noise backdrop-blur-md border border-white/10 hover:border-[#7A9E7E] rounded-lg flex flex-col justify-between transition-all duration-300 hover:shadow-2xl group relative overflow-hidden"
             >
               
               {/* Photo Banner Header */}
@@ -129,7 +129,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white/5 backdrop-blur-md border border-white/10 hover:border-[#7A9E7E] rounded-lg flex flex-col justify-between transition-all duration-300 hover:shadow-2xl group relative overflow-hidden"
+              className="bg-white/5 bg-noise backdrop-blur-md border border-white/10 hover:border-[#7A9E7E] rounded-lg flex flex-col justify-between transition-all duration-300 hover:shadow-2xl group relative overflow-hidden"
             >
               
               {/* Photo Banner Header */}

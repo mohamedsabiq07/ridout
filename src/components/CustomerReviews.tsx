@@ -60,7 +60,7 @@ export const CustomerReviews: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-white/60 backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] p-6 rounded-lg space-y-4 shadow-sm flex flex-col justify-between transition-all hover:shadow-md"
+              className="bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] p-6 rounded-lg space-y-4 shadow-sm flex flex-col justify-between transition-all hover:shadow-md"
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-1 text-[#E8871E]">

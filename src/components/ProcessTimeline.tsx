@@ -63,7 +63,7 @@ export const ProcessTimeline: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative flex flex-col items-start group bg-white/5 backdrop-blur-md p-6 rounded-lg border border-white/10 hover:border-[#7A9E7E] transition-all"
+                className="relative flex flex-col items-start group bg-white/5 bg-noise backdrop-blur-md p-6 rounded-lg border border-white/10 hover:border-[#7A9E7E] transition-all"
               >
                 
                 {/* Step Number & Icon */}
