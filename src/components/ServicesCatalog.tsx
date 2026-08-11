@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 import {
   ShieldAlert,
   Bug,
-  Search,
-  BedDouble,
-  Wind,
-  Zap,
-  Hammer,
+  BugOff,
+  Bed,
+  SprayCan,
+  Rat,
+  Axe,
   Sparkles,
   ArrowUpRight
 } from 'lucide-react';
@@ -22,11 +22,11 @@ interface ServicesCatalogProps {
 const ICON_MAP: Record<string, React.ElementType> = {
   ShieldAlert,
   Bug,
-  Search,
-  BedDouble,
-  Wind,
-  Zap,
-  Hammer,
+  BugOff,
+  Bed,
+  SprayCan,
+  Rat,
+  Axe,
   Sparkles,
 };
 
