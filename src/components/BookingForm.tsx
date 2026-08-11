@@ -168,7 +168,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         </div>
 
         {/* Form Container */}
-        <div className="bg-white border border-[#E2DFD7] rounded-lg shadow-2xl overflow-hidden">
+        <div className="bg-white/60 backdrop-blur-xl border border-white/50 rounded-lg shadow-2xl overflow-hidden">
           
           {/* Header Banner inside form */}
           <div className="bg-[#0A0A0A] text-white p-6 border-b border-neutral-800 flex items-center justify-between">

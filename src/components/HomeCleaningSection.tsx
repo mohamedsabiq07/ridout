@@ -1,6 +1,7 @@
 import React from 'react';
 import { HOME_CLEANING_SERVICES } from '../data/services';
 import type { PestService } from '../types/booking';
+import { motion } from 'framer-motion';
 import { UtensilsCrossed, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface HomeCleaningSectionProps {
@@ -17,7 +18,13 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16 space-y-3"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#171717] border border-[#2A2A2A] text-xs font-mono font-bold text-neutral-300">
             <Sparkles className="w-4 h-4 text-[#E8871E]" />
             <span>Dedicated Specialized Cleaning</span>
@@ -28,14 +35,20 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
           <p className="text-neutral-300 text-base sm:text-lg">
             Professional cleaning for the spaces that matter most.
           </p>
-        </div>
+        </motion.div>
 
         {/* 2 Service Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           
           {/* 1. Kitchen Cleaning */}
           {HOME_CLEANING_SERVICES.find(s => s.id === 'kitchen-cleaning') && (
-            <div className="bg-[#171717] border border-[#2A2A2A] hover:border-[#7A9E7E] rounded-lg flex flex-col justify-between transition-all duration-300 hover:shadow-2xl group relative overflow-hidden">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-white/5 backdrop-blur-md border border-white/10 hover:border-[#7A9E7E] rounded-lg flex flex-col justify-between transition-all duration-300 hover:shadow-2xl group relative overflow-hidden"
+            >
               
               {/* Photo Banner Header */}
               <div className="relative h-48 sm:h-52 overflow-hidden border-b border-[#2A2A2A]">
@@ -109,12 +122,18 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
                 </div>
 
               </div>
-            </div>
+            </motion.div>
           )}
 
           {/* 2. Bathroom Cleaning */}
           {HOME_CLEANING_SERVICES.find(s => s.id === 'bathroom-cleaning') && (
-            <div className="bg-[#171717] border border-[#2A2A2A] hover:border-[#7A9E7E] rounded-lg flex flex-col justify-between transition-all duration-300 hover:shadow-2xl group relative overflow-hidden">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-white/5 backdrop-blur-md border border-white/10 hover:border-[#7A9E7E] rounded-lg flex flex-col justify-between transition-all duration-300 hover:shadow-2xl group relative overflow-hidden"
+            >
               
               {/* Photo Banner Header */}
               <div className="relative h-48 sm:h-52 overflow-hidden border-b border-[#2A2A2A]">
@@ -188,7 +207,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
                 </div>
 
               </div>
-            </div>
+            </motion.div>
           )}
         </div>
 

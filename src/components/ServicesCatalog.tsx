@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PEST_CONTROL_SERVICES } from '../data/services';
 import type { PestService } from '../types/booking';
+import { motion } from 'framer-motion';
 import {
   ShieldAlert,
   Bug,
@@ -47,7 +48,13 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
+        >
           <div>
             <span className="text-xs font-mono font-bold tracking-widest text-[#7A9E7E] uppercase">
               Targeted Eco-Safe Treatments
@@ -87,17 +94,21 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
               Commercial
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredServices.map((service) => {
+          {filteredServices.map((service, index) => {
             const IconComponent = ICON_MAP[service.iconName] || Bug;
 
             return (
-              <div
+              <motion.div
                 key={service.id}
-                className="bg-white border border-[#E2DFD7] hover:border-[#0A0A0A] rounded-lg p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-xl group relative"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white/60 backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] rounded-lg p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-xl group relative"
               >
                 <div>
                   {/* Icon & Starting Price */}
@@ -150,7 +161,7 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
                     Request
                   </button>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

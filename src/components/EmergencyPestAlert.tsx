@@ -34,7 +34,7 @@ export const EmergencyPestAlert: React.FC<EmergencyPestAlertProps> = ({
       <div className="fixed bottom-6 left-6 z-40">
         <button
           onClick={() => setInternalOpen(true)}
-          className="group relative flex items-center gap-2 bg-[#E8871E] hover:bg-[#d47817] text-white p-3.5 sm:px-4 sm:py-3 rounded-full border border-amber-400 shadow-2xl transition-all cursor-pointer hover:scale-105 active:scale-95"
+          className="group relative flex items-center gap-2 bg-[#E8871E]/90 backdrop-blur-md hover:bg-[#E8871E] text-white p-3.5 sm:px-4 sm:py-3 rounded-full border border-amber-400/50 shadow-2xl shadow-amber-500/20 transition-all cursor-pointer hover:scale-105 active:scale-95"
           title="Need Urgent Pest Control?"
         >
           <span className="relative flex h-3 w-3">
@@ -51,7 +51,7 @@ export const EmergencyPestAlert: React.FC<EmergencyPestAlertProps> = ({
       {/* Emergency Alert Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-[#171717] border border-neutral-700 text-white w-full max-w-md rounded-lg p-6 shadow-2xl space-y-5 relative">
+          <div className="bg-black/60 backdrop-blur-2xl border border-white/20 text-white w-full max-w-md rounded-lg p-6 shadow-2xl space-y-5 relative">
             
             <button
               onClick={handleClose}

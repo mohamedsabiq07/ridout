@@ -18,7 +18,7 @@ export const FloatingContact: React.FC = () => {
         transition={{ delay: 1.2, duration: 0.4, type: "spring" }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 bg-[#171717] border border-[#2A2A2A] text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl hover:bg-[#2A2A2A] transition-colors relative overflow-hidden group"
+        className="w-14 h-14 bg-black/60 backdrop-blur-xl border border-white/20 text-white rounded-full flex items-center justify-center shadow-2xl shadow-black/50 hover:bg-black/80 transition-colors relative overflow-hidden group"
         title="Call Us Now"
       >
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:6px_6px]" />
@@ -35,7 +35,7 @@ export const FloatingContact: React.FC = () => {
         transition={{ delay: 1.4, duration: 0.4, type: "spring" }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl hover:bg-[#20bd5a] transition-colors relative overflow-hidden group"
+        className="w-14 h-14 bg-[#25D366]/90 backdrop-blur-xl border border-white/30 text-white rounded-full flex items-center justify-center shadow-2xl shadow-green-500/30 hover:bg-[#25D366] transition-colors relative overflow-hidden group"
         title="Chat on WhatsApp"
       >
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:6px_6px]" />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Search, ShieldCheck, Lock, RotateCcw } from 'lucide-react';
 
 export const ProcessTimeline: React.FC = () => {
@@ -33,7 +34,13 @@ export const ProcessTimeline: React.FC = () => {
     <section id="process" className="py-20 bg-[#0A0A0A] text-white border-b border-[#2A2A2A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16 space-y-3"
+        >
           <span className="text-xs font-mono font-bold tracking-widest text-[#7A9E7E] uppercase">
             Proven 4-Step Technical Methodology
           </span>
@@ -43,14 +50,21 @@ export const ProcessTimeline: React.FC = () => {
           <p className="text-neutral-300 text-sm sm:text-base">
             From initial inspection to complete long-term protection — structured, safe, and guaranteed.
           </p>
-        </div>
+        </motion.div>
 
         {/* Desktop Horizontal Timeline / Mobile Vertical Timeline */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-          {steps.map((item) => {
+          {steps.map((item, index) => {
             const IconComponent = item.icon;
             return (
-              <div key={item.step} className="relative flex flex-col items-start group bg-[#171717] p-6 rounded-lg border border-[#2A2A2A] hover:border-[#7A9E7E] transition-all">
+              <motion.div 
+                key={item.step} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative flex flex-col items-start group bg-white/5 backdrop-blur-md p-6 rounded-lg border border-white/10 hover:border-[#7A9E7E] transition-all"
+              >
                 
                 {/* Step Number & Icon */}
                 <div className="flex items-center justify-between w-full mb-6 border-b border-[#2A2A2A] pb-4">
@@ -69,7 +83,7 @@ export const ProcessTimeline: React.FC = () => {
                 <p className="text-xs text-neutral-300 leading-relaxed">
                   {item.desc}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>

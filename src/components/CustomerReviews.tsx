@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Star, CheckCircle2 } from 'lucide-react';
 
 export const CustomerReviews: React.FC = () => {
@@ -33,7 +34,13 @@ export const CustomerReviews: React.FC = () => {
     <section className="py-20 bg-[#F7F5F0] border-b border-[#E2DFD7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16 space-y-2"
+        >
           <span className="text-xs font-mono font-bold tracking-widest text-[#7A9E7E] uppercase">
             Verified Testimonials
           </span>
@@ -43,11 +50,18 @@ export const CustomerReviews: React.FC = () => {
           <p className="text-[#5A5A5A] text-sm">
             Trusted by over 1,000+ homeowners, property managers, and businesses across Dubai, Sharjah, and Ajman.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {reviews.map((rev, idx) => (
-            <div key={idx} className="bg-white border border-[#E2DFD7] hover:border-[#0A0A0A] p-6 rounded-lg space-y-4 shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
+            <motion.div 
+              key={idx} 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="bg-white/60 backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] p-6 rounded-lg space-y-4 shadow-sm flex flex-col justify-between transition-all hover:shadow-md"
+            >
               <div className="space-y-3">
                 <div className="flex items-center gap-1 text-[#E8871E]">
                   {[...Array(rev.rating)].map((_, i) => (
@@ -73,7 +87,7 @@ export const CustomerReviews: React.FC = () => {
                   {rev.date}
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
