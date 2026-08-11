@@ -21,8 +21,8 @@ const INITIAL_DEMO_REQUESTS: ServiceRequest[] = [
     customer_name: 'Mohamed Al-Maktoum',
     mobile: '+971 50 492 8123',
     email: 'mohamed.m@example.ae',
-    service_id: 'general-pest-control',
-    service_name: 'General Pest Control',
+    service_id: ['general-pest-control'],
+    service_name: ['General Pest Control'],
     property_type: 'Apartment',
     location: 'Dubai Marina',
     preferred_date: '2026-08-15',
@@ -38,8 +38,8 @@ const INITIAL_DEMO_REQUESTS: ServiceRequest[] = [
     customer_name: 'Sarah Jenkins',
     mobile: '+971 55 318 9012',
     email: 's.jenkins@dubaihills.ae',
-    service_id: 'cockroach-control',
-    service_name: 'Cockroach Control',
+    service_id: ['cockroach-control'],
+    service_name: ['Cockroach Control'],
     property_type: 'Villa',
     location: 'Dubai Hills Estate',
     preferred_date: '2026-08-10',
@@ -56,8 +56,8 @@ const INITIAL_DEMO_REQUESTS: ServiceRequest[] = [
     customer_name: 'Tariq Mansoor',
     mobile: '+971 52 876 4321',
     email: 'tariq@baytower.com',
-    service_id: 'bed-bug-treatment',
-    service_name: 'Bed Bug Treatment',
+    service_id: ['bed-bug-treatment'],
+    service_name: ['Bed Bug Treatment'],
     property_type: 'Apartment',
     location: 'Business Bay',
     preferred_date: '2026-08-09',
@@ -74,8 +74,8 @@ const INITIAL_DEMO_REQUESTS: ServiceRequest[] = [
     customer_name: 'Elena Rostova',
     mobile: '+971 56 123 9876',
     email: 'elena@palmvilla.ae',
-    service_id: 'termite-treatment',
-    service_name: 'Termite Treatment',
+    service_id: ['termite-treatment'],
+    service_name: ['Termite Treatment'],
     property_type: 'Villa',
     location: 'Palm Jumeirah',
     preferred_date: '2026-08-08',
@@ -140,8 +140,10 @@ export async function fetchAllServiceRequests(): Promise<ServiceRequest[]> {
 export async function createServiceRequest(formData: BookingFormData): Promise<ServiceRequest> {
   const currentLocal = getStoredRequests();
   const requestNumber = generateNextRequestNumber(currentLocal);
-  const matchedService = PEST_SERVICES.find(s => s.id === formData.service_id);
-  const serviceName = matchedService ? matchedService.name : formData.service_id;
+  const serviceNames = formData.service_id.map(id => {
+    const matchedService = PEST_SERVICES.find(s => s.id === id);
+    return matchedService ? matchedService.name : id;
+  });
 
   const newRecord: ServiceRequest = {
     id: `req-${Date.now()}`,
@@ -150,7 +152,7 @@ export async function createServiceRequest(formData: BookingFormData): Promise<S
     mobile: formData.mobile,
     email: formData.email,
     service_id: formData.service_id,
-    service_name: serviceName,
+    service_name: serviceNames,
     property_type: formData.property_type,
     location: formData.location,
     preferred_date: formData.preferred_date,

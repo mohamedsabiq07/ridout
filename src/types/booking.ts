@@ -38,8 +38,8 @@ export interface ServiceRequest {
   customer_name: string;
   mobile: string;
   email?: string;
-  service_id: string;
-  service_name: string;
+  service_id: string[];
+  service_name: string[];
   property_type: PropertyType;
   location: string;
   preferred_date: string;
@@ -57,7 +57,7 @@ export interface BookingFormData {
   customer_name: string;
   mobile: string;
   email: string;
-  service_id: string;
+  service_id: string[];
   property_type: PropertyType;
   location: string;
   preferred_date: string;

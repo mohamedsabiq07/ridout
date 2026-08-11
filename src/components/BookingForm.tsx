@@ -19,7 +19,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     customer_name: '',
     mobile: '+971 ',
     email: '',
-    service_id: preselectedServiceId || 'general-pest-control',
+    service_id: preselectedServiceId ? [preselectedServiceId] : [],
     property_type: 'Apartment',
     location: '',
     preferred_date: new Date().toISOString().split('T')[0],
@@ -35,9 +35,27 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
   useEffect(() => {
     if (preselectedServiceId) {
-      setFormData((prev) => ({ ...prev, service_id: preselectedServiceId }));
+      setFormData((prev) => ({ ...prev, service_id: [preselectedServiceId] }));
     }
   }, [preselectedServiceId]);
+
+  const handleServiceToggle = (id: string) => {
+    setFormData((prev) => {
+      const isSelected = prev.service_id.includes(id);
+      const updatedServices = isSelected 
+        ? prev.service_id.filter(s => s !== id)
+        : [...prev.service_id, id];
+        
+      if (errors.service_id && updatedServices.length > 0) {
+        setErrors((errs) => {
+          const next = { ...errs };
+          delete next.service_id;
+          return next;
+        });
+      }
+      return { ...prev, service_id: updatedServices };
+    });
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -89,8 +107,8 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       newErrors.mobile = 'Please enter a valid UAE mobile number (+971 XX XXX XXXX).';
     }
 
-    if (!formData.service_id) {
-      newErrors.service_id = 'Please select a service.';
+    if (!formData.service_id || formData.service_id.length === 0) {
+      newErrors.service_id = 'Please select at least one service.';
     }
 
     if (!formData.location.trim()) {
@@ -247,34 +265,53 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               </div>
 
               {/* Service Selection (Pest & Cleaning Grouped - Names Only) */}
-              <div>
+              <div className="md:col-span-2">
                 <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                  Select Service <span className="text-red-500">*</span>
+                  Select Service(s) <span className="text-red-500">*</span>
                 </label>
-                <select
-                  name="service_id"
-                  value={formData.service_id}
-                  onChange={handleChange}
-                  className={`w-full bg-[#F7F5F0] border ${
-                    errors.service_id ? 'border-red-500' : 'border-[#E2DFD7] focus:border-[#0A0A0A]'
-                  } text-[#2D2D2D] text-sm rounded px-4 py-3 outline-none transition-colors cursor-pointer`}
-                >
-                  <optgroup label="🧹 Home Cleaning Services">
-                    {cleaningServices.map((s) => (
-                      <option key={s.id} value={s.id}>
-                        {s.name}
-                      </option>
-                    ))}
-                  </optgroup>
+                <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 bg-[#F7F5F0] border p-3 rounded max-h-60 overflow-y-auto ${
+                  errors.service_id ? 'border-red-500' : 'border-[#E2DFD7]'
+                }`}>
+                  <div className="col-span-full mb-1">
+                    <span className="text-xs font-bold text-[#5A5A5A]">🧹 Home Cleaning</span>
+                  </div>
+                  {cleaningServices.map((s) => (
+                    <label key={s.id} className="flex items-center gap-2 cursor-pointer group">
+                      <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
+                        formData.service_id.includes(s.id) ? 'bg-[#0A0A0A] border-[#0A0A0A]' : 'border-[#C2BFB7] group-hover:border-[#0A0A0A]'
+                      }`}>
+                        {formData.service_id.includes(s.id) && <span className="text-white text-[10px]">✓</span>}
+                      </div>
+                      <span className="text-sm text-[#2D2D2D] truncate">{s.name}</span>
+                      <input 
+                        type="checkbox"
+                        className="hidden"
+                        checked={formData.service_id.includes(s.id)}
+                        onChange={() => handleServiceToggle(s.id)}
+                      />
+                    </label>
+                  ))}
                   
-                  <optgroup label="🐜 Pest Control Services">
-                    {pestServices.map((s) => (
-                      <option key={s.id} value={s.id}>
-                        {s.name}
-                      </option>
-                    ))}
-                  </optgroup>
-                </select>
+                  <div className="col-span-full mt-2 mb-1">
+                    <span className="text-xs font-bold text-[#5A5A5A]">🐜 Pest Control</span>
+                  </div>
+                  {pestServices.map((s) => (
+                    <label key={s.id} className="flex items-center gap-2 cursor-pointer group">
+                      <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
+                        formData.service_id.includes(s.id) ? 'bg-[#0A0A0A] border-[#0A0A0A]' : 'border-[#C2BFB7] group-hover:border-[#0A0A0A]'
+                      }`}>
+                        {formData.service_id.includes(s.id) && <span className="text-white text-[10px]">✓</span>}
+                      </div>
+                      <span className="text-sm text-[#2D2D2D] truncate">{s.name}</span>
+                      <input 
+                        type="checkbox"
+                        className="hidden"
+                        checked={formData.service_id.includes(s.id)}
+                        onChange={() => handleServiceToggle(s.id)}
+                      />
+                    </label>
+                  ))}
+                </div>
                 {errors.service_id && (
                   <p className="text-xs text-red-500 mt-1">{errors.service_id}</p>
                 )}
