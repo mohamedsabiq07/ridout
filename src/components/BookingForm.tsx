@@ -133,7 +133,21 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       // 2. Format WhatsApp link payload
       const whatsappUrl = generateWhatsAppLink(createdRequest, createdRequest.request_number);
 
-      // 3. Trigger callback to display SuccessModal with Request ID
+      // 3. Send email in the background
+      try {
+        await fetch('/api/sendEmail', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(createdRequest),
+        });
+      } catch (emailErr) {
+        console.error('Failed to send background email:', emailErr);
+        // We do not fail the booking if the email fails.
+      }
+
+      // 4. Trigger callback to display SuccessModal with Request ID and WhatsApp Option
       onRequestSubmitted(createdRequest, whatsappUrl);
     } catch (err) {
       console.error('Booking submission error:', err);
