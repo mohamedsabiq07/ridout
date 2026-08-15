@@ -48,7 +48,7 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
               </p>
             </div>
             <div>
-              <img src="/logo-black.png" alt="Rid Out Pest Control" className="h-28 w-auto object-contain" />
+              <img src="/logo-black.png" alt="Rid Out Pest Control" className="h-40 w-auto object-contain" />
             </div>
           </div>
 
