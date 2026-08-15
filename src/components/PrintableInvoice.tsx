@@ -8,155 +8,162 @@ interface PrintableInvoiceProps {
   notes: string;
 }
 
-// ForwardRef is necessary for react-to-print
 export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoiceProps>(
   ({ request, documentType, cost, notes }, ref) => {
     
-    // Generate a unique invoice number based on the booking ID
     const documentNumber = `${documentType === 'Invoice' ? 'INV' : 'QUO'}-${request.id.slice(0, 6).toUpperCase()}`;
     
-    // Format dates
     const dateCreated = new Date().toLocaleDateString('en-AE', {
       year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+      month: '2-digit',
+      day: '2-digit'
+    }).replace(/\//g, '.');
+
+    // Default terms based on the screenshot
+    const defaultTerms = `1) This ${documentType.toLowerCase()} is valid for 15 days from the date of issue.
+2) Service includes a 4-month warranty; free re-treatment if pests return within this period.
+3) Prices are subject to site inspection and may vary based on actual infestation level.
+4) Payment accepted cash only after the services done.`;
+
+    const serviceName = Array.isArray(request.service_name) ? request.service_name.join(', ') : request.service_name;
 
     return (
       <div className="hidden">
-        {/* The actual printable area */}
         <div 
           ref={ref} 
-          className="bg-white w-[210mm] min-h-[297mm] p-[20mm] mx-auto box-border font-sans text-sm relative"
+          className="bg-white w-[210mm] min-h-[297mm] p-[15mm] mx-auto box-border font-sans text-[13px] relative leading-relaxed"
           style={{ WebkitPrintColorAdjust: 'exact', colorAdjust: 'exact' }}
         >
           {/* Header */}
-          <div className="flex justify-between items-start mb-12">
+          <div className="flex justify-between items-start mb-2">
+            <div className="pt-4">
+              <h1 className="text-2xl font-bold text-[#1C2C54] uppercase tracking-wide mb-1">
+                RID OUT PEST CONTROL SERVICES
+              </h1>
+              <p className="italic text-[#1C2C54] font-semibold text-sm mb-1">
+                Pest Control & Fumigation Solutions | Dubai • Sharjah • Ajman
+              </p>
+              <p className="text-[#E8871E] font-bold text-sm">
+                Mobile: 055 4720124 &nbsp;|&nbsp; Available 24/7
+              </p>
+            </div>
             <div>
-              <img src="/logo.png" alt="Ridout Pest Control" className="h-16 w-auto object-contain mb-2" />
-              <p className="text-gray-500 text-xs mt-1">Municipality Approved Services</p>
-              <div className="mt-4 text-gray-700 text-xs leading-relaxed">
-                <p>Dubai, United Arab Emirates</p>
-                <p>Phone: +971 50 123 4567</p>
-                <p>Email: mohamedsabiq07@gmail.com</p>
-                <p>Web: ridoutpestcontrol.ae</p>
-              </div>
-            </div>
-            
-            <div className="text-right">
-              <h2 className="text-4xl font-black text-gray-200 uppercase tracking-widest mb-4">
-                {documentType}
-              </h2>
-              <table className="ml-auto text-sm">
-                <tbody>
-                  <tr>
-                    <td className="font-semibold text-gray-500 text-right pr-4 pb-1">Doc No:</td>
-                    <td className="font-mono font-medium text-right pb-1">{documentNumber}</td>
-                  </tr>
-                  <tr>
-                    <td className="font-semibold text-gray-500 text-right pr-4 pb-1">Date:</td>
-                    <td className="text-right pb-1">{dateCreated}</td>
-                  </tr>
-                  <tr>
-                    <td className="font-semibold text-gray-500 text-right pr-4">Booking ID:</td>
-                    <td className="font-mono text-xs text-right">{request.id.slice(0, 8)}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <img src="/logo.png" alt="Rid Out Pest Control" className="h-20 w-auto object-contain bg-[#2B231D] p-2 rounded-sm" />
             </div>
           </div>
 
-          <hr className="border-gray-200 mb-8" />
+          {/* Title Bar */}
+          <div className="bg-[#1C2C54] text-white text-center py-1.5 mb-2 border border-[#1C2C54]">
+            <h2 className="font-bold text-lg uppercase underline tracking-widest">{documentType}</h2>
+          </div>
 
-          {/* Customer Details */}
-          <div className="flex justify-between mb-12">
-            <div className="w-1/2 pr-4">
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Billed To</h3>
-              <p className="font-bold text-lg text-gray-900">{request.customer_name}</p>
-              <div className="text-gray-700 mt-2 space-y-1">
-                <p>{request.mobile}</p>
-                {request.email && <p>{request.email}</p>}
-              </div>
+          {/* Info Box */}
+          <div className="bg-[#FEFCE8] p-3 mb-2 border border-gray-300 flex justify-between">
+            <div className="space-y-1">
+              <p><span className="font-bold">{documentType}:</span> {documentNumber}</p>
+              <p><span className="font-bold">Client Name:</span> {request.customer_name}</p>
+              <p><span className="font-bold">Location:</span> {request.location}</p>
             </div>
-            <div className="w-1/2 pl-4">
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Property Details</h3>
-              <p className="font-semibold text-gray-900">{request.property_type}</p>
-              <p className="text-gray-700 mt-2">{request.location}</p>
+            <div className="space-y-1 text-right">
+              <p>Date: {dateCreated}</p>
+              <p>Property Type: {request.property_type}</p>
+              <p>Contact No.: {request.mobile}</p>
             </div>
           </div>
 
-          {/* Line Items */}
-          <div className="mb-12">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b-2 border-gray-900 text-gray-900">
-                  <th className="py-3 font-bold uppercase text-xs tracking-wider">Service Description</th>
-                  <th className="py-3 font-bold uppercase text-xs tracking-wider text-center w-32">Qty</th>
-                  <th className="py-3 font-bold uppercase text-xs tracking-wider text-right w-40">Amount (AED)</th>
-                </tr>
-              </thead>
-              <tbody className="text-gray-700">
-                <tr className="border-b border-gray-200">
-                  <td className="py-4">
-                    <p className="font-bold text-gray-900">
-                      {Array.isArray(request.service_name) ? request.service_name.join(', ') : request.service_name}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1">Professional pest control treatment at scheduled property.</p>
-                  </td>
-                  <td className="py-4 text-center">1</td>
-                  <td className="py-4 text-right font-mono">{cost}</td>
-                </tr>
-              </tbody>
-            </table>
+          {/* Table */}
+          <table className="w-full border-collapse mb-0 border border-gray-400 text-xs">
+            <thead>
+              <tr className="bg-[#1C2C54] text-white">
+                <th className="border border-gray-400 p-2 w-8 text-center">SN</th>
+                <th className="border border-gray-400 p-2 text-left">Service Description</th>
+                <th className="border border-gray-400 p-2 w-16 text-center">Qty</th>
+                <th className="border border-gray-400 p-2 w-16 text-center">Unit</th>
+                <th className="border border-gray-400 p-2 w-24 text-center">Unit Price<br/>(AED)</th>
+                <th className="border border-gray-400 p-2 w-24 text-center">Total (AED)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-white">
+                <td className="border border-gray-400 p-2 text-center">1</td>
+                <td className="border border-gray-400 p-2">{serviceName}</td>
+                <td className="border border-gray-400 p-2 text-center">1</td>
+                <td className="border border-gray-400 p-2 text-center"></td>
+                <td className="border border-gray-400 p-2 text-right">{cost}</td>
+                <td className="border border-gray-400 p-2 text-right">{cost}</td>
+              </tr>
+              {/* Optional secondary rows can be added here if needed */}
+              <tr className="bg-white">
+                <td className="border border-gray-400 p-2 text-center">2</td>
+                <td className="border border-gray-400 p-2"></td>
+                <td className="border border-gray-400 p-2 text-center"></td>
+                <td className="border border-gray-400 p-2 text-center"></td>
+                <td className="border border-gray-400 p-2 text-right"></td>
+                <td className="border border-gray-400 p-2 text-right"></td>
+              </tr>
+              
+              {/* Totals */}
+              <tr className="bg-[#F3F4F6] font-bold">
+                <td colSpan={5} className="border border-gray-400 p-2 text-right">Subtotal (AED)</td>
+                <td className="border border-gray-400 p-2 text-right">{cost}</td>
+              </tr>
+              <tr className="bg-[#1C2C54] text-white font-bold">
+                <td colSpan={5} className="border border-gray-400 p-2 text-right">GRAND TOTAL (AED)</td>
+                <td className="border border-gray-400 p-2 text-right bg-white text-black">{cost}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          {/* Banner Text */}
+          <div className="text-center text-[#E8871E] font-bold text-xs py-1.5">
+            Competitive Pest Solutions &nbsp;•&nbsp; Dedicated After-Sales Service &nbsp;•&nbsp; 4 Months Guarantee &nbsp;•&nbsp; Free Treatment if Pest Returns
           </div>
 
-          {/* Totals */}
-          <div className="flex justify-end mb-16">
-            <div className="w-64 space-y-3">
-              <div className="flex justify-between text-gray-600">
-                <span>Subtotal:</span>
-                <span className="font-mono">AED {cost}</span>
-              </div>
-              <div className="flex justify-between text-gray-600">
-                <span>VAT (0%):</span>
-                <span className="font-mono">AED 0.00</span>
-              </div>
-              <div className="flex justify-between font-bold text-xl text-gray-900 pt-3 border-t-2 border-gray-900">
-                <span>Total:</span>
-                <span className="font-mono">AED {cost}</span>
-              </div>
+          {/* Details Box */}
+          <div className="bg-[#F9FAFB] p-4 text-xs border border-gray-200">
+            <h3 className="font-bold underline mb-1">Service Includes:</h3>
+            <ul className="mb-3 space-y-0.5">
+              <li>Complete inspection of the required areas.</li>
+              <li>Application of professional pest control treatments.</li>
+              <li>Initial treatment of all identified infestation areas.</li>
+            </ul>
+
+            <h3 className="font-bold underline mb-1">Follow-Up Service:</h3>
+            <ul className="mb-3 space-y-0.5">
+              <li>After 2 days: Pest control gel will be applied (if applicable).</li>
+              <li>After 1 week: Our technician will revisit for inspection.</li>
+              <li>If any activity is found in a specific area, additional treatment will be applied at no extra service charge during the follow-up visit.</li>
+              <li>General Cleaning Service: <strong>AED 25 per hour</strong> (Labour only – cleaning materials are <strong>not included.</strong>)</li>
+            </ul>
+
+            <h3 className="font-bold underline mb-1">Terms & Conditions:</h3>
+            <div className="mb-3 whitespace-pre-wrap">
+              {notes || defaultTerms}
+            </div>
+
+            <div className="bg-[#FAE3D9] inline-block px-2 py-1 border border-[#E8871E]">
+              <strong>Note:</strong> Please follow the attached Pre- and Post-Pest Control Guidelines. ☑
             </div>
           </div>
 
-          {/* Notes & Terms */}
-          {notes && (
-            <div className="mb-12">
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Notes & Terms</h3>
-              <div className="bg-gray-50 p-4 rounded text-gray-700 text-sm whitespace-pre-wrap">
-                {notes}
-              </div>
-            </div>
-          )}
-
-          {/* Footer (Absolute positioned at the bottom of the page) */}
-          <div className="absolute bottom-[20mm] left-[20mm] right-[20mm]">
-            <hr className="border-gray-200 mb-6" />
-            <div className="flex justify-between text-xs text-gray-500">
-              <div className="w-1/2 pr-4">
-                <p className="font-bold text-gray-900 mb-1">Bank Transfer Details</p>
-                <p>Bank: [Bank Name placeholder]</p>
-                <p>IBAN: [IBAN placeholder]</p>
-                <p>Account Name: Ridout Pest Control</p>
-              </div>
-              <div className="w-1/2 text-right">
-                <p className="font-bold text-gray-900 mb-1">Thank you for your business!</p>
-                <p>For any inquiries regarding this document, please contact us.</p>
-                <p className="mt-2 text-[#7A9E7E] font-semibold flex items-center justify-end gap-1">
-                  ✓ Dubai Municipality Certified
-                </p>
-              </div>
+          {/* Signatures */}
+          <div className="mt-6 flex justify-between text-xs italic">
+            <div>
+              <p>Authorized by: Rid Out Pest Control Services</p>
+              <p className="mt-4">Customer Acceptance / Signature: ___________________</p>
             </div>
           </div>
+
+          {/* Footer absolute bottom */}
+          <div className="absolute bottom-[15mm] left-[15mm] right-[15mm]">
+            <div className="bg-[#FAE3D9] text-center py-2 text-xs text-[#1C2C54]">
+              <span className="underline">Rid Out Pest Control Services</span> &nbsp;|&nbsp; <span className="underline">055 4720124</span> &nbsp;|&nbsp; <span className="underline">Available 24/7</span> &nbsp;|&nbsp; <span className="underline">Serving Dubai, Sharjah, Ajman</span>
+            </div>
+            <div className="text-center text-[10px] text-gray-500 mt-1">
+              This is a computer-generated {documentType.toLowerCase()}. No signature is required.
+            </div>
+          </div>
+
         </div>
       </div>
     );
