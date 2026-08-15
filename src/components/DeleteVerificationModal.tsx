@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, Download, AlertTriangle, CheckCircle, Trash2 } from 'lucide-react';
+import { useState } from 'react';
+import { X, AlertTriangle, CheckCircle, Trash2 } from 'lucide-react';
 
 interface DeleteVerificationModalProps {
   isOpen: boolean;

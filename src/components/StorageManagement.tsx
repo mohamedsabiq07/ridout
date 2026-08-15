@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Database, HardDrive, AlertTriangle, FileArchive, CheckCircle, Trash2, Download } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Database, FileArchive, Trash2 } from 'lucide-react';
 import type { ServiceRequest } from '../types/booking';
 import { getAuditLogs, isSupabaseConfigured } from '../lib/supabase';
 
@@ -31,26 +31,15 @@ export function StorageManagement({ requests, onExportAll }: StorageManagementPr
   let statusLevel = 'Normal';
   let statusColor = 'text-emerald-400';
   let statusBg = 'bg-emerald-950/40 border-emerald-900';
-  let Icon = CheckCircle;
-
   if (totalRecords > 500) {
     statusLevel = 'Critical';
     statusColor = 'text-red-400';
     statusBg = 'bg-red-950/40 border-red-900';
-    Icon = AlertTriangle;
   } else if (totalRecords > 300) {
     statusLevel = 'Warning';
     statusColor = 'text-amber-400';
     statusBg = 'bg-amber-950/40 border-amber-900';
-    Icon = AlertTriangle;
   }
-
-  const oldRecordsCount = requests.filter(r => {
-    const d = new Date(r.created_at);
-    const sixMonthsAgo = new Date();
-    sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
-    return d < sixMonthsAgo;
-  }).length;
 
   return (
     <div className="flex-1 overflow-y-auto p-6 space-y-6">

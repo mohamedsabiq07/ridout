@@ -13,8 +13,7 @@ import {
   Camera,
   FileText,
   Database,
-  FileArchive,
-  Trash2
+  FileArchive
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { CustomerExportPDF } from './CustomerExportPDF';
@@ -497,6 +496,7 @@ export const AdminDashboard: React.FC = () => {
           </div>
 
         </div>
+        )}
 
         {/* Selected Request Detail Drawer (Right Sidebar) */}
         {selectedRequest && (
