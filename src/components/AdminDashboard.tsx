@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { ServiceRequest, BookingStatus } from '../types/booking';
 import { fetchAllServiceRequests, updateRequestStatus, isSupabaseConfigured } from '../lib/supabase';
 import { generateWhatsAppLink } from '../lib/whatsapp';
+import { InvoiceGeneratorModal } from './InvoiceGeneratorModal';
 import {
   Search,
   Filter,
@@ -9,7 +10,8 @@ import {
   MessageSquare,
   PhoneCall,
   LogOut,
-  Camera
+  Camera,
+  FileText
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -22,6 +24,7 @@ export const AdminDashboard: React.FC = () => {
   const [selectedRequest, setSelectedRequest] = useState<ServiceRequest | null>(null);
   const [internalNotes, setInternalNotes] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [showInvoiceModal, setShowInvoiceModal] = useState(false);
 
   const STATUS_OPTIONS: BookingStatus[] = [
     'Pending',
@@ -468,6 +471,13 @@ export const AdminDashboard: React.FC = () => {
 
             {/* Quick Actions Footer */}
             <div className="pt-4 border-t border-neutral-800 space-y-2">
+              <button
+                onClick={() => setShowInvoiceModal(true)}
+                className="w-full flex items-center justify-center gap-2 bg-[#F7F5F0] text-[#0A0A0A] hover:bg-white font-bold py-2.5 rounded text-xs transition-colors"
+              >
+                <FileText className="w-4 h-4" />
+                <span>Generate Quotation / Invoice</span>
+              </button>
               <a
                 href={generateWhatsAppLink(selectedRequest, selectedRequest.request_number)}
                 target="_blank"
@@ -483,6 +493,13 @@ export const AdminDashboard: React.FC = () => {
         )}
 
       </div>
+
+      {showInvoiceModal && selectedRequest && (
+        <InvoiceGeneratorModal
+          request={selectedRequest}
+          onClose={() => setShowInvoiceModal(false)}
+        />
+      )}
     </div>
   );
 };

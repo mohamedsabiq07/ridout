@@ -1,0 +1,151 @@
+import React, { useState, useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import type { ServiceRequest } from '../types/booking';
+import { PrintableInvoice } from './PrintableInvoice';
+import { X, FileText, Download } from 'lucide-react';
+
+interface InvoiceGeneratorModalProps {
+  request: ServiceRequest;
+  onClose: () => void;
+}
+
+export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ request, onClose }) => {
+  const [documentType, setDocumentType] = useState<'Quotation' | 'Invoice'>('Quotation');
+  const [cost, setCost] = useState<string>('');
+  const [notes, setNotes] = useState<string>('');
+  
+  const printRef = useRef<HTMLDivElement>(null);
+
+  const handlePrint = useReactToPrint({
+    contentRef: printRef,
+    documentTitle: `${documentType}_${request.customer_name.replace(/\s+/g, '_')}_${request.id.slice(0, 6)}`,
+  });
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-[#F7F5F0]">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-[#0A0A0A] text-[#F7F5F0] rounded flex items-center justify-center">
+              <FileText className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold font-['Montserrat'] text-[#0A0A0A]">
+                Generate Document
+              </h2>
+              <p className="text-xs text-[#5A5A5A]">
+                For {request.customer_name} ({request.id.slice(0, 8)})
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        {/* Form Body */}
+        <div className="p-6 overflow-y-auto bg-white flex-1">
+          <div className="space-y-6">
+            
+            {/* Type Selection */}
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-2">Document Type</label>
+              <div className="flex gap-4">
+                <label className="flex-1 cursor-pointer">
+                  <input
+                    type="radio"
+                    className="peer sr-only"
+                    name="documentType"
+                    value="Quotation"
+                    checked={documentType === 'Quotation'}
+                    onChange={() => setDocumentType('Quotation')}
+                  />
+                  <div className="p-4 border-2 rounded-lg text-center font-bold text-sm transition-all peer-checked:border-[#E8871E] peer-checked:bg-[#E8871E]/10 peer-checked:text-[#E8871E] border-gray-200 text-gray-500 hover:border-gray-300">
+                    Quotation
+                  </div>
+                </label>
+                <label className="flex-1 cursor-pointer">
+                  <input
+                    type="radio"
+                    className="peer sr-only"
+                    name="documentType"
+                    value="Invoice"
+                    checked={documentType === 'Invoice'}
+                    onChange={() => setDocumentType('Invoice')}
+                  />
+                  <div className="p-4 border-2 rounded-lg text-center font-bold text-sm transition-all peer-checked:border-[#E8871E] peer-checked:bg-[#E8871E]/10 peer-checked:text-[#E8871E] border-gray-200 text-gray-500 hover:border-gray-300">
+                    Invoice
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            {/* Cost Input */}
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-2">
+                Total Cost (AED) <span className="text-red-500">*</span>
+              </label>
+              <div className="relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">AED</span>
+                <input
+                  type="number"
+                  value={cost}
+                  onChange={(e) => setCost(e.target.value)}
+                  placeholder="e.g. 250"
+                  className="w-full pl-14 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white transition-all font-mono font-medium"
+                />
+              </div>
+            </div>
+
+            {/* Notes Input */}
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-2">
+                Special Notes / Terms (Optional)
+              </label>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Add any specific terms for this customer..."
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white transition-all min-h-[100px] text-sm"
+              />
+            </div>
+
+          </div>
+        </div>
+
+        {/* Footer Actions */}
+        <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-end gap-3">
+          <button
+            onClick={onClose}
+            className="px-5 py-2.5 text-sm font-bold text-gray-600 hover:bg-gray-200 rounded transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handlePrint}
+            disabled={!cost}
+            className="px-6 py-2.5 bg-[#0A0A0A] hover:bg-[#2D2D2D] text-white text-sm font-bold rounded flex items-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <Download className="w-4 h-4" />
+            Download PDF
+          </button>
+        </div>
+
+        {/* The hidden printable template that react-to-print will use */}
+        <PrintableInvoice 
+          ref={printRef} 
+          request={request} 
+          documentType={documentType} 
+          cost={cost || '0'} 
+          notes={notes} 
+        />
+        
+      </div>
+    </div>
+  );
+};
