@@ -35,8 +35,8 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
           style={{ WebkitPrintColorAdjust: 'exact', colorAdjust: 'exact' }}
         >
           {/* Header */}
-          <div className="flex justify-between items-start mb-2">
-            <div className="pt-4">
+          <div className="flex justify-between items-center mb-2">
+            <div>
               <h1 className="text-2xl font-bold text-[#1C2C54] uppercase tracking-wide mb-1">
                 RID OUT PEST CONTROL SERVICES
               </h1>
