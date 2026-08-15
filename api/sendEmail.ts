@@ -46,6 +46,10 @@ export default async function handler(req: any, res: any) {
 
     const urgentFlag = is_urgent ? '🚨 URGENT: ' : '';
     
+    const formattedServices = Array.isArray(service_name) 
+      ? service_name.join(', ') 
+      : (service_name || 'N/A');
+
     const mailOptions = {
       from: `"Ridout Pest Control" <${FROM_EMAIL}>`,
       to: TO_EMAIL,
@@ -61,7 +65,7 @@ Email: ${email || 'N/A'}
 
 Service Required:
 -----------------
-Services: ${service_name ? service_name.join(', ') : 'N/A'}
+Services: ${formattedServices}
 Property: ${propertyInfo || 'N/A'}
 Location: ${location || 'N/A'}
 Preferred Date: ${preferred_date || 'N/A'}
@@ -84,7 +88,7 @@ ${notes || 'None provided'}
         
         <h3>Service Details:</h3>
         <ul>
-          <li><strong>Services:</strong> ${service_name ? service_name.join(', ') : 'N/A'}</li>
+          <li><strong>Services:</strong> ${formattedServices}</li>
           <li><strong>Property:</strong> ${propertyInfo || 'N/A'}</li>
           <li><strong>Location:</strong> ${location || 'N/A'}</li>
           <li><strong>Date:</strong> ${preferred_date || 'N/A'}</li>
