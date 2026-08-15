@@ -89,7 +89,9 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
               <tbody className="text-gray-700">
                 <tr className="border-b border-gray-200">
                   <td className="py-4">
-                    <p className="font-bold text-gray-900">{request.service_name.join(', ')}</p>
+                    <p className="font-bold text-gray-900">
+                      {Array.isArray(request.service_name) ? request.service_name.join(', ') : request.service_name}
+                    </p>
                     <p className="text-xs text-gray-500 mt-1">Professional pest control treatment at scheduled property.</p>
                   </td>
                   <td className="py-4 text-center">1</td>
