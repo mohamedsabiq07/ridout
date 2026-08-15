@@ -6,7 +6,6 @@ import { HomeCleaningSection } from '../components/HomeCleaningSection';
 import { ServiceModal } from '../components/ServiceModal';
 import { WhyUs } from '../components/WhyUs';
 import { ProcessTimeline } from '../components/ProcessTimeline';
-import { ServiceAreas } from '../components/ServiceAreas';
 import { CustomerReviews } from '../components/CustomerReviews';
 import { BookingForm } from '../components/BookingForm';
 import { ContactSection } from '../components/ContactSection';
@@ -87,7 +86,6 @@ export const PublicHome = () => {
 
         <WhyUs />
         <ProcessTimeline />
-        <ServiceAreas />
         <CustomerReviews />
 
         <BookingForm
