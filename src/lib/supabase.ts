@@ -230,3 +230,68 @@ export async function updateRequestStatus(
   }
   return null;
 }
+
+export async function deleteServiceRequests(ids: string[]): Promise<boolean> {
+  if (supabase) {
+    try {
+      const { error } = await supabase
+        .from('service_requests')
+        .delete()
+        .in('id', ids);
+        
+      if (error) {
+        console.warn('Supabase delete failed:', error);
+      }
+    } catch (e) {
+      console.warn('Supabase delete error:', e);
+    }
+  }
+
+  // Always delete from local storage as well to keep in sync
+  const currentLocal = getStoredRequests();
+  const updatedLocal = currentLocal.filter(req => !ids.includes(req.id));
+  saveStoredRequests(updatedLocal);
+  return true;
+}
+
+// AUDIT LOG SYSTEM
+
+const AUDIT_STORAGE_KEY = 'ridout_pest_audit_logs_v1';
+
+export async function getAuditLogs(): Promise<any[]> {
+  try {
+    const raw = localStorage.getItem(AUDIT_STORAGE_KEY);
+    if (!raw) return [];
+    return JSON.parse(raw);
+  } catch (e) {
+    console.error('Audit log parse error:', e);
+    return [];
+  }
+}
+
+export async function saveAuditLog(log: Omit<any, 'id' | 'timestamp'>) {
+  const currentLogs = await getAuditLogs();
+  
+  const newLog = {
+    ...log,
+    id: `audit-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+    timestamp: new Date().toISOString()
+  };
+  
+  const updatedLogs = [newLog, ...currentLogs];
+  
+  try {
+    localStorage.setItem(AUDIT_STORAGE_KEY, JSON.stringify(updatedLogs));
+  } catch (e) {
+    console.error('Audit log save error:', e);
+  }
+  
+  // Attempt to save to supabase if table exists (optional fallback)
+  if (supabase) {
+    try {
+      await supabase.from('audit_logs').insert([newLog]);
+    } catch (e) {
+      // Ignore if table doesn't exist
+    }
+  }
+}

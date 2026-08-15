@@ -11,9 +11,17 @@ import {
   PhoneCall,
   LogOut,
   Camera,
-  FileText
+  FileText,
+  Database,
+  FileArchive,
+  Trash2
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { CustomerExportPDF } from './CustomerExportPDF';
+import { DeleteVerificationModal } from './DeleteVerificationModal';
+import { StorageManagement } from './StorageManagement';
+import { deleteServiceRequests, saveAuditLog } from '../lib/supabase';
+import { useReactToPrint } from 'react-to-print';
 
 export const AdminDashboard: React.FC = () => {
   const { signOut } = useAuth();
@@ -25,6 +33,15 @@ export const AdminDashboard: React.FC = () => {
   const [internalNotes, setInternalNotes] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [showInvoiceModal, setShowInvoiceModal] = useState(false);
+  const [currentView, setCurrentView] = useState<'requests' | 'storage'>('requests');
+
+  // Export & Delete State
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [showVerificationModal, setShowVerificationModal] = useState(false);
+  const [currentExportId, setCurrentExportId] = useState('');
+  const [isExportingAll, setIsExportingAll] = useState(false);
+  const [exportData, setExportData] = useState<ServiceRequest[]>([]);
+  const exportPdfRef = React.useRef<HTMLDivElement>(null);
 
   const STATUS_OPTIONS: BookingStatus[] = [
     'Pending',
@@ -109,6 +126,60 @@ export const AdminDashboard: React.FC = () => {
     return matchesSearch && matchesStatus;
   });
 
+  const triggerPrint = useReactToPrint({
+    contentRef: exportPdfRef,
+    documentTitle: `Customer_Export_${currentExportId}`,
+    onAfterPrint: () => setShowVerificationModal(true)
+  });
+
+  const handleExport = (all: boolean = false) => {
+    const toExport = all ? filteredRequests : requests.filter(r => selectedIds.includes(r.id));
+    if (toExport.length === 0) return;
+    
+    setExportData(toExport);
+    const newExportId = `RID-EXP-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
+    setCurrentExportId(newExportId);
+    setIsExportingAll(all);
+
+    setTimeout(() => {
+      triggerPrint();
+    }, 500);
+  };
+
+  const handleConfirmDelete = async () => {
+    const idsToDelete = exportData.map(r => r.id);
+    const success = await deleteServiceRequests(idsToDelete);
+    
+    await saveAuditLog({
+      admin_id: 'Admin',
+      action: 'DELETE',
+      records_count: idsToDelete.length,
+      export_id: currentExportId,
+      status: success ? 'Successful' : 'Failed'
+    });
+
+    if (success) {
+      setRequests(prev => prev.filter(r => !idsToDelete.includes(r.id)));
+      setSelectedIds([]);
+      setShowVerificationModal(false);
+      setExportData([]);
+    } else {
+      alert('Failed to delete records.');
+    }
+  };
+
+  const toggleSelection = (id: string) => {
+    setSelectedIds(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
+  };
+
+  const toggleAll = () => {
+    if (selectedIds.length === filteredRequests.length) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(filteredRequests.map(r => r.id));
+    }
+  };
+
   const getStatusBadgeStyle = (status: BookingStatus) => {
     switch (status) {
       case 'Pending':
@@ -157,6 +228,17 @@ export const AdminDashboard: React.FC = () => {
 
         <div className="flex items-center gap-3">
           <button
+            onClick={() => setCurrentView(v => v === 'requests' ? 'storage' : 'requests')}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0A0A0A] hover:bg-neutral-800 border border-neutral-700 rounded text-xs font-mono text-neutral-300 hover:text-white transition-colors cursor-pointer"
+          >
+            {currentView === 'requests' ? (
+              <><Database className="w-3.5 h-3.5" /><span>Storage & DB</span></>
+            ) : (
+              <><FileText className="w-3.5 h-3.5" /><span>Customer List</span></>
+            )}
+          </button>
+
+          <button
             onClick={loadData}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0A0A0A] hover:bg-neutral-800 border border-neutral-700 rounded text-xs font-mono text-neutral-300 hover:text-white transition-colors cursor-pointer"
           >
@@ -178,8 +260,17 @@ export const AdminDashboard: React.FC = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex overflow-hidden">
         
-        {/* Main Requests Column */}
-        <div className="flex-1 flex flex-col overflow-y-auto p-6 space-y-6">
+        {currentView === 'storage' ? (
+          <StorageManagement 
+            requests={requests} 
+            onExportAll={() => {
+              // Same exact export-before-delete workflow but for ALL records
+              if (requests.length === 0) return;
+              handleExport(true);
+            }} 
+          />
+        ) : (
+          <div className="flex-1 flex flex-col overflow-y-auto p-6 space-y-6">
           
           {/* Summary Metrics Grid */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -248,11 +339,37 @@ export const AdminDashboard: React.FC = () => {
 
           </div>
 
+          {/* Bulk Action Toolbar */}
+          {selectedIds.length > 0 && (
+            <div className="bg-[#1C2C54] border border-[#2A2A2A] rounded p-3 flex justify-between items-center text-white animate-in slide-in-from-top-2">
+              <div className="text-sm font-bold">
+                {selectedIds.length} customer(s) selected
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleExport(false)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 rounded text-xs font-bold transition-colors cursor-pointer shadow"
+                >
+                  <FileArchive className="w-3.5 h-3.5" />
+                  <span>Export Selected</span>
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Table Container */}
           <div className="bg-[#171717] border border-[#2A2A2A] rounded-sm overflow-x-auto shadow-xl">
             <table className="w-full text-left text-xs">
               <thead className="bg-[#0A0A0A] text-neutral-400 font-mono uppercase border-b border-[#2A2A2A]">
                 <tr>
+                  <th className="p-3.5 w-10 text-center">
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 rounded border-neutral-700 bg-[#0A0A0A] checked:bg-blue-600 cursor-pointer"
+                      checked={filteredRequests.length > 0 && selectedIds.length === filteredRequests.length}
+                      onChange={toggleAll}
+                    />
+                  </th>
                   <th className="p-3.5">Request ID</th>
                   <th className="p-3.5">Customer & Phone</th>
                   <th className="p-3.5">Service</th>
@@ -285,6 +402,14 @@ export const AdminDashboard: React.FC = () => {
                           isSelected ? 'bg-neutral-800/80 border-l-4 border-white' : ''
                         }`}
                       >
+                        <td className="p-3.5 text-center" onClick={(e) => e.stopPropagation()}>
+                          <input 
+                            type="checkbox" 
+                            className="w-4 h-4 rounded border-neutral-700 bg-[#0A0A0A] checked:bg-blue-600 cursor-pointer"
+                            checked={selectedIds.includes(req.id)}
+                            onChange={() => toggleSelection(req.id)}
+                          />
+                        </td>
                         <td className="p-3.5 font-mono font-bold text-white whitespace-nowrap">
                           <div className="flex items-center gap-1.5">
                             <span>{req.request_number}</span>
@@ -500,6 +625,27 @@ export const AdminDashboard: React.FC = () => {
           onClose={() => setShowInvoiceModal(false)}
         />
       )}
+
+      {/* Hidden Export PDF Component */}
+      <CustomerExportPDF 
+        ref={exportPdfRef} 
+        requests={exportData} 
+        exportId={currentExportId} 
+      />
+
+      {/* Verification & Deletion Modal */}
+      <DeleteVerificationModal
+        isOpen={showVerificationModal}
+        onClose={() => {
+          setShowVerificationModal(false);
+          setExportData([]); // Clear export data on cancel
+        }}
+        onConfirmDelete={handleConfirmDelete}
+        exportId={currentExportId}
+        recordCount={exportData.length}
+        isAllCustomers={isExportingAll}
+      />
+
     </div>
   );
 };

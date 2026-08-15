@@ -70,3 +70,14 @@ export interface BookingFormData {
   photo_name?: string;
   photo_data?: string;
 }
+
+export interface AuditLog {
+  id: string;
+  admin_id: string;
+  action: 'EXPORT' | 'DELETE';
+  records_count: number;
+  export_id: string;
+  timestamp: string;
+  status: 'Successful' | 'Failed';
+  details?: string;
+}
