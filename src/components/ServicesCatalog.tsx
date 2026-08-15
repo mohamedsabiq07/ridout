@@ -123,15 +123,8 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
                 
                 <div className="p-6 flex flex-col flex-grow justify-between">
                   <div>
-                    {/* Icon */}
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 bg-[#0A0A0A] text-white rounded-md flex items-center justify-center group-hover:scale-105 transition-all shadow-sm">
-                        <IconComponent className="w-6 h-6" />
-                      </div>
-                    </div>
-
                     {/* Title */}
-                    <h3 className="text-xl font-bold font-['Montserrat'] text-[#0A0A0A] mb-2 group-hover:text-[#E8871E] transition-colors">
+                    <h3 className="text-xl font-bold font-['Montserrat'] text-[#0A0A0A] mb-2 group-hover:text-[#E8871E] transition-colors mt-2">
                       {service.name}
                     </h3>
 
