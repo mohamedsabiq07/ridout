@@ -148,44 +148,50 @@ export const CustomerReviews: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Masonry Layout Container */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-          {reviews.map((rev, idx) => (
-            <motion.div 
-              key={idx} 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: (idx % 3) * 0.1 }}
-              className="break-inside-avoid bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] p-6 rounded-lg space-y-4 shadow-sm flex flex-col transition-all hover:shadow-md"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center gap-1 text-[#E8871E]">
-                  {[...Array(rev.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#E8871E] text-[#E8871E]" />
-                  ))}
+        {/* Horizontal Scroll Layout */}
+        <div className="relative">
+          {/* Fading Edges */}
+          <div className="absolute top-0 left-0 bottom-0 w-8 sm:w-12 bg-gradient-to-r from-[#F7F5F0] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 bottom-0 w-8 sm:w-12 bg-gradient-to-l from-[#F7F5F0] to-transparent z-10 pointer-events-none"></div>
+          
+          <div className="flex overflow-x-auto gap-6 pb-8 pt-4 px-4 sm:px-12 snap-x snap-mandatory hide-scrollbar">
+            {reviews.map((rev, idx) => (
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: (idx % 4) * 0.1 }}
+                className="w-[85vw] sm:w-[380px] shrink-0 snap-center bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] p-6 rounded-lg space-y-4 shadow-sm flex flex-col transition-all hover:shadow-md h-[280px]"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center gap-1 text-[#E8871E]">
+                    {[...Array(rev.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-[#E8871E] text-[#E8871E]" />
+                    ))}
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#2D2D2D] leading-relaxed italic line-clamp-4">
+                    "{rev.comment}"
+                  </p>
                 </div>
-                <p className="text-xs text-[#2D2D2D] leading-relaxed italic">
-                  "{rev.comment}"
-                </p>
-              </div>
 
-              <div className="pt-4 mt-auto border-t border-[#E2DFD7] flex items-center justify-between">
-                <div>
-                  <div className="text-xs font-bold text-[#0A0A0A] font-['Montserrat'] flex items-center gap-1">
-                    <span>{rev.name}</span>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#7A9E7E]" />
+                <div className="pt-4 mt-auto border-t border-[#E2DFD7] flex items-center justify-between">
+                  <div>
+                    <div className="text-xs font-bold text-[#0A0A0A] font-['Montserrat'] flex items-center gap-1">
+                      <span>{rev.name}</span>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#7A9E7E]" />
+                    </div>
+                    <div className="text-[10px] text-[#5A5A5A] font-mono mt-0.5">
+                      {rev.location} <br/> <span className="text-[#7A9E7E]">{rev.service}</span>
+                    </div>
                   </div>
-                  <div className="text-[10px] text-[#5A5A5A] font-mono mt-0.5">
-                    {rev.location} <br/> <span className="text-[#7A9E7E]">{rev.service}</span>
-                  </div>
+                  <span className="text-[10px] bg-[#F7F5F0] text-[#0A0A0A] border border-[#E2DFD7] px-2 py-0.5 rounded font-mono shrink-0 ml-2">
+                    {rev.date}
+                  </span>
                 </div>
-                <span className="text-[10px] bg-[#F7F5F0] text-[#0A0A0A] border border-[#E2DFD7] px-2 py-0.5 rounded font-mono shrink-0 ml-2">
-                  {rev.date}
-                </span>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
       </div>
