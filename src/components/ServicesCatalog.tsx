@@ -2,33 +2,12 @@ import React, { useState } from 'react';
 import { PEST_CONTROL_SERVICES } from '../data/services';
 import type { PestService } from '../types/booking';
 import { motion } from 'framer-motion';
-import {
-  ShieldAlert,
-  Bug,
-  BugOff,
-  Bed,
-  SprayCan,
-  Rat,
-  Axe,
-  Sparkles,
-  ArrowUpRight
-} from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ServicesCatalogProps {
   onSelectService: (service: PestService) => void;
   onRequestService: (serviceId: string) => void;
 }
-
-const ICON_MAP: Record<string, React.ElementType> = {
-  ShieldAlert,
-  Bug,
-  BugOff,
-  Bed,
-  SprayCan,
-  Rat,
-  Axe,
-  Sparkles,
-};
 
 export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
   onSelectService,
@@ -99,8 +78,6 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredServices.map((service, index) => {
-            const IconComponent = ICON_MAP[service.iconName] || Bug;
-
             return (
               <motion.div
                 key={service.id}
