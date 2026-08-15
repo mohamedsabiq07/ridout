@@ -100,8 +100,12 @@ ${notes || 'None provided'}
     console.log('Email sent:', info.response);
     
     return res.status(200).json({ success: true, message: 'Email sent successfully' });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error sending email:', error);
-    return res.status(500).json({ success: false, message: 'Error sending email', error });
+    return res.status(500).json({ 
+      success: false, 
+      message: 'Error sending email', 
+      error: error.message || error.toString() 
+    });
   }
 }
