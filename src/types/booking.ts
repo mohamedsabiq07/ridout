@@ -21,6 +21,7 @@ export interface PestService {
   name: string;
   slug: string;
   iconName: string;
+  imageUrl?: string;
   shortDesc: string;
   fullDesc: string;
   startingPrice: string;

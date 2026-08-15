@@ -6,6 +6,7 @@ export const PEST_SERVICES: PestService[] = [
     name: 'General Pest Control',
     slug: 'general-pest-control',
     iconName: 'ShieldAlert',
+    imageUrl: '/general-pest-control-new.jpg',
     category: 'pest',
     shortDesc: 'Comprehensive preventative and curative perimeter treatment for crawling insects.',
     fullDesc: 'Targeted eco-friendly barrier treatment engineered to eradicate common pests including silverfish, spider mites, centipedes, and seasonal insects across residential and commercial premises.',

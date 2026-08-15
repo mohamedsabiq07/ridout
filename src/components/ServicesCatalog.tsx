@@ -108,55 +108,73 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] rounded-lg p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-xl group relative"
+                className="bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl group relative h-full"
               >
-                <div>
-                  {/* Icon */}
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 bg-[#0A0A0A] text-white rounded-md flex items-center justify-center group-hover:scale-105 transition-all shadow-sm">
-                      <IconComponent className="w-6 h-6" />
+                {service.imageUrl && (
+                  <div className="w-full h-40 overflow-hidden bg-[#E2DFD7] relative">
+                    <img 
+                      src={service.imageUrl} 
+                      alt={service.name} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                  </div>
+                )}
+                
+                <div className="p-6 flex flex-col flex-grow justify-between">
+                  <div>
+                    {/* Icon */}
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-12 h-12 bg-[#0A0A0A] text-white rounded-md flex items-center justify-center group-hover:scale-105 transition-all shadow-sm">
+                        <IconComponent className="w-6 h-6" />
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold font-['Montserrat'] text-[#0A0A0A] mb-2 group-hover:text-[#E8871E] transition-colors">
+                      {service.name}
+                    </h3>
+
+                    {/* Short Description */}
+                    <p className="text-[#5A5A5A] text-xs leading-relaxed mb-4 line-clamp-3">
+                      {service.shortDesc}
+                    </p>
+
+                    {/* Badges / Problems preview */}
+                    <div className="flex flex-wrap gap-1.5 mb-6">
+                      {service.problems.slice(0, 3).map((problem) => (
+                        <span
+                          key={problem}
+                          className="text-[10px] bg-[#F7F5F0] text-[#0A0A0A] border border-[#E2DFD7] px-2 py-0.5 rounded font-medium"
+                        >
+                          {problem}
+                        </span>
+                      ))}
+                      {service.problems.length > 3 && (
+                        <span className="text-[10px] bg-[#F7F5F0] text-[#5A5A5A] border border-[#E2DFD7] px-2 py-0.5 rounded font-medium">
+                          +{service.problems.length - 3}
+                        </span>
+                      )}
                     </div>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl font-bold font-['Montserrat'] text-[#0A0A0A] mb-2 group-hover:text-[#E8871E] transition-colors">
-                    {service.name}
-                  </h3>
+                  {/* Card Actions */}
+                  <div className="pt-4 border-t border-[#E2DFD7] flex items-center justify-between gap-2 mt-auto">
+                    <button
+                      onClick={() => onSelectService(service)}
+                      className="text-xs font-bold text-[#0A0A0A] hover:text-[#E8871E] flex items-center gap-1 cursor-pointer transition-colors"
+                    >
+                      <span>View Specs</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
 
-                  {/* Short Description */}
-                  <p className="text-[#5A5A5A] text-xs leading-relaxed mb-4 line-clamp-3">
-                    {service.shortDesc}
-                  </p>
-
-                  {/* Badges / Problems preview */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {service.problems.slice(0, 3).map((problem) => (
-                      <span
-                        key={problem}
-                        className="text-[10px] bg-[#F7F5F0] text-[#0A0A0A] border border-[#E2DFD7] px-2 py-0.5 rounded font-medium"
-                      >
-                        {problem}
-                      </span>
-                    ))}
+                    <button
+                      onClick={() => onRequestService(service.id)}
+                      className="bg-[#E8871E] hover:bg-[#d47817] text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 sm:px-3.5 sm:py-2 rounded transition-colors cursor-pointer uppercase font-['Montserrat'] shrink-0"
+                    >
+                      Request
+                    </button>
                   </div>
-                </div>
-
-                {/* Card Actions */}
-                <div className="pt-4 border-t border-[#E2DFD7] flex items-center justify-between gap-2">
-                  <button
-                    onClick={() => onSelectService(service)}
-                    className="text-xs font-bold text-[#0A0A0A] hover:text-[#E8871E] flex items-center gap-1 cursor-pointer transition-colors"
-                  >
-                    <span>View Specs</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
-
-                  <button
-                    onClick={() => onRequestService(service.id)}
-                    className="bg-[#E8871E] hover:bg-[#d47817] text-white text-xs font-bold px-3.5 py-2 rounded transition-colors cursor-pointer uppercase font-['Montserrat']"
-                  >
-                    Request
-                  </button>
                 </div>
               </motion.div>
             );
