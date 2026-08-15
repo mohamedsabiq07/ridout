@@ -33,9 +33,7 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
           {/* Header */}
           <div className="flex justify-between items-start mb-12">
             <div>
-              <h1 className="text-3xl font-extrabold text-[#0A0A0A] font-['Montserrat'] uppercase tracking-tight">
-                Ridout <span className="text-[#E8871E]">Pest Control</span>
-              </h1>
+              <img src="/logo.png" alt="Ridout Pest Control" className="h-16 w-auto object-contain mb-2" />
               <p className="text-gray-500 text-xs mt-1">Municipality Approved Services</p>
               <div className="mt-4 text-gray-700 text-xs leading-relaxed">
                 <p>Dubai, United Arab Emirates</p>
@@ -49,11 +47,22 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
               <h2 className="text-4xl font-black text-gray-200 uppercase tracking-widest mb-4">
                 {documentType}
               </h2>
-              <div className="space-y-1 text-sm">
-                <p><span className="font-semibold text-gray-500 w-24 inline-block text-left">Doc No:</span> <span className="font-mono font-medium">{documentNumber}</span></p>
-                <p><span className="font-semibold text-gray-500 w-24 inline-block text-left">Date:</span> <span>{dateCreated}</span></p>
-                <p><span className="font-semibold text-gray-500 w-24 inline-block text-left">Booking ID:</span> <span className="font-mono text-xs">{request.id.slice(0, 8)}</span></p>
-              </div>
+              <table className="ml-auto text-sm">
+                <tbody>
+                  <tr>
+                    <td className="font-semibold text-gray-500 text-right pr-4 pb-1">Doc No:</td>
+                    <td className="font-mono font-medium text-right pb-1">{documentNumber}</td>
+                  </tr>
+                  <tr>
+                    <td className="font-semibold text-gray-500 text-right pr-4 pb-1">Date:</td>
+                    <td className="text-right pb-1">{dateCreated}</td>
+                  </tr>
+                  <tr>
+                    <td className="font-semibold text-gray-500 text-right pr-4">Booking ID:</td>
+                    <td className="font-mono text-xs text-right">{request.id.slice(0, 8)}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 

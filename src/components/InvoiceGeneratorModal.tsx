@@ -97,7 +97,7 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
                   value={cost}
                   onChange={(e) => setCost(e.target.value)}
                   placeholder="e.g. 250"
-                  className="w-full pl-14 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white transition-all font-mono font-medium"
+                  className="w-full pl-14 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white text-gray-900 transition-all font-mono font-medium"
                 />
               </div>
             </div>
@@ -111,7 +111,7 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Add any specific terms for this customer..."
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white transition-all min-h-[100px] text-sm"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white text-gray-900 transition-all min-h-[100px] text-sm"
               />
             </div>
 
