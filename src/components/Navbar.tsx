@@ -13,13 +13,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Home', href: '#hero' },
-    { label: 'Pest Control', href: '#services' },
-    { label: 'Home Cleaning', href: '#home-cleaning' },
-    { label: 'Why Us', href: '#why-us' },
-    { label: 'How It Works', href: '#process' },
-    { label: 'Areas', href: '#service-areas' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '/#hero' },
+    { label: 'Pest Control', href: '/#services' },
+    { label: 'Home Cleaning', href: '/#home-cleaning' },
+    { label: 'Why Us', href: '/#why-us' },
+    { label: 'How It Works', href: '/#process' },
+    { label: 'Areas', href: '/#service-areas' },
+    { label: 'Contact', href: '/#contact' },
   ];
 
   return (

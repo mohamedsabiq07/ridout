@@ -83,8 +83,9 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl group relative h-full"
+                className="bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl group relative h-full cursor-pointer"
               >
+                <Link to={`/services/${service.slug}`} className="absolute inset-0 z-10" aria-label={`View ${service.name} details`} />
                 {service.imageUrl && (
                   <div className="w-full h-40 overflow-hidden bg-[#E2DFD7] relative">
                     <img 
@@ -130,7 +131,7 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
                   <div className="pt-4 border-t border-[#E2DFD7] flex items-center justify-between gap-2 mt-auto">
                     <Link
                       to={`/services/${service.slug}`}
-                      className="text-xs font-bold text-[#0A0A0A] hover:text-[#E8871E] flex items-center gap-1 cursor-pointer transition-colors"
+                      className="text-xs font-bold text-[#0A0A0A] hover:text-[#E8871E] flex items-center gap-1 cursor-pointer transition-colors relative z-20"
                     >
                       <span>View Specs</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -138,7 +139,7 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
 
                     <button
                       onClick={() => onRequestService(service.id)}
-                      className="bg-[#E8871E] hover:bg-[#d47817] text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 sm:px-3.5 sm:py-2 rounded transition-colors cursor-pointer uppercase font-['Montserrat'] shrink-0"
+                      className="bg-[#E8871E] hover:bg-[#d47817] text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 sm:px-3.5 sm:py-2 rounded transition-colors cursor-pointer uppercase font-['Montserrat'] shrink-0 relative z-20"
                     >
                       Request
                     </button>
