@@ -205,8 +205,8 @@ export const AdminDashboard: React.FC = () => {
       {/* Top Admin Header Bar */}
       <header className="bg-[#171717] border-b border-[#2A2A2A] px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded bg-white text-black font-black flex items-center justify-center font-['Outfit']">
-            R
+          <div className="w-9 h-9 rounded bg-white text-black font-black flex items-center justify-center font-['Outfit'] text-[15px] tracking-tighter">
+            RA
           </div>
           <div>
             <div className="flex items-center gap-2">
