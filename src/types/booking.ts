@@ -50,6 +50,7 @@ export interface ServiceRequest {
   status: BookingStatus;
   created_at: string;
   internal_notes?: string;
+  discovery_source?: string;
   is_urgent?: boolean;
   photo_name?: string;
   photo_data?: string;
@@ -66,6 +67,7 @@ export interface BookingFormData {
   preferred_date: string;
   preferred_time: string;
   notes: string;
+  discovery_source?: string;
   is_urgent?: boolean;
   photo_name?: string;
   photo_data?: string;

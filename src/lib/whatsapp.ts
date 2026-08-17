@@ -29,6 +29,7 @@ export function formatWhatsAppMessage(request: Partial<ServiceRequest> | Booking
   const date = request.preferred_date || 'As soon as possible';
   const time = request.preferred_time || 'Morning';
   const notes = request.notes ? request.notes.trim() : 'None provided';
+  const discovery = request.discovery_source ? `\n\nFound via:\n${request.discovery_source}` : '';
   const photoAttached = request.photo_name ? `\nPhoto Attached: ${request.photo_name}` : '';
   const isUrgent = request.is_urgent ? ' 🚨 [URGENT EMERGENCY ALERT]' : '';
   const reqNum = requestNumber || ('request_number' in request ? request.request_number : '');
@@ -58,7 +59,7 @@ Preferred Time:
 ${time}
 
 Notes:
-${notes}${photoAttached}`;
+${notes}${discovery}${photoAttached}`;
 }
 
 /**

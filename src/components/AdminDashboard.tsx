@@ -557,6 +557,12 @@ export const AdminDashboard: React.FC = () => {
                     "{selectedRequest.notes}"
                   </div>
                 )}
+                {selectedRequest.discovery_source && (
+                  <div className="mt-2 pt-2 border-t border-neutral-900">
+                    <span className="text-neutral-500 font-mono text-[10px] uppercase">Found via: </span>
+                    <span className="text-white font-medium">{selectedRequest.discovery_source}</span>
+                  </div>
+                )}
                 {selectedRequest.photo_data && (
                   <div className="mt-3 pt-3 border-t border-neutral-800 space-y-1.5">
                     <div className="text-[10px] text-emerald-400 font-mono flex items-center gap-1 font-bold">

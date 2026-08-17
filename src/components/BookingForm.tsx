@@ -478,6 +478,28 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               />
             </div>
 
+            {/* Discovery Source */}
+            <div>
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                How did you find us? (Optional)
+              </label>
+              <select
+                name="discovery_source"
+                value={formData.discovery_source || ''}
+                onChange={handleChange}
+                className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded px-4 py-3 outline-none transition-colors cursor-pointer"
+              >
+                <option value="">Select an option</option>
+                <option value="Google Search">Google Search</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Instagram">Instagram</option>
+                <option value="TikTok">TikTok</option>
+                <option value="Word of Mouth / Friend">Word of Mouth / Friend</option>
+                <option value="Flyer / Print">Flyer / Print</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
             {/* Optional Photo Upload */}
             <div>
               <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2 flex items-center justify-between">
