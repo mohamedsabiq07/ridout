@@ -75,13 +75,11 @@ export const PublicHome = () => {
         />
 
         <ServicesCatalog
-          onSelectService={(service) => setSelectedServiceForModal(service)}
           onRequestService={(serviceId) => scrollToBooking(serviceId)}
         />
 
         <HomeCleaningSection
           onBookCleaning={(serviceId) => scrollToBooking(serviceId)}
-          onSelectService={(service) => setSelectedServiceForModal(service)}
         />
 
         <WhyUs />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface FooterProps {
   onBookClick: () => void;
@@ -34,6 +35,42 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             >
               Get a Free Quote
             </button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-8 border-t border-[#1F1F1F]">
+          <div>
+            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Service Areas</h4>
+            <ul className="space-y-2">
+              <li><Link to="/locations/dubai" className="hover:text-white transition-colors">Pest Control in Dubai</Link></li>
+              <li><Link to="/locations/sharjah" className="hover:text-white transition-colors">Pest Control in Sharjah</Link></li>
+              <li><Link to="/locations/ajman" className="hover:text-white transition-colors">Pest Control in Ajman</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Top Services</h4>
+            <ul className="space-y-2">
+              <li><Link to="/services/cockroach-control" className="hover:text-white transition-colors">Cockroach Control</Link></li>
+              <li><Link to="/services/bed-bug-control" className="hover:text-white transition-colors">Bed Bug Treatment</Link></li>
+              <li><Link to="/services/termite-control" className="hover:text-white transition-colors">Termite Control</Link></li>
+              <li><Link to="/services/ant-control" className="hover:text-white transition-colors">Ant Control</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Cleaning</h4>
+            <ul className="space-y-2">
+              <li><Link to="/services/kitchen-cleaning" className="hover:text-white transition-colors">Kitchen Cleaning</Link></li>
+              <li><Link to="/services/bathroom-cleaning" className="hover:text-white transition-colors">Bathroom Cleaning</Link></li>
+              <li><Link to="/services/move-in-out-cleaning" className="hover:text-white transition-colors">Move-in / Move-out Cleaning</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Contact</h4>
+            <ul className="space-y-2">
+              <li>Call: +971 0502364014</li>
+              <li>WhatsApp: Available 24/7</li>
+              <li>support@ridoutpest.com</li>
+            </ul>
           </div>
         </div>
 

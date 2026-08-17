@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { PEST_CONTROL_SERVICES } from '../data/services';
-import type { PestService } from '../types/booking';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 interface ServicesCatalogProps {
-  onSelectService: (service: PestService) => void;
   onRequestService: (serviceId: string) => void;
 }
 
 export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
-  onSelectService,
   onRequestService,
 }) => {
   const [filter, setFilter] = useState<'all' | 'residential' | 'commercial'>('all');
@@ -130,13 +128,13 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
 
                   {/* Card Actions */}
                   <div className="pt-4 border-t border-[#E2DFD7] flex items-center justify-between gap-2 mt-auto">
-                    <button
-                      onClick={() => onSelectService(service)}
+                    <Link
+                      to={`/services/${service.slug}`}
                       className="text-xs font-bold text-[#0A0A0A] hover:text-[#E8871E] flex items-center gap-1 cursor-pointer transition-colors"
                     >
                       <span>View Specs</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
-                    </button>
+                    </Link>
 
                     <button
                       onClick={() => onRequestService(service.id)}

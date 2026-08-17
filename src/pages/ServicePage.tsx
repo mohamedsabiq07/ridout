@@ -1,0 +1,191 @@
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { PEST_SERVICES } from '../data/services';
+import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
+import { BookingForm } from '../components/BookingForm';
+import { SuccessModal } from '../components/SuccessModal';
+import { SEO } from '../components/SEO';
+import { ShieldAlert, Bug, BugOff, Target, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import type { ServiceRequest } from '../types/booking';
+
+const IconMap: Record<string, React.ElementType> = {
+  ShieldAlert,
+  Bug,
+  BugOff,
+  Target,
+  ShieldCheck,
+};
+
+export const ServicePage: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  
+  const [submittedRequest, setSubmittedRequest] = useState<ServiceRequest | null>(null);
+  const [whatsappUrl, setWhatsappUrl] = useState<string>('');
+
+  const service = PEST_SERVICES.find(s => s.slug === slug);
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
+  if (!service) {
+    return (
+      <div className="min-h-screen bg-[#F7F7F7] flex flex-col items-center justify-center p-6 text-center">
+        <h1 className="text-3xl font-black mb-4">Service Not Found</h1>
+        <p className="text-neutral-600 mb-8">We couldn't find the pest control service you're looking for.</p>
+        <button onClick={() => navigate('/')} className="px-6 py-3 bg-[#E8871E] text-white font-bold rounded">
+          Return Home
+        </button>
+      </div>
+    );
+  }
+
+  const handleRequestSubmitted = (request: ServiceRequest, waUrl: string) => {
+    setSubmittedRequest(request);
+    setWhatsappUrl(waUrl);
+  };
+
+  const IconComponent = IconMap[service.iconName] || ShieldAlert;
+
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": `${service.name} in Dubai, Sharjah, and Ajman`,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Ridout Pest Control UAE",
+      "telephone": "+9710502364014",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Dubai",
+        "addressCountry": "AE"
+      }
+    },
+    "areaServed": ["Dubai", "Sharjah", "Ajman"],
+    "description": service.fullDesc,
+    "offers": {
+      "@type": "Offer",
+      "price": service.startingPrice.replace(/[^0-9]/g, ''),
+      "priceCurrency": "AED"
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#F7F7F7] text-[#0A0A0A] font-sans">
+      <SEO 
+        title={`${service.name} in Dubai & Sharjah`} 
+        description={service.fullDesc} 
+        canonicalUrl={`/services/${service.slug}`}
+        schemaMarkup={schemaMarkup}
+      />
+
+      <Navbar onBookClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })} onEmergencyClick={() => {}} />
+
+      <main>
+        {/* Service Hero */}
+        <section className="bg-[#0A0A0A] text-white pt-32 pb-20 relative overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img src={service.imageUrl} alt={service.name} className="w-full h-full object-cover opacity-20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent" />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#E8871E]/20 text-[#E8871E] mb-6">
+                <IconComponent className="w-8 h-8" />
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-['Montserrat'] mb-6 leading-tight">
+                Professional {service.name} <br />
+                <span className="text-[#E8871E]">in Dubai & Sharjah</span>
+              </h1>
+              <p className="text-xl text-neutral-300 mb-8 leading-relaxed">
+                {service.fullDesc}
+              </p>
+              <div className="flex items-center gap-4">
+                <button 
+                  onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold uppercase tracking-wide transition-colors"
+                >
+                  Book This Service
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Service Details */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              
+              <div className="space-y-12">
+                <div>
+                  <h2 className="text-2xl font-bold mb-6 font-['Montserrat']">What We Target</h2>
+                  <ul className="space-y-3">
+                    {service.problems.map((prob, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-[#E8871E] shrink-0 mt-0.5" />
+                        <span className="text-lg text-neutral-700">{prob}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold mb-6 font-['Montserrat']">Preparation Steps</h2>
+                  <ul className="space-y-4">
+                    {service.preparationSteps.map((step, i) => (
+                      <li key={i} className="flex gap-4 p-4 bg-[#F7F7F7] rounded border border-neutral-200">
+                        <span className="font-bold text-[#E8871E]">0{i + 1}</span>
+                        <span className="text-neutral-700">{step}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-[#F7F7F7] p-8 rounded-xl border border-neutral-200 h-fit space-y-6">
+                <h3 className="text-xl font-bold font-['Montserrat'] border-b border-neutral-300 pb-4">Service Overview</h3>
+                <div className="space-y-4 text-sm">
+                  <div className="flex justify-between items-center py-2 border-b border-neutral-200">
+                    <span className="text-neutral-500 uppercase tracking-wider font-bold">Treatment Method</span>
+                    <span className="font-medium text-right max-w-[200px]">{service.method}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-neutral-200">
+                    <span className="text-neutral-500 uppercase tracking-wider font-bold">Duration</span>
+                    <span className="font-medium">{service.duration}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-neutral-200">
+                    <span className="text-neutral-500 uppercase tracking-wider font-bold">Suitable For</span>
+                    <span className="font-medium text-right max-w-[200px]">{service.suitableFor.join(', ')}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-neutral-500 uppercase tracking-wider font-bold">Starting Price</span>
+                    <span className="font-bold text-[#E8871E]">{service.startingPrice}</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Booking Form Section */}
+        <section id="booking-section" className="py-20 bg-[#F7F7F7]">
+          <BookingForm preselectedServiceId={service.id} onRequestSubmitted={handleRequestSubmitted} />
+        </section>
+      </main>
+
+      <Footer onBookClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })} />
+
+      <SuccessModal
+        request={submittedRequest}
+        whatsappUrl={whatsappUrl}
+        onClose={() => setSubmittedRequest(null)}
+      />
+    </div>
+  );
+};

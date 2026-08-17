@@ -1,17 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { HOME_CLEANING_SERVICES } from '../data/services';
-import type { PestService } from '../types/booking';
 import { motion } from 'framer-motion';
 import { UtensilsCrossed, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface HomeCleaningSectionProps {
   onBookCleaning: (serviceId: string) => void;
-  onSelectService: (service: PestService) => void;
 }
 
 export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
   onBookCleaning,
-  onSelectService,
 }) => {
   return (
     <section id="home-cleaning" className="py-20 lg:py-28 bg-[#0A0A0A] text-white border-b border-[#2A2A2A]">
@@ -110,12 +108,12 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
                     <ArrowRight className="w-4 h-4" />
                   </button>
 
-                  <button
-                    onClick={() => onSelectService(HOME_CLEANING_SERVICES.find(s => s.id === 'kitchen-cleaning')!)}
-                    className="px-4 py-3.5 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded text-xs font-bold transition-colors cursor-pointer"
+                  <Link
+                    to={`/services/kitchen-cleaning`}
+                    className="px-4 py-3.5 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded text-xs font-bold transition-colors cursor-pointer text-center"
                   >
                     Specs
-                  </button>
+                  </Link>
                 </div>
 
               </div>
@@ -192,12 +190,12 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
                     <ArrowRight className="w-4 h-4" />
                   </button>
 
-                  <button
-                    onClick={() => onSelectService(HOME_CLEANING_SERVICES.find(s => s.id === 'bathroom-cleaning')!)}
-                    className="px-4 py-3.5 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded text-xs font-bold transition-colors cursor-pointer"
+                  <Link
+                    to={`/services/bathroom-cleaning`}
+                    className="px-4 py-3.5 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded text-xs font-bold transition-colors cursor-pointer text-center"
                   >
                     Specs
-                  </button>
+                  </Link>
                 </div>
 
               </div>
