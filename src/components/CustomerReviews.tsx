@@ -157,7 +157,7 @@ export const CustomerReviews: React.FC = () => {
           <motion.div 
             className="flex w-max gap-6 pb-8 pt-4 px-4"
             animate={{ x: ["-50%", "0%"] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 60 }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 150 }}
           >
             {[...reviews, ...reviews].map((rev, idx) => (
               <div 
