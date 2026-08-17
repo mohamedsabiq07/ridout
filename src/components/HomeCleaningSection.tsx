@@ -154,7 +154,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
               {/* Photo Banner Header */}
               <div className="relative h-48 sm:h-52 overflow-hidden border-b border-[#2A2A2A]">
                 <SlowVideo
-                  src="/kb.mp4"
+                  src="/ridout-bathroom.mp4"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/30 to-transparent" />
