@@ -162,36 +162,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
           <div className="lg:col-span-5 lg:mt-32">
             <div className="relative bg-[#171717] border border-[#2A2A2A] rounded-lg overflow-hidden shadow-2xl space-y-0 group">
               
-              {/* Feature Image Header */}
-              <div className="relative h-64 sm:h-72 overflow-hidden border-b border-[#2A2A2A]">
-                <img
-                  src="/pest-technician.jpg"
-                  alt="Certified Pest Control Technician Spraying Treatment"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/40 to-transparent" />
-                
-                {/* Live Badge Overlay */}
-                <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0A0A0A]/90 border border-neutral-700 backdrop-blur-md">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#E8871E] animate-ping" />
-                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-300">
-                    Live Dispatch Ready
-                  </span>
-                </div>
 
-                <div className="absolute top-4 right-4 px-2.5 py-1 rounded bg-[#0A0A0A]/90 border border-neutral-800 text-[10px] font-mono text-neutral-300 backdrop-blur-md">
-                  Dubai, Sharjah, and Ajman
-                </div>
-
-                <div className="absolute bottom-3 left-4 right-4">
-                  <div className="text-sm font-extrabold text-white font-['Montserrat'] tracking-wide">
-                    Certified Eco-Safe Treatment
-                  </div>
-                  <div className="text-xs text-neutral-300 font-medium">
-                    Targeted spray & odorless micro-encapsulated gel protection
-                  </div>
-                </div>
-              </div>
 
               {/* Service Inspection Checklist Graphic */}
               <div className="p-6 space-y-4 bg-[#171717]">
