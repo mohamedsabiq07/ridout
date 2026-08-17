@@ -149,20 +149,20 @@ export const CustomerReviews: React.FC = () => {
         </motion.div>
 
         {/* Horizontal Scroll Layout */}
-        <div className="relative">
+        <div className="relative overflow-hidden">
           {/* Fading Edges */}
-          <div className="absolute top-0 left-0 bottom-0 w-8 sm:w-12 bg-gradient-to-r from-[#F7F5F0] to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute top-0 right-0 bottom-0 w-8 sm:w-12 bg-gradient-to-l from-[#F7F5F0] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 left-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#F7F5F0] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#F7F5F0] to-transparent z-10 pointer-events-none"></div>
           
-          <div className="flex overflow-x-auto gap-6 pb-8 pt-4 px-4 sm:px-12 snap-x snap-mandatory hide-scrollbar">
-            {reviews.map((rev, idx) => (
-              <motion.div 
+          <motion.div 
+            className="flex w-max gap-6 pb-8 pt-4 px-4"
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 60 }}
+          >
+            {[...reviews, ...reviews].map((rev, idx) => (
+              <div 
                 key={idx} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (idx % 4) * 0.1 }}
-                className="w-[85vw] sm:w-[380px] shrink-0 snap-center bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] p-6 rounded-lg space-y-4 shadow-sm flex flex-col transition-all hover:shadow-md h-[280px]"
+                className="w-[85vw] sm:w-[380px] shrink-0 bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] p-6 rounded-lg space-y-4 shadow-sm flex flex-col transition-all hover:shadow-md h-[280px]"
               >
                 <div className="space-y-3">
                   <div className="flex items-center gap-1 text-[#E8871E]">
@@ -189,9 +189,9 @@ export const CustomerReviews: React.FC = () => {
                     {rev.date}
                   </span>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
       </div>
