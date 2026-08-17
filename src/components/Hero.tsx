@@ -19,7 +19,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-70"
+          className="absolute inset-0 w-full h-full object-cover object-[75%_center] sm:object-center opacity-70"
         >
           <source src="/ridout-v1.mp4" type="video/mp4" />
         </video>
