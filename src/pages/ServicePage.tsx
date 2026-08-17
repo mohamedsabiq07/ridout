@@ -65,12 +65,7 @@ export const ServicePage: React.FC = () => {
       }
     },
     "areaServed": ["Dubai", "Sharjah", "Ajman"],
-    "description": service.fullDesc,
-    "offers": {
-      "@type": "Offer",
-      "price": service.startingPrice.replace(/[^0-9]/g, ''),
-      "priceCurrency": "AED"
-    }
+    "description": service.fullDesc
   };
 
   return (
@@ -161,10 +156,6 @@ export const ServicePage: React.FC = () => {
                   <div className="flex justify-between items-center py-2 border-b border-neutral-200">
                     <span className="text-neutral-500 uppercase tracking-wider font-bold">Suitable For</span>
                     <span className="font-medium text-right max-w-[200px]">{service.suitableFor.join(', ')}</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-neutral-500 uppercase tracking-wider font-bold">Starting Price</span>
-                    <span className="font-bold text-[#E8871E]">{service.startingPrice}</span>
                   </div>
                 </div>
               </div>
