@@ -116,6 +116,10 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       newErrors.location = 'Please select or type your area / location in UAE.';
     }
 
+    if (!formData.discovery_source) {
+      newErrors.discovery_source = 'Please let us know how you found us.';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -481,13 +485,13 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             {/* Discovery Source */}
             <div>
               <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                How did you find us? (Optional)
+                How did you find us? <span className="text-red-500">*</span>
               </label>
               <select
                 name="discovery_source"
                 value={formData.discovery_source || ''}
                 onChange={handleChange}
-                className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded px-4 py-3 outline-none transition-colors cursor-pointer"
+                className={`w-full bg-[#F7F5F0] border ${errors.discovery_source ? 'border-red-500' : 'border-[#E2DFD7] focus:border-[#0A0A0A]'} text-[#2D2D2D] text-sm rounded px-4 py-3 outline-none transition-colors cursor-pointer`}
               >
                 <option value="">Select an option</option>
                 <option value="Google Search">Google Search</option>
@@ -498,6 +502,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                 <option value="Flyer / Print">Flyer / Print</option>
                 <option value="Other">Other</option>
               </select>
+              {errors.discovery_source && <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.discovery_source}</p>}
             </div>
 
             {/* Optional Photo Upload */}
