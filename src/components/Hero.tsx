@@ -21,7 +21,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-70"
         >
-          <source src="/ridout v1 (1).mp4" type="video/mp4" />
+          <source src="/ridout-v1.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-[#0A0A0A]/20" />
       </div>
