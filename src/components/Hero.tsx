@@ -19,11 +19,11 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity"
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/90 to-[#0A0A0A]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-[#0A0A0A]/20" />
       </div>
 
       {/* Subtle Background Pattern & Glow */}
@@ -67,7 +67,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-['Montserrat'] tracking-tight leading-tight text-white"
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-['Montserrat'] tracking-tight leading-tight text-white"
               >
                 24 Hours Pest Control Services <br />
                 <span className="text-[#E8871E]">Protecting You.</span>
@@ -159,7 +159,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
           </motion.div>
 
           {/* Hero Visual Card with Real Technician Photo */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 lg:mt-32">
             <div className="relative bg-[#171717] border border-[#2A2A2A] rounded-lg overflow-hidden shadow-2xl space-y-0 group">
               
               {/* Feature Image Header */}
