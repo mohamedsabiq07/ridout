@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { HOME_CLEANING_SERVICES } from '../data/services';
 import { motion } from 'framer-motion';
@@ -7,6 +7,28 @@ import { UtensilsCrossed, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-reac
 interface HomeCleaningSectionProps {
   onBookCleaning: (serviceId: string) => void;
 }
+
+const SlowVideo: React.FC<{ src: string, className?: string }> = ({ src, className }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5; // Slows down video to 50% speed
+    }
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      autoPlay
+      loop
+      muted
+      playsInline
+      className={className}
+    />
+  );
+};
 
 export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
   onBookCleaning,
@@ -50,9 +72,8 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
               
               {/* Photo Banner Header */}
               <div className="relative h-48 sm:h-52 overflow-hidden border-b border-[#2A2A2A]">
-                <img
-                  src="/kitchen-cleaning.jpg"
-                  alt="Kitchen Cleaning Service"
+                <SlowVideo
+                  src="/kb.mp4"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/30 to-transparent" />
@@ -132,9 +153,8 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
               
               {/* Photo Banner Header */}
               <div className="relative h-48 sm:h-52 overflow-hidden border-b border-[#2A2A2A]">
-                <img
-                  src="/bathroom-cleaning.jpg"
-                  alt="Bathroom Cleaning & Sanitization Service"
+                <SlowVideo
+                  src="/kb.mp4"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/30 to-transparent" />
