@@ -6,7 +6,7 @@ import { Footer } from '../components/Footer';
 import { BookingForm } from '../components/BookingForm';
 import { SuccessModal } from '../components/SuccessModal';
 import { SEO } from '../components/SEO';
-import { ShieldAlert, Bug, BugOff, Target, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { ShieldAlert, Bug, BugOff, Target, ShieldCheck, CheckCircle2, Clock, MapPin } from 'lucide-react';
 import type { ServiceRequest } from '../types/booking';
 
 const IconMap: Record<string, React.ElementType> = {
@@ -88,24 +88,105 @@ export const ServicePage: React.FC = () => {
           </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#E8871E]/20 text-[#E8871E] mb-6">
-                <IconComponent className="w-8 h-8" />
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-7 max-w-3xl">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#E8871E]/20 text-[#E8871E] mb-6">
+                  <IconComponent className="w-8 h-8" />
+                </div>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-['Montserrat'] mb-6 leading-tight">
+                  Professional {service.name} <br />
+                  <span className="text-[#E8871E]">in Dubai & Sharjah</span>
+                </h1>
+                <p className="text-xl text-neutral-300 mb-8 leading-relaxed">
+                  {service.fullDesc}
+                </p>
+                <div className="flex items-center gap-4">
+                  <button 
+                    onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold uppercase tracking-wide transition-colors"
+                  >
+                    Book This Service
+                  </button>
+                </div>
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-['Montserrat'] mb-6 leading-tight">
-                Professional {service.name} <br />
-                <span className="text-[#E8871E]">in Dubai & Sharjah</span>
-              </h1>
-              <p className="text-xl text-neutral-300 mb-8 leading-relaxed">
-                {service.fullDesc}
-              </p>
-              <div className="flex items-center gap-4">
-                <button 
-                  onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold uppercase tracking-wide transition-colors"
-                >
-                  Book This Service
-                </button>
+
+              {/* Hero Visual Card with Real Technician Photo */}
+              <div className="lg:col-span-5 hidden lg:block">
+                <div className="relative bg-[#171717] border border-[#2A2A2A] rounded-lg overflow-hidden shadow-2xl space-y-0 group">
+                  
+                  {/* Feature Image Header */}
+                  <div className="relative h-64 sm:h-72 overflow-hidden border-b border-[#2A2A2A]">
+                    <img
+                      src="/pest-technician.jpg"
+                      alt="Certified Pest Control Technician Spraying Treatment"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/40 to-transparent" />
+                    
+                    {/* Live Badge Overlay */}
+                    <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0A0A0A]/90 border border-neutral-700 backdrop-blur-md">
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#E8871E] animate-ping" />
+                      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-300">
+                        Live Dispatch Ready
+                      </span>
+                    </div>
+
+                    <div className="absolute top-4 right-4 px-2.5 py-1 rounded bg-[#0A0A0A]/90 border border-neutral-800 text-[10px] font-mono text-neutral-300 backdrop-blur-md">
+                      Dubai, Sharjah, and Ajman
+                    </div>
+
+                    <div className="absolute bottom-3 left-4 right-4">
+                      <div className="text-sm font-extrabold text-white font-['Montserrat'] tracking-wide">
+                        Certified Eco-Safe Treatment
+                      </div>
+                      <div className="text-xs text-neutral-300 font-medium">
+                        Targeted spray & odorless micro-encapsulated gel protection
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Service Inspection Checklist Graphic */}
+                  <div className="p-6 space-y-4 bg-[#171717]">
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start gap-3 bg-[#0A0A0A] p-3 rounded border border-neutral-800 hover:border-[#7A9E7E]/50 transition-colors">
+                        <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5" />
+                        <div>
+                          <div className="font-semibold text-white">Guaranteed Pest Elimination</div>
+                          <div className="text-xs text-neutral-400">Cockroaches, Ants, Bed Bugs & Rodents</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 bg-[#0A0A0A] p-3 rounded border border-neutral-800 hover:border-[#E8871E]/50 transition-colors">
+                        <Clock className="w-5 h-5 text-[#E8871E] shrink-0 mt-0.5" />
+                        <div>
+                          <div className="font-semibold text-white">Same-Day Rapid Dispatch</div>
+                          <div className="text-xs text-neutral-400">Morning, Afternoon & Evening booking slots</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 bg-[#0A0A0A] p-3 rounded border border-neutral-800 hover:border-[#7A9E7E]/50 transition-colors">
+                        <MapPin className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5" />
+                        <div>
+                          <div className="font-semibold text-white">Serving Dubai, Sharjah, and Ajman</div>
+                          <div className="text-xs text-neutral-400">Fast arrival across all residential & commercial zones</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Hero Callout */}
+                    <div className="bg-[#0A0A0A] border border-neutral-800 p-4 rounded text-center space-y-2">
+                      <p className="text-xs text-[#E8871E] uppercase tracking-widest font-mono font-bold">Instant Quote & Scheduling</p>
+                      <p className="text-sm font-semibold text-white">No mandatory registration required.</p>
+                      <button
+                        onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="w-full mt-2 bg-[#E8871E] hover:bg-[#d47817] text-white py-2.5 rounded text-xs font-extrabold transition-colors cursor-pointer uppercase tracking-wider shadow-lg font-['Montserrat']"
+                      >
+                        Get a Free Quote (60 Sec)
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>

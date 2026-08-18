@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, Clock, MapPin } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { AnimatedCounter } from './AnimatedCounter';
 
@@ -30,14 +30,14 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
       <div className="absolute inset-0 bg-[radial-gradient(#2A2A2A_1px,transparent_1px)] [background-size:28px_28px] opacity-30 pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="flex flex-col items-center justify-center w-full min-h-[60vh] lg:min-h-[75vh]">
           
           {/* Main Hero Content */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-7 space-y-8 text-left"
+            className="max-w-4xl mx-auto space-y-8 text-center flex flex-col items-center"
           >
             
             {/* Badge */}
@@ -88,7 +88,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
             >
               <button
                 onClick={onBookClick}
@@ -156,86 +156,6 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
             </motion.div>
 
           </motion.div>
-
-          {/* Hero Visual Card with Real Technician Photo */}
-          <div className="lg:col-span-5 lg:mt-32">
-            <div className="relative bg-[#171717] border border-[#2A2A2A] rounded-lg overflow-hidden shadow-2xl space-y-0 group">
-              
-              {/* Feature Image Header */}
-              <div className="relative h-64 sm:h-72 overflow-hidden border-b border-[#2A2A2A]">
-                <img
-                  src="/pest-technician.jpg"
-                  alt="Certified Pest Control Technician Spraying Treatment"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/40 to-transparent" />
-                
-                {/* Live Badge Overlay */}
-                <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0A0A0A]/90 border border-neutral-700 backdrop-blur-md">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#E8871E] animate-ping" />
-                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-300">
-                    Live Dispatch Ready
-                  </span>
-                </div>
-
-                <div className="absolute top-4 right-4 px-2.5 py-1 rounded bg-[#0A0A0A]/90 border border-neutral-800 text-[10px] font-mono text-neutral-300 backdrop-blur-md">
-                  Dubai, Sharjah, and Ajman
-                </div>
-
-                <div className="absolute bottom-3 left-4 right-4">
-                  <div className="text-sm font-extrabold text-white font-['Montserrat'] tracking-wide">
-                    Certified Eco-Safe Treatment
-                  </div>
-                  <div className="text-xs text-neutral-300 font-medium">
-                    Targeted spray & odorless micro-encapsulated gel protection
-                  </div>
-                </div>
-              </div>
-
-              {/* Service Inspection Checklist Graphic */}
-              <div className="p-6 space-y-4 bg-[#171717]">
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-start gap-3 bg-[#0A0A0A] p-3 rounded border border-neutral-800 hover:border-[#7A9E7E]/50 transition-colors">
-                    <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-white">Guaranteed Pest Elimination</div>
-                      <div className="text-xs text-neutral-400">Cockroaches, Ants, Bed Bugs & Rodents</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 bg-[#0A0A0A] p-3 rounded border border-neutral-800 hover:border-[#E8871E]/50 transition-colors">
-                    <Clock className="w-5 h-5 text-[#E8871E] shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-white">Same-Day Rapid Dispatch</div>
-                      <div className="text-xs text-neutral-400">Morning, Afternoon & Evening booking slots</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 bg-[#0A0A0A] p-3 rounded border border-neutral-800 hover:border-[#7A9E7E]/50 transition-colors">
-                    <MapPin className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-white">Serving Dubai, Sharjah, and Ajman</div>
-                      <div className="text-xs text-neutral-400">Fast arrival across all residential & commercial zones</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Hero Callout */}
-                <div className="bg-[#0A0A0A] border border-neutral-800 p-4 rounded text-center space-y-2">
-                  <p className="text-xs text-[#E8871E] uppercase tracking-widest font-mono font-bold">Instant Quote & Scheduling</p>
-                  <p className="text-sm font-semibold text-white">No mandatory registration required.</p>
-                  <button
-                    onClick={onBookClick}
-                    className="w-full mt-2 bg-[#E8871E] hover:bg-[#d47817] text-white py-2.5 rounded text-xs font-extrabold transition-colors cursor-pointer uppercase tracking-wider shadow-lg font-['Montserrat']"
-                  >
-                    Get a Free Quote (60 Sec)
-                  </button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
         </div>
 
         {/* Section 3: Prominent Service Guarantee / Trust Cards */}
