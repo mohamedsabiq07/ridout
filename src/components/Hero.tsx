@@ -12,14 +12,25 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
       
       {/* Background Video */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Desktop Video */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-[75%_center] sm:object-center opacity-70"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-70 hidden md:block"
         >
           <source src="/ridout-v1.mp4" type="video/mp4" />
+        </video>
+        {/* Mobile Portrait Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-70 block md:hidden"
+        >
+          <source src="/portrait-video.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-[#0A0A0A]/20" />
       </div>
