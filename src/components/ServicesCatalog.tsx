@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { PEST_CONTROL_SERVICES } from '../data/services';
 import { motion } from 'framer-motion';
@@ -6,13 +6,15 @@ import { ArrowUpRight } from 'lucide-react';
 
 interface ServicesCatalogProps {
   onRequestService: (serviceId: string) => void;
+  filter: 'all' | 'residential' | 'commercial';
+  onFilterChange: (filter: 'all' | 'residential' | 'commercial') => void;
 }
 
 export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
   onRequestService,
+  filter,
+  onFilterChange
 }) => {
-  const [filter, setFilter] = useState<'all' | 'residential' | 'commercial'>('all');
-
   const filteredServices = PEST_CONTROL_SERVICES.filter((service) => {
     if (filter === 'all') return true;
     if (filter === 'residential') return service.suitableFor.includes('Residential') || service.suitableFor.includes('Apartments') || service.suitableFor.includes('Villas');
@@ -47,7 +49,7 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
           {/* Filter Tabs */}
           <div className="inline-flex p-1 bg-[#E2DFD7]/60 rounded-md self-start md:self-auto border border-[#E2DFD7]">
             <button
-              onClick={() => setFilter('all')}
+              onClick={() => onFilterChange('all')}
               className={`px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
                 filter === 'all' ? 'bg-[#0A0A0A] text-white shadow-sm' : 'text-[#2D2D2D] hover:text-[#0A0A0A]'
               }`}
@@ -55,7 +57,7 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
               All Services
             </button>
             <button
-              onClick={() => setFilter('residential')}
+              onClick={() => onFilterChange('residential')}
               className={`px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
                 filter === 'residential' ? 'bg-[#0A0A0A] text-white shadow-sm' : 'text-[#2D2D2D] hover:text-[#0A0A0A]'
               }`}
@@ -63,7 +65,7 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
               Residential
             </button>
             <button
-              onClick={() => setFilter('commercial')}
+              onClick={() => onFilterChange('commercial')}
               className={`px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
                 filter === 'commercial' ? 'bg-[#0A0A0A] text-white shadow-sm' : 'text-[#2D2D2D] hover:text-[#0A0A0A]'
               }`}

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
+import { PropertySelector } from '../components/PropertySelector';
 import { ServicesCatalog } from '../components/ServicesCatalog';
 import { HomeCleaningSection } from '../components/HomeCleaningSection';
 import { ServiceModal } from '../components/ServiceModal';
@@ -19,6 +20,7 @@ import type { PestService, ServiceRequest } from '../types/booking';
 export const PublicHome = () => {
   const [selectedServiceForModal, setSelectedServiceForModal] = useState<PestService | null>(null);
   const [preselectedBookingServiceId, setPreselectedBookingServiceId] = useState<string>('general-pest-control');
+  const [serviceFilter, setServiceFilter] = useState<'all' | 'residential' | 'commercial'>('all');
   
   // Submission & Success state
   const [submittedRequest, setSubmittedRequest] = useState<ServiceRequest | null>(null);
@@ -74,8 +76,17 @@ export const PublicHome = () => {
           }}
         />
 
+        <PropertySelector 
+          onSelect={(type) => {
+            setServiceFilter(type);
+            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+          }} 
+        />
+
         <ServicesCatalog
           onRequestService={(serviceId) => scrollToBooking(serviceId)}
+          filter={serviceFilter}
+          onFilterChange={setServiceFilter}
         />
 
         <HomeCleaningSection
