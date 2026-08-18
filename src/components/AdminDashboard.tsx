@@ -111,6 +111,18 @@ export const AdminDashboard: React.FC = () => {
   const todayStr = new Date().toISOString().split('T')[0];
   const todayCount = requests.filter((r) => r.created_at.startsWith(todayStr) || r.preferred_date === todayStr).length;
 
+  const discoveryStats = React.useMemo(() => {
+    const counts: Record<string, number> = {};
+    requests.forEach(r => {
+      if (r.discovery_source) {
+        counts[r.discovery_source] = (counts[r.discovery_source] || 0) + 1;
+      }
+    });
+    return Object.entries(counts)
+      .map(([source, count]) => ({ source, count }))
+      .sort((a, b) => b.count - a.count);
+  }, [requests]);
+
   // Filtering
   const filteredRequests = requests.filter((req) => {
     const matchesSearch =
@@ -300,6 +312,36 @@ export const AdminDashboard: React.FC = () => {
             </div>
 
           </div>
+
+          {/* Discovery Sources Bar Chart */}
+          {discoveryStats.length > 0 && (
+            <div className="bg-[#171717] border border-[#2A2A2A] rounded-sm p-4">
+              <h2 className="text-xs text-neutral-400 font-mono mb-4">Marketing Insights: How Customers Found Us</h2>
+              <div className="space-y-3">
+                {discoveryStats.map(({ source, count }) => {
+                  const maxCount = Math.max(...discoveryStats.map(s => s.count));
+                  const percentage = Math.max(5, Math.round((count / maxCount) * 100)); // min 5% for visibility
+                  
+                  return (
+                    <div key={source} className="flex items-center gap-3">
+                      <div className="w-40 truncate text-xs text-white font-mono shrink-0" title={source}>
+                        {source}
+                      </div>
+                      <div className="flex-1 h-6 bg-neutral-900 rounded-sm relative overflow-hidden">
+                        <div 
+                          className="absolute left-0 top-0 h-full bg-blue-600/80 rounded-r-sm transition-all duration-1000 ease-out"
+                          style={{ width: `${percentage}%` }}
+                        />
+                        <span className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] font-bold text-white drop-shadow-md z-10">
+                          {count}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {/* Search & Filter Toolbar */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#171717] p-4 rounded border border-[#2A2A2A]">

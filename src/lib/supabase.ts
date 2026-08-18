@@ -176,6 +176,7 @@ export async function createServiceRequest(formData: BookingFormData): Promise<S
     status: 'Pending',
     created_at: new Date().toISOString(),
     is_urgent: Boolean(formData.is_urgent),
+    discovery_source: formData.discovery_source,
     photo_name: formData.photo_name,
     photo_data: formData.photo_data
   };
