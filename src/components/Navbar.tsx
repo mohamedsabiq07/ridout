@@ -18,12 +18,11 @@ export const Navbar: React.FC<NavbarProps> = ({
     { label: 'Cleaning Services', href: '/#home-cleaning' },
     { label: 'Why Us', href: '/#why-us' },
     { label: 'How It Works', href: '/#process' },
-    { label: 'Areas', href: '/#service-areas' },
     { label: 'Contact', href: '/#contact' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0A0A0A]/70 backdrop-blur-xl border-b border-white/10 text-white shadow-lg">
+    <header className="sticky top-0 z-50 bg-transparent text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
