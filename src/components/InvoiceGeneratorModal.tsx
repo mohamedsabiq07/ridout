@@ -14,6 +14,11 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
   const [cost, setCost] = useState<string>('');
   const [notes, setNotes] = useState<string>('');
   
+  // New Fields
+  const [referenceNumber, setReferenceNumber] = useState<string>('1');
+  const [jobNumber, setJobNumber] = useState<string>(request.request_number || '');
+  const [accountDetails, setAccountDetails] = useState<string>('Bank Name: \nAccount Name: \nAccount Number: \nIBAN: ');
+  
   const printRef = useRef<HTMLDivElement>(null);
 
   const handlePrint = useReactToPrint({
@@ -85,22 +90,65 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
               </div>
             </div>
 
-            {/* Cost Input */}
-            <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
-                Total Cost (AED) <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">AED</span>
+            <div className="grid grid-cols-2 gap-4">
+              {/* Cost Input */}
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-2">
+                  Total Cost (AED) <span className="text-red-500">*</span>
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">AED</span>
+                  <input
+                    type="number"
+                    value={cost}
+                    onChange={(e) => setCost(e.target.value)}
+                    placeholder="e.g. 250"
+                    className="w-full pl-14 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white text-gray-900 transition-all font-mono font-medium"
+                  />
+                </div>
+              </div>
+
+              {/* Reference Number */}
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-2">
+                  Ref No. (e.g., 1, 2, 3)
+                </label>
                 <input
-                  type="number"
-                  value={cost}
-                  onChange={(e) => setCost(e.target.value)}
-                  placeholder="e.g. 250"
-                  className="w-full pl-14 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white text-gray-900 transition-all font-mono font-medium"
+                  type="text"
+                  value={referenceNumber}
+                  onChange={(e) => setReferenceNumber(e.target.value)}
+                  placeholder="e.g. 1"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white text-gray-900 transition-all font-mono"
                 />
               </div>
             </div>
+
+            {documentType === 'Invoice' && (
+              <>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                    Job Number
+                  </label>
+                  <input
+                    type="text"
+                    value={jobNumber}
+                    onChange={(e) => setJobNumber(e.target.value)}
+                    placeholder="e.g. PC-1024"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white text-gray-900 transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                    Account Details (Payment Info)
+                  </label>
+                  <textarea
+                    value={accountDetails}
+                    onChange={(e) => setAccountDetails(e.target.value)}
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white text-gray-900 transition-all min-h-[100px] text-sm font-mono"
+                  />
+                </div>
+              </>
+            )}
 
             {/* Notes Input */}
             <div>
@@ -111,7 +159,7 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Add any specific terms for this customer..."
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white text-gray-900 transition-all min-h-[100px] text-sm"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] focus:bg-white text-gray-900 transition-all min-h-[80px] text-sm"
               />
             </div>
 
@@ -142,7 +190,10 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
           request={request} 
           documentType={documentType} 
           cost={cost || '0'} 
-          notes={notes} 
+          notes={notes}
+          referenceNumber={referenceNumber}
+          jobNumber={jobNumber}
+          accountDetails={accountDetails}
         />
         
       </div>

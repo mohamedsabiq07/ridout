@@ -6,12 +6,16 @@ interface PrintableInvoiceProps {
   documentType: 'Quotation' | 'Invoice';
   cost: string;
   notes: string;
+  referenceNumber: string;
+  jobNumber: string;
+  accountDetails: string;
 }
 
 export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoiceProps>(
-  ({ request, documentType, cost, notes }, ref) => {
+  ({ request, documentType, cost, notes, referenceNumber, jobNumber, accountDetails }, ref) => {
     
-    const documentNumber = `${documentType === 'Invoice' ? 'INV' : 'QUO'}-${request.id.slice(0, 6).toUpperCase()}`;
+    const prefix = documentType === 'Invoice' ? 'INV' : 'QUO';
+    const documentNumber = `${prefix}-${String(referenceNumber).padStart(4, '0')}`;
     
     const dateCreated = new Date().toLocaleDateString('en-AE', {
       year: 'numeric',
@@ -60,13 +64,16 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
           {/* Info Box */}
           <div className="bg-[#FEFCE8] p-3 mb-2 border border-gray-300 flex justify-between">
             <div className="space-y-1">
-              <p><span className="font-bold">{documentType}:</span> {documentNumber}</p>
+              <p><span className="font-bold">Ref Number:</span> {documentNumber}</p>
               <p><span className="font-bold">Client Name:</span> {request.customer_name}</p>
               <p><span className="font-bold">Location:</span> {request.location}</p>
             </div>
             <div className="space-y-1 text-right">
               <p>Date: {dateCreated}</p>
               <p>Property Type: {request.property_type}</p>
+              {documentType === 'Invoice' && jobNumber && (
+                <p>Job No.: {jobNumber}</p>
+              )}
               <p>Contact No.: {request.mobile}</p>
             </div>
           </div>
@@ -121,27 +128,40 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
 
           {/* Details Box */}
           <div className="bg-[#F9FAFB] p-4 text-xs border border-gray-200">
-            <h3 className="font-bold underline mb-1">Service Includes:</h3>
-            <ul className="mb-3 space-y-0.5">
-              <li>Complete inspection of the required areas.</li>
-              <li>Application of professional pest control treatments.</li>
-              <li>Initial treatment of all identified infestation areas.</li>
-            </ul>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <h3 className="font-bold underline mb-1">Service Includes:</h3>
+                <ul className="mb-3 space-y-0.5">
+                  <li>Complete inspection of the required areas.</li>
+                  <li>Application of professional pest control treatments.</li>
+                  <li>Initial treatment of all identified infestation areas.</li>
+                </ul>
 
-            <h3 className="font-bold underline mb-1">Follow-Up Service:</h3>
-            <ul className="mb-3 space-y-0.5">
-              <li>After 2 days: Pest control gel will be applied (if applicable).</li>
-              <li>After 1 week: Our technician will revisit for inspection.</li>
-              <li>If any activity is found in a specific area, additional treatment will be applied at no extra service charge during the follow-up visit.</li>
-              <li>General Cleaning Service: <strong>AED 25 per hour</strong> (Labour only – cleaning materials are <strong>not included.</strong>)</li>
-            </ul>
-
-            <h3 className="font-bold underline mb-1">Terms & Conditions:</h3>
-            <div className="mb-3 whitespace-pre-wrap">
-              {notes || defaultTerms}
+                <h3 className="font-bold underline mb-1">Terms & Conditions:</h3>
+                <div className="mb-3 whitespace-pre-wrap">
+                  {notes || defaultTerms}
+                </div>
+              </div>
+              <div>
+                <h3 className="font-bold underline mb-1">Follow-Up Service:</h3>
+                <ul className="mb-3 space-y-0.5">
+                  <li>After 2 days: Pest control gel will be applied (if applicable).</li>
+                  <li>After 1 week: Our technician will revisit for inspection.</li>
+                  <li>If any activity is found in a specific area, additional treatment will be applied at no extra charge.</li>
+                </ul>
+                
+                {documentType === 'Invoice' && accountDetails && (
+                  <>
+                    <h3 className="font-bold underline mb-1 mt-4">Account Details:</h3>
+                    <div className="mb-3 whitespace-pre-wrap font-mono text-[11px] bg-white p-2 border border-gray-300">
+                      {accountDetails}
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
 
-            <div className="bg-[#FAE3D9] inline-block px-2 py-1 border border-[#E8871E]">
+            <div className="bg-[#FAE3D9] inline-block px-2 py-1 border border-[#E8871E] mt-2">
               <strong>Note:</strong> Please follow the attached Pre- and Post-Pest Control Guidelines. ☑
             </div>
           </div>
