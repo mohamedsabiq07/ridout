@@ -211,7 +211,9 @@ export const ServicePage: React.FC = () => {
                 </div>
 
                 <div>
-                  <h2 className="text-2xl font-bold mb-6 font-['Montserrat']">Preparation Steps</h2>
+                  <h2 className="text-2xl font-bold mb-6 font-['Montserrat']">
+                    {service.category === 'cleaning' ? 'Before Cleaning' : (service.id === 'disinfection-sanitization' ? 'Before Service' : 'Before Treatment')}
+                  </h2>
                   <ul className="space-y-4">
                     {service.preparationSteps.map((step, i) => (
                       <li key={i} className="flex gap-4 p-4 bg-[#F7F7F7] rounded border border-neutral-200">
@@ -221,6 +223,31 @@ export const ServicePage: React.FC = () => {
                     ))}
                   </ul>
                 </div>
+
+                {service.aftercareSteps && service.aftercareSteps.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl font-bold mb-6 font-['Montserrat'] mt-12">
+                      {service.category === 'cleaning' ? 'After Cleaning' : (service.id === 'disinfection-sanitization' ? 'After Service' : 'After Treatment')}
+                    </h2>
+                    <ul className="space-y-4">
+                      {service.aftercareSteps.map((step, i) => (
+                        <li key={i} className="flex gap-4 p-4 bg-[#F7F7F7] rounded border border-neutral-200">
+                          <span className="font-bold text-[#1C2C54]">0{i + 1}</span>
+                          <span className="text-neutral-700">{step}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {service.importantNote && (
+                  <div className="bg-[#FEFCE8] p-6 rounded-lg border border-[#E8871E] mt-12">
+                    <h3 className="font-bold text-lg mb-2 text-[#E8871E]">
+                      {service.category === 'cleaning' ? 'Service Scope / Special Note' : 'Important'}
+                    </h3>
+                    <p className="text-neutral-800">{service.importantNote}</p>
+                  </div>
+                )}
               </div>
 
               <div className="bg-[#F7F7F7] p-8 rounded-xl border border-neutral-200 h-fit space-y-6">

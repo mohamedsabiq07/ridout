@@ -30,6 +30,8 @@ export interface PestService {
   suitableFor: string[];
   duration: string;
   preparationSteps: string[];
+  aftercareSteps?: string[];
+  importantNote?: string;
   category?: 'pest' | 'cleaning';
 }
 

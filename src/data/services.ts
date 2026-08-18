@@ -16,10 +16,24 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['Residential', 'Commercial', 'Offices'],
     duration: '45 - 60 mins',
     preparationSteps: [
-      'Store open food containers in airtight bags or refrigerator.',
-      'Clear kitchen counter surfaces and move small appliances away from walls.',
-      'Vacate treated areas for 2 hours post-treatment.'
-    ]
+        "Seal and store all exposed food.",
+        "Remove utensils and cooking items from exposed surfaces.",
+        "Clean food residue, spills and crumbs.",
+        "Keep countertops, floors and sinks reasonably clean.",
+        "Clear access to corners, wall edges, cabinets and areas underneath furniture.",
+        "Cover personal belongings where necessary.",
+        "Keep children and pets away from treatment areas as instructed.",
+        "Follow any additional preparation instructions provided by the technician."
+        ],
+    aftercareSteps: [
+        "Follow the technician's instructions regarding re-entry and ventilation.",
+        "Avoid washing or disturbing treated areas for the recommended period.",
+        "Keep children and pets away from treated surfaces until they are safe to access.",
+        "Wash exposed utensils and food-contact items before use.",
+        "Maintain good hygiene and food-storage practices.",
+        "Avoid unnecessary use of household insecticides over professional treatment areas.",
+        "Follow any recommended follow-up treatment schedule."
+        ]
   },
   {
     id: 'cockroach-control',
@@ -36,10 +50,25 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['Apartments', 'Villas', 'Restaurants', 'Bakeries'],
     duration: '30 - 45 mins',
     preparationSteps: [
-      'Clean grease and food crumbs from under stove and microwave.',
-      'Ensure kitchen sinks and drain covers are dry.',
-      'No evacuation required for gel bait treatment.'
-    ]
+        "Remove or properly seal all exposed food, fruits, vegetables and food containers.",
+        "Clean food crumbs, grease and spills from countertops, floors and under appliances.",
+        "Keep kitchen sinks and surrounding areas reasonably clean and dry.",
+        "Remove utensils, plates and cooking items from exposed surfaces and keep them covered or stored.",
+        "Clear access to areas under sinks, behind appliances, inside cabinets and along wall edges.",
+        "Do not apply household cockroach sprays or insecticides immediately before the technician arrives, as these may interfere with the treatment.",
+        "Keep children and pets away from the treatment area as instructed by the technician."
+        ],
+    aftercareSteps: [
+        "Do not disturb or remove gel bait placements unless instructed by the technician.",
+        "Avoid cleaning treated cracks, corners and other treated areas immediately, as this may reduce treatment effectiveness.",
+        "Keep food properly covered and maintain good kitchen hygiene.",
+        "Clean food spills and crumbs promptly.",
+        "Do not spray household insecticides over or near the professional treatment areas unless advised.",
+        "Dead insects should be removed hygienically using appropriate cleaning methods.",
+        "Follow the technician's recommendations regarding follow-up treatment.",
+        "Pest activity may temporarily increase after treatment as pests emerge from hiding areas before the population declines."
+        ],
+    importantNote: "Effective cockroach control depends on proper sanitation, removal of food sources and cooperation with the recommended follow-up treatment."
   },
   {
     id: 'ant-control',
@@ -56,9 +85,22 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['Residential', 'Gardens', 'Food Service'],
     duration: '30 - 60 mins',
     preparationSteps: [
-      'Do not spray household aerosol insecticides prior to technician arrival.',
-      'Identify main ant trailing lines for technician inspection.'
-    ]
+        "Do not spray household insecticides over visible ant trails before the technician arrives.",
+        "Keep food, sugar, sweets and other attractants properly sealed.",
+        "Clean food spills and crumbs from countertops and floors.",
+        "Identify, where possible, areas where ants are frequently seen.",
+        "Keep countertops and treatment areas accessible.",
+        "Remove unnecessary objects from areas requiring inspection."
+        ],
+    aftercareSteps: [
+        "Do not disturb or remove bait placements unless instructed.",
+        "Avoid spraying household insecticides around treated areas.",
+        "Keep food properly sealed.",
+        "Clean food spills immediately.",
+        "Do not wipe away treatment from cracks, corners or other designated areas.",
+        "Follow the technician's instructions regarding follow-up visits."
+        ],
+    importantNote: "Ant control may require time because the treatment is designed to reach the colony through worker activity. Avoid disturbing treated bait areas unless instructed by the technician."
   },
   {
     id: 'bed-bug-treatment',
@@ -75,10 +117,26 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['Bedrooms', 'Hotels', 'Worker Accommodation', 'Villas'],
     duration: '90 - 120 mins',
     preparationSteps: [
-      'Strip bed sheets and wash at 60°C or higher.',
-      'Empty wardrobes and under-bed storage drawers.',
-      'Vacate property for 4 hours following completion.'
-    ]
+        "Remove all bed sheets, blankets, pillow covers and other washable bedding.",
+        "Wash and dry bedding according to the recommended temperature and fabric-care instructions.",
+        "Remove items stored under beds.",
+        "Reduce clutter around beds, furniture and wall edges to provide access for inspection and treatment.",
+        "Empty wardrobes, drawers or other areas if requested by the technician.",
+        "Do not move infested furniture or mattresses to another room, as this may spread the infestation.",
+        "Keep pets and people away from the treatment area as instructed.",
+        "Follow any specific preparation instructions provided during the inspection."
+        ],
+    aftercareSteps: [
+        "Do not re-enter the treated area until the technician confirms that it is safe to do so.",
+        "Follow the recommended ventilation and re-entry instructions provided by the technician.",
+        "Do not immediately wash or clean treated surfaces unless specifically instructed.",
+        "Avoid removing or disturbing treated areas unnecessarily.",
+        "Wash bedding and clothing according to the treatment instructions.",
+        "Do not move mattresses, furniture or other potentially infested items between rooms.",
+        "Continue monitoring for bed bug activity after treatment.",
+        "Follow the recommended follow-up schedule, as bed bug control may require more than one treatment depending on infestation severity."
+        ],
+    importantNote: "Bed bug eradication requires customer cooperation, proper preparation and follow-up. Finding occasional activity after the initial treatment does not necessarily mean treatment has failed."
   },
   {
     id: 'mosquito-control',
@@ -95,9 +153,23 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['Villas', 'Outdoor Patios', 'Commercial Gardens', 'Schools'],
     duration: '45 - 90 mins',
     preparationSteps: [
-      'Close all windows and doors during fogging process.',
-      'Cover swimming pools or turn off circulation pumps for 1 hour.'
-    ]
+        "Remove or cover exposed food and drinking-water containers.",
+        "Close windows and doors during outdoor fogging where instructed.",
+        "Keep children and pets away from the treatment area.",
+        "Remove toys, laundry and other personal items from outdoor treatment areas.",
+        "Empty or remove unnecessary containers that can collect standing water.",
+        "Inform the technician about areas where mosquito activity is frequently observed.",
+        "Ensure access to gardens, balconies, drains and other outdoor areas requiring inspection."
+        ],
+    aftercareSteps: [
+        "Follow the technician's recommended re-entry time before using treated outdoor areas.",
+        "Avoid unnecessary contact with treated vegetation or surfaces until they are safe to access.",
+        "Remove standing water regularly from containers, plant trays and other potential breeding sites.",
+        "Keep doors, windows and screens properly maintained where possible.",
+        "Follow any instructions regarding swimming pools, water features or other water bodies.",
+        "Continue eliminating standing water to reduce future mosquito breeding."
+        ],
+    importantNote: "Mosquito control is most effective when professional treatment is combined with regular removal of standing water and other breeding sources."
   },
   {
     id: 'rodent-control',
@@ -114,9 +186,23 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['Warehouses', 'Villas', 'Restaurants', 'Supermarkets'],
     duration: '60 - 90 mins',
     preparationSteps: [
-      'Keep pets away from designated bait placement areas.',
-      'Clear perimeter storage boxes to allow access to wall boundaries.'
-    ]
+        "Store food in sealed, rodent-resistant containers.",
+        "Remove exposed food, waste and unnecessary clutter.",
+        "Keep access areas around walls, cabinets, storage spaces and appliances clear.",
+        "Inform the technician of any sightings, droppings, gnaw marks or unusual noises.",
+        "Keep children and pets away from areas where bait stations may be installed.",
+        "Do not move or interfere with existing rodent control stations."
+        ],
+    aftercareSteps: [
+        "Do not open, move or tamper with bait stations.",
+        "Keep children and pets away from designated bait areas.",
+        "Store food securely and maintain good waste-management practices.",
+        "Seal accessible food sources and avoid leaving food waste exposed.",
+        "Report new rodent activity to the Rid Out team.",
+        "Do not remove or relocate traps or bait stations without technician approval.",
+        "Follow recommended follow-up inspection schedules."
+        ],
+    importantNote: "Rodent control requires both professional treatment and removal of food, water and access points that may allow rodents to return."
   },
   {
     id: 'termite-treatment',
@@ -133,9 +219,22 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['New Constructions', 'Existing Villas', 'Commercial Structures'],
     duration: '3 - 6 hours',
     preparationSteps: [
-      'Provide clear access along wall skirting and exterior perimeter.',
-      'Ensure water and electricity supply are active on site.'
-    ]
+        "Provide clear access to affected walls, skirting, wooden structures and other areas requiring inspection.",
+        "Remove movable items blocking access to treatment areas.",
+        "Inform the technician about previous termite treatments, if any.",
+        "Identify visible signs such as mud tubes, damaged wood or hollow-sounding surfaces.",
+        "Ensure required utilities and site access are available where applicable.",
+        "Follow any specific preparation requirements provided after the site inspection."
+        ],
+    aftercareSteps: [
+        "Do not disturb, cover or modify treated areas without consulting the technician.",
+        "Follow the technician's instructions regarding re-entry and use of treated areas.",
+        "Avoid unnecessary drilling, construction or alteration around treated areas without informing the pest-control provider.",
+        "Monitor the property for new signs of termite activity.",
+        "Report any suspected termite activity to Rid Out promptly.",
+        "Follow the recommended inspection and monitoring schedule."
+        ],
+    importantNote: "Termite control is a structural protection process and may require inspection, treatment and ongoing monitoring depending on the property and level of infestation."
   },
   {
     id: 'disinfection-sanitization',
@@ -152,9 +251,22 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['Offices', 'Residential', 'Gyms', 'Clinics', 'Nurseries'],
     duration: '30 - 60 mins',
     preparationSteps: [
-      'Cover paper documents and delicate electronics.',
-      'Vacate property for 30 minutes after misting.'
-    ]
+        "Remove food, utensils and personal items from surfaces requiring treatment.",
+        "Cover sensitive documents, electronics and other items that should not be exposed to mist or cleaning solutions.",
+        "Clear countertops, tables and accessible surfaces.",
+        "Ensure the technician has access to the areas requiring treatment.",
+        "Inform the technician about sensitive materials or surfaces before service.",
+        "Vacate the treatment area during application as instructed."
+        ],
+    aftercareSteps: [
+        "Re-enter the treated area only after the recommended waiting period provided by the technician.",
+        "Allow adequate ventilation where instructed.",
+        "Do not immediately wipe treated surfaces unless specifically instructed.",
+        "Food-contact surfaces should be handled according to the disinfectant manufacturer's instructions before food preparation.",
+        "Follow all product-specific safety instructions.",
+        "Keep children and pets away until the treated area is safe for re-entry."
+        ],
+    importantNote: "Disinfection and sanitization procedures vary according to the product and application method. Always follow the technician's specific instructions provided after treatment."
   },
   // Home Cleaning Services
   {
@@ -172,10 +284,19 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['Apartments', 'Villas', 'Offices'],
     duration: '4 - 8 hours',
     preparationSteps: [
-      'Ensure clear access to all rooms.',
-      'Secure or remove valuable fragile items.',
-      'Empty cabinets if interior cleaning is requested.'
-    ]
+        "Remove personal belongings, utensils, toiletries and loose items from the areas to be cleaned.",
+        "Store food and other sensitive items safely.",
+        "Keep countertops, floors and accessible areas reasonably clear.",
+        "Ensure access to water and electricity where required.",
+        "Inform the cleaning team about delicate surfaces, materials or items requiring special care."
+        ],
+    aftercareSteps: [
+        "Allow cleaned surfaces and floors to dry completely before use.",
+        "Maintain adequate ventilation where required.",
+        "Return food, utensils and personal belongings only after relevant surfaces are dry and ready for use.",
+        "Follow any specific instructions provided by the cleaning team."
+        ],
+    importantNote: "Deep cleaning service includes kitchen and bathroom deep cleaning, covering accessible surfaces and areas as agreed at the time of booking."
   },
   {
     id: 'kitchen-cleaning',
@@ -191,9 +312,21 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['Apartments', 'Villas', 'Commercial Kitchens'],
     duration: '60 - 90 mins',
     preparationSteps: [
-      'Remove loose dishware from sink and counters.',
-      'Store open food containers in pantry or fridge.'
-    ]
+        "Remove loose utensils, dishes and food items from countertops.",
+        "Store or remove personal items from the kitchen.",
+        "Empty the sink as much as possible.",
+        "Clear accessible areas around the stove, countertops and cabinets.",
+        "Keep valuable or delicate items in a safe location.",
+        "Ensure access to water and electricity where required."
+        ],
+    aftercareSteps: [
+        "Allow cleaned surfaces to dry before placing food or utensils back.",
+        "Wash food-contact surfaces if required according to the cleaning product instructions.",
+        "Allow sufficient ventilation.",
+        "Avoid placing food or personal items on wet surfaces.",
+        "Inform the cleaning team of any delicate materials or surfaces before cleaning."
+        ],
+    importantNote: "Kitchen deep cleaning includes accessible countertops, cabinets/exteriors, sink, stove area, tiles and other agreed accessible surfaces."
   },
   {
     id: 'bathroom-cleaning',
@@ -209,9 +342,20 @@ export const PEST_SERVICES: PestService[] = [
     suitableFor: ['Apartments', 'Villas', 'Offices'],
     duration: '45 - 75 mins',
     preparationSteps: [
-      'Remove personal items and toiletries from countertops.',
-      'Ensure running hot/cold water is available.'
-    ]
+        "Remove toiletries, personal belongings and loose items from countertops and shower areas.",
+        "Remove towels, mats and other items that should not be exposed to cleaning products.",
+        "Clear access to the toilet, wash basin, shower area, floor and accessible surfaces.",
+        "Inform the cleaning team about delicate materials or surfaces.",
+        "Ensure running water and electricity are available where required."
+        ],
+    aftercareSteps: [
+        "Allow cleaned surfaces and floors to dry completely.",
+        "Avoid using freshly cleaned wet floors until they are dry.",
+        "Allow adequate ventilation.",
+        "Return personal belongings only after surfaces are completely dry.",
+        "Follow any specific instructions provided by the cleaning team."
+        ],
+    importantNote: "Bathroom deep cleaning includes accessible tiles, floors, toilet, wash basin, shower area, mirrors and other agreed accessible surfaces."
   }
 ];
 
