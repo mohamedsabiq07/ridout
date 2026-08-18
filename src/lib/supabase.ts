@@ -139,7 +139,20 @@ export async function fetchAllServiceRequests(): Promise<ServiceRequest[]> {
 
 export async function createServiceRequest(formData: BookingFormData): Promise<ServiceRequest> {
   const currentLocal = getStoredRequests();
-  const requestNumber = generateNextRequestNumber(currentLocal);
+  let currentRequests = currentLocal;
+  
+  if (supabase) {
+    try {
+      const { data, error } = await supabase.from('service_requests').select('request_number');
+      if (!error && data && data.length > 0) {
+        currentRequests = data as any;
+      }
+    } catch (e) {
+      console.warn('Could not fetch latest request number from DB, falling back to local');
+    }
+  }
+
+  const requestNumber = generateNextRequestNumber(currentRequests);
   const serviceNames = formData.service_id.map(id => {
     const matchedService = PEST_SERVICES.find(s => s.id === id);
     return matchedService ? matchedService.name : id;

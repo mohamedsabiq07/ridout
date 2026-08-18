@@ -26,8 +26,7 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
     // Default terms based on the screenshot
     const defaultTerms = `1) This ${documentType.toLowerCase()} is valid for 15 days from the date of issue.
 2) Service includes a 4-month warranty; free re-treatment if pests return within this period.
-3) Prices are subject to site inspection and may vary based on actual infestation level.
-4) Payment accepted cash only after the services done.`;
+3) Prices are subject to site inspection and may vary based on actual infestation level.`;
 
     return (
       <div className="hidden">
