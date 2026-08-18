@@ -84,8 +84,6 @@ export const PublicHome = () => {
 
         <ServicesCatalog
           onRequestService={(serviceId) => scrollToBooking(serviceId)}
-          filter={serviceFilter}
-          onFilterChange={setServiceFilter}
         />
 
         <HomeCleaningSection
@@ -98,6 +96,7 @@ export const PublicHome = () => {
 
         <BookingForm
           preselectedServiceId={preselectedBookingServiceId}
+          preselectedPropertyCategory={serviceFilter === 'all' ? null : serviceFilter}
           isEmergency={isEmergencyBooking}
           onRequestSubmitted={handleRequestSubmitted}
         />

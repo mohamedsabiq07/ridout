@@ -6,22 +6,11 @@ import { ArrowUpRight } from 'lucide-react';
 
 interface ServicesCatalogProps {
   onRequestService: (serviceId: string) => void;
-  filter: 'all' | 'residential' | 'commercial';
-  onFilterChange: (filter: 'all' | 'residential' | 'commercial') => void;
 }
 
 export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
   onRequestService,
-  filter,
-  onFilterChange
 }) => {
-  const filteredServices = PEST_CONTROL_SERVICES.filter((service) => {
-    if (filter === 'all') return true;
-    if (filter === 'residential') return service.suitableFor.includes('Residential') || service.suitableFor.includes('Apartments') || service.suitableFor.includes('Villas');
-    if (filter === 'commercial') return service.suitableFor.includes('Commercial') || service.suitableFor.includes('Offices') || service.suitableFor.includes('Restaurants') || service.suitableFor.includes('Warehouses');
-    return true;
-  });
-
   return (
     <section id="services" className="py-20 lg:py-28 bg-[#F7F5F0] border-b border-[#E2DFD7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,39 +34,11 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
               Municipality-approved, odorless chemical and biological eradication treatments tailored for UAE properties.
             </p>
           </div>
-
-          {/* Filter Tabs */}
-          <div className="inline-flex p-1 bg-[#E2DFD7]/60 rounded-md self-start md:self-auto border border-[#E2DFD7]">
-            <button
-              onClick={() => onFilterChange('all')}
-              className={`px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
-                filter === 'all' ? 'bg-[#0A0A0A] text-white shadow-sm' : 'text-[#2D2D2D] hover:text-[#0A0A0A]'
-              }`}
-            >
-              All Services
-            </button>
-            <button
-              onClick={() => onFilterChange('residential')}
-              className={`px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
-                filter === 'residential' ? 'bg-[#0A0A0A] text-white shadow-sm' : 'text-[#2D2D2D] hover:text-[#0A0A0A]'
-              }`}
-            >
-              Residential
-            </button>
-            <button
-              onClick={() => onFilterChange('commercial')}
-              className={`px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
-                filter === 'commercial' ? 'bg-[#0A0A0A] text-white shadow-sm' : 'text-[#2D2D2D] hover:text-[#0A0A0A]'
-              }`}
-            >
-              Commercial
-            </button>
-          </div>
         </motion.div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredServices.map((service, index) => {
+          {PEST_CONTROL_SERVICES.map((service, index) => {
             return (
               <motion.div
                 key={service.id}

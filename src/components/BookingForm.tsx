@@ -8,12 +8,14 @@ import { ShieldCheck, Calendar, Clock, MapPin, Building, User, Phone, Mail, Aler
 
 interface BookingFormProps {
   preselectedServiceId?: string;
+  preselectedPropertyCategory?: 'residential' | 'commercial' | null;
   isEmergency?: boolean;
   onRequestSubmitted: (request: ServiceRequest, whatsappUrl: string) => void;
 }
 
 export const BookingForm: React.FC<BookingFormProps> = ({
   preselectedServiceId,
+  preselectedPropertyCategory,
   isEmergency = false,
   onRequestSubmitted,
 }) => {
@@ -22,7 +24,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     mobile: '+971 ',
     email: '',
     service_id: preselectedServiceId ? [preselectedServiceId] : [],
-    property_type: 'Apartment',
+    property_type: preselectedPropertyCategory === 'commercial' ? 'Office' : 'Apartment',
     apartment_size: '1 BHK',
     location: '',
     preferred_date: new Date().toISOString().split('T')[0],
@@ -40,9 +42,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     setFormData((prev) => ({ 
       ...prev, 
       ...(preselectedServiceId ? { service_id: [preselectedServiceId] } : {}),
+      ...(preselectedPropertyCategory === 'commercial' && prev.property_type === 'Apartment' ? { property_type: 'Office' } : {}),
+      ...(preselectedPropertyCategory === 'residential' && prev.property_type === 'Office' ? { property_type: 'Apartment' } : {}),
       is_urgent: isEmergency 
     }));
-  }, [preselectedServiceId, isEmergency]);
+  }, [preselectedServiceId, isEmergency, preselectedPropertyCategory]);
 
   const handleServiceToggle = (id: string) => {
     setFormData((prev) => {
