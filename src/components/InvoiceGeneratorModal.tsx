@@ -43,6 +43,10 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
   const handlePrint = useReactToPrint({
     contentRef: printRef,
     documentTitle: `${documentType}_${request.customer_name.replace(/\s+/g, '_')}_${request.id.slice(0, 6)}`,
+    pageStyle: `
+      @page { size: auto; margin: 0mm; }
+      @media print { body { -webkit-print-color-adjust: exact; } }
+    `,
   });
 
   const lineItems = parsedServices.map((service: string) => ({

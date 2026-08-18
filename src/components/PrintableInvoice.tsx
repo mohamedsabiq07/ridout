@@ -33,7 +33,7 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
       <div className="hidden">
         <div 
           ref={ref} 
-          className="bg-white w-[210mm] min-h-[297mm] p-[15mm] mx-auto box-border font-sans text-[13px] relative leading-relaxed"
+          className="bg-white w-[210mm] h-[297mm] overflow-hidden p-[15mm] mx-auto box-border font-sans text-[13px] relative leading-relaxed"
           style={{ WebkitPrintColorAdjust: 'exact', colorAdjust: 'exact' }}
         >
           {/* Header */}
@@ -173,7 +173,7 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
           </div>
 
           {/* Signatures */}
-          <div className="mt-6 flex justify-between text-xs italic">
+          <div className="absolute bottom-[32mm] left-[15mm] right-[15mm] flex justify-between text-xs italic">
             <div>
               <p>Authorized by: Rid Out Pest Control Services</p>
               <p className="mt-4">Customer Acceptance / Signature: ___________________</p>
