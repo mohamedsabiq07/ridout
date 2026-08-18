@@ -91,7 +91,7 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
               {lineItems.map((item, index) => (
                 <tr key={index} className="bg-white">
                   <td className="border border-gray-400 p-2 text-center">{index + 1}</td>
-                  <td className="border border-gray-400 p-2">{item.name}</td>
+                  <td className="border border-gray-400 p-2 whitespace-pre-wrap">{item.name}</td>
                   <td className="border border-gray-400 p-2 text-center">1</td>
                   <td className="border border-gray-400 p-2 text-center"></td>
                   <td className="border border-gray-400 p-2 text-right">{item.cost || '0'}</td>

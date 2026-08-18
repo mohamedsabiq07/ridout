@@ -48,8 +48,12 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
     return result;
   }, [parsedServices]);
 
-  const [serviceCosts, setServiceCosts] = useState<Record<string, string>>(
-    groupedServices.reduce((acc: Record<string, string>, service: string) => ({ ...acc, [service]: '' }), {})
+  const [lineItemsState, setLineItemsState] = useState<{id: string, name: string, cost: string}[]>(() => 
+    groupedServices.map((service, i) => ({
+      id: `item-${i}`,
+      name: service,
+      cost: ''
+    }))
   );
 
   const [notes, setNotes] = useState<string>('');
@@ -70,11 +74,12 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
     `,
   });
 
-  const lineItems = groupedServices.map((service: string) => ({
-    name: service,
-    cost: serviceCosts[service] || '0'
+  const lineItems = lineItemsState.map(item => ({
+    name: item.name,
+    cost: item.cost || '0'
   }));
-  const totalCost = lineItems.reduce((sum: number, item: any) => sum + (Number(item.cost) || 0), 0);
+
+  const totalCost = lineItemsState.reduce((sum, item) => sum + (parseFloat(item.cost) || 0), 0);
   const isValid = lineItems.every((item: any) => item.cost && Number(item.cost) > 0);
 
   return (
@@ -143,15 +148,29 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
 
             <div className="space-y-4 border p-4 rounded-lg bg-gray-50 border-gray-200">
               <h3 className="text-sm font-bold text-gray-700 border-b pb-2">Service Pricing (AED) <span className="text-red-500">*</span></h3>
-              {groupedServices.map((service: string) => (
-                <div key={service} className="flex items-center gap-4">
-                  <label className="text-sm text-gray-700 flex-1 truncate">{service}</label>
-                  <div className="relative w-32 shrink-0">
+              {lineItemsState.map((item, index) => (
+                <div key={item.id} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 border-b border-gray-100 pb-3 last:border-0 last:pb-0">
+                  <textarea 
+                    value={item.name}
+                    onChange={(e) => {
+                      const newItems = [...lineItemsState];
+                      newItems[index].name = e.target.value;
+                      setLineItemsState(newItems);
+                    }}
+                    rows={Math.max(1, item.name.split('\n').length)}
+                    className="text-sm text-gray-700 flex-1 border border-transparent hover:border-gray-200 focus:border-gray-300 rounded px-2 py-1 focus:ring-0 focus:outline-none resize-none overflow-hidden bg-transparent"
+                    placeholder="Enter service description..."
+                  />
+                  <div className="relative w-full sm:w-32 shrink-0 self-end sm:self-auto">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-bold text-xs">AED</span>
                     <input
                       type="number"
-                      value={serviceCosts[service] || ''}
-                      onChange={(e) => setServiceCosts(prev => ({ ...prev, [service]: e.target.value }))}
+                      value={item.cost}
+                      onChange={(e) => {
+                        const newItems = [...lineItemsState];
+                        newItems[index].cost = e.target.value;
+                        setLineItemsState(newItems);
+                      }}
                       placeholder="e.g. 250"
                       className="w-full pl-10 pr-3 py-2 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E8871E] text-gray-900 transition-all font-mono text-sm"
                     />
