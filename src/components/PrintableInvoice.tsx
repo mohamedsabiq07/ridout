@@ -33,7 +33,7 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
       <div className="hidden">
         <div 
           ref={ref} 
-          className="bg-white w-[210mm] h-[297mm] overflow-hidden p-[15mm] mx-auto box-border font-sans text-[13px] relative leading-relaxed"
+          className="bg-white w-full max-w-[210mm] mx-auto p-[15mm] box-border font-sans text-[13px] leading-relaxed flex flex-col"
           style={{ WebkitPrintColorAdjust: 'exact', colorAdjust: 'exact' }}
         >
           {/* Header */}
@@ -173,15 +173,15 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
           </div>
 
           {/* Signatures */}
-          <div className="absolute bottom-[32mm] left-[15mm] right-[15mm] flex justify-between text-xs italic">
+          <div className="mt-12 flex justify-between text-xs italic">
             <div>
               <p>Authorized by: Rid Out Pest Control Services</p>
               <p className="mt-4">Customer Acceptance / Signature: ___________________</p>
             </div>
           </div>
 
-          {/* Footer absolute bottom */}
-          <div className="absolute bottom-[15mm] left-[15mm] right-[15mm]">
+          {/* Footer naturally flows below */}
+          <div className="mt-8">
             <div className="bg-[#FAE3D9] text-center py-2 text-xs text-[#1C2C54]">
               <span className="underline">Rid Out Pest Control Services</span> &nbsp;|&nbsp; <span className="underline">055 4720124</span> &nbsp;|&nbsp; <span className="underline">Available 24/7</span> &nbsp;|&nbsp; <span className="underline">Serving Dubai, Sharjah, Ajman</span>
             </div>
