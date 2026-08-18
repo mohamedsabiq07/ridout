@@ -36,7 +36,7 @@ export const LocationPage: React.FC = () => {
     "@type": "LocalBusiness",
     "name": `Ridout Pest Control ${locationName}`,
     "image": "https://ridoutpest.com/hero-bg.jpg",
-    "telephone": "+9710502364014",
+    "telephone": "+9710554720124",
     "areaServed": locationName,
     "address": {
       "@type": "PostalAddress",

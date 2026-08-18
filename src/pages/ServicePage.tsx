@@ -57,7 +57,7 @@ export const ServicePage: React.FC = () => {
     "provider": {
       "@type": "LocalBusiness",
       "name": "Ridout Pest Control UAE",
-      "telephone": "+9710502364014",
+      "telephone": "+9710554720124",
       "address": {
         "@type": "PostalAddress",
         "addressRegion": "Dubai",

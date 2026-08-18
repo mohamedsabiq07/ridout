@@ -1,8 +1,8 @@
 import type { ServiceRequest, BookingFormData } from '../types/booking';
 
 // UAE Dispatch WhatsApp Number
-export const DEFAULT_WHATSAPP_NUMBER = '+971 0502364014';
-export const DISPLAY_PHONE_NUMBER = '+971 0502364014';
+export const DEFAULT_WHATSAPP_NUMBER = '+971 0554720124';
+export const DISPLAY_PHONE_NUMBER = '+971 0554720124';
 
 /**
  * Formats WhatsApp alert text according to business specification:

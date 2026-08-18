@@ -3,8 +3,8 @@ import { Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const FloatingContact: React.FC = () => {
-  const phoneNumber = '+971502364014';
-  const whatsappNumber = '971502364014';
+  const phoneNumber = '+971554720124';
+  const whatsappNumber = '971554720124';
   const whatsappUrl = `https://wa.me/${whatsappNumber}`;
   const callUrl = `tel:${phoneNumber}`;
 

@@ -99,11 +99,11 @@ export const EmergencyPestAlert: React.FC<EmergencyPestAlertProps> = ({
 
             <div className="pt-2 border-t border-neutral-800 text-center">
               <a
-                href="tel:+971502364014"
+                href="tel:+971554720124"
                 className="inline-flex items-center justify-center gap-2 text-xs font-bold text-amber-300 hover:text-white py-1"
               >
                 <PhoneCall className="w-4 h-4 text-[#E8871E]" />
-                <span>Or Call Emergency Hotline: +971 0502364014</span>
+                <span>Or Call Emergency Hotline: +971 0554720124</span>
               </a>
             </div>
 

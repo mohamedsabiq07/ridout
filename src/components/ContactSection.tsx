@@ -32,8 +32,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onBookClick }) =
                 </div>
                 <div>
                   <div className="text-xs text-neutral-400">Direct Phone Hotline</div>
-                  <a href="tel:+971502364014" className="text-base font-extrabold text-white hover:underline">
-                    +971 0502364014
+                  <a href="tel:+971554720124" className="text-base font-extrabold text-white hover:underline">
+                    +971 0554720124
                   </a>
                 </div>
               </div>
@@ -45,12 +45,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onBookClick }) =
                 <div>
                   <div className="text-xs text-neutral-400">Instant WhatsApp Support</div>
                   <a
-                    href="https://wa.me/971502364014"
+                    href="https://wa.me/971554720124"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-base font-extrabold text-amber-300 hover:underline"
                   >
-                    +971 0502364014 (Chat Now)
+                    +971 0554720124 (Chat Now)
                   </a>
                 </div>
               </div>

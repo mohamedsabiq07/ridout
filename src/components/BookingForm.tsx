@@ -267,7 +267,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleChange}
-                    placeholder="+971 0502364014"
+                    placeholder="+971 0554720124"
                     className={`w-full bg-[#F7F5F0] border ${
                       errors.mobile ? 'border-red-500' : 'border-[#E2DFD7] focus:border-[#0A0A0A]'
                     } text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors font-mono`}
