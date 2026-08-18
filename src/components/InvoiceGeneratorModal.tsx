@@ -27,8 +27,29 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
     return [String(request.service_name || 'General Service')];
   }, [request.service_name]);
 
+  const groupedServices: string[] = React.useMemo(() => {
+    const pestControl: string[] = [];
+    const cleaning: string[] = [];
+
+    parsedServices.forEach(service => {
+      if (service.toLowerCase().includes('cleaning')) {
+        cleaning.push(service);
+      } else {
+        pestControl.push(service);
+      }
+    });
+
+    const result = [...pestControl];
+    if (cleaning.length > 1) {
+      result.push(`${cleaning.join(' & ')}`);
+    } else if (cleaning.length === 1) {
+      result.push(cleaning[0]);
+    }
+    return result;
+  }, [parsedServices]);
+
   const [serviceCosts, setServiceCosts] = useState<Record<string, string>>(
-    parsedServices.reduce((acc: Record<string, string>, service: string) => ({ ...acc, [service]: '' }), {})
+    groupedServices.reduce((acc: Record<string, string>, service: string) => ({ ...acc, [service]: '' }), {})
   );
 
   const [notes, setNotes] = useState<string>('');
@@ -49,7 +70,7 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
     `,
   });
 
-  const lineItems = parsedServices.map((service: string) => ({
+  const lineItems = groupedServices.map((service: string) => ({
     name: service,
     cost: serviceCosts[service] || '0'
   }));
@@ -122,7 +143,7 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
 
             <div className="space-y-4 border p-4 rounded-lg bg-gray-50 border-gray-200">
               <h3 className="text-sm font-bold text-gray-700 border-b pb-2">Service Pricing (AED) <span className="text-red-500">*</span></h3>
-              {parsedServices.map((service: string) => (
+              {groupedServices.map((service: string) => (
                 <div key={service} className="flex items-center gap-4">
                   <label className="text-sm text-gray-700 flex-1 truncate">{service}</label>
                   <div className="relative w-32 shrink-0">
