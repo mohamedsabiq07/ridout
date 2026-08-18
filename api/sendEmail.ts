@@ -53,6 +53,7 @@ export default async function handler(req: any, res: any) {
     const mailOptions = {
       from: `"Ridout Pest Control" <${FROM_EMAIL}>`,
       to: TO_EMAIL,
+      cc: 'abuthalif2024@gmail.com',
       subject: `${urgentFlag}New Booking Request: ${customer_name}`,
       text: `
 New Service Request via Website
