@@ -362,12 +362,20 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                     onChange={handleChange}
                     className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors cursor-pointer"
                   >
-                    <option value="Apartment">Apartment</option>
-                    <option value="Villa">Villa</option>
-                    <option value="Office">Office</option>
-                    <option value="Shop">Shop</option>
-                    <option value="Warehouse">Warehouse</option>
-                    <option value="Partition">Partition</option>
+                    {(!preselectedPropertyCategory || preselectedPropertyCategory === 'residential') && (
+                      <>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Villa">Villa</option>
+                        <option value="Partition">Partition</option>
+                      </>
+                    )}
+                    {(!preselectedPropertyCategory || preselectedPropertyCategory === 'commercial') && (
+                      <>
+                        <option value="Office">Office</option>
+                        <option value="Shop">Shop</option>
+                        <option value="Warehouse">Warehouse</option>
+                      </>
+                    )}
                     <option value="Other">Other</option>
                   </select>
                 </div>

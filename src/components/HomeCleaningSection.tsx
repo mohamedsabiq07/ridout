@@ -50,7 +50,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
             <span>Dedicated Specialized Cleaning</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-['Montserrat'] text-white">
-            Home Cleaning Services
+            Cleaning Services
           </h2>
           <p className="text-neutral-300 text-base sm:text-lg">
             Professional cleaning for the spaces that matter most.
