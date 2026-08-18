@@ -29,10 +29,13 @@ export const PublicHome = () => {
   // Emergency Modal states
   const [emergencyOpen, setEmergencyOpen] = useState(false);
 
-  const scrollToBooking = (serviceId?: string) => {
+  const [isEmergencyBooking, setIsEmergencyBooking] = useState(false);
+
+  const scrollToBooking = (serviceId?: string, isEmergency: boolean = false) => {
     if (serviceId) {
       setPreselectedBookingServiceId(serviceId);
     }
+    setIsEmergencyBooking(isEmergency);
     const element = document.getElementById('booking-section');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -95,6 +98,7 @@ export const PublicHome = () => {
 
         <BookingForm
           preselectedServiceId={preselectedBookingServiceId}
+          isEmergency={isEmergencyBooking}
           onRequestSubmitted={handleRequestSubmitted}
         />
 
@@ -118,7 +122,7 @@ export const PublicHome = () => {
       <EmergencyPestAlert
         isOpenExternal={emergencyOpen}
         onCloseExternal={() => setEmergencyOpen(false)}
-        onQuickUrgentBook={(serviceId) => scrollToBooking(serviceId)}
+        onQuickUrgentBook={(serviceId) => scrollToBooking(serviceId, true)}
       />
     </div>
   );

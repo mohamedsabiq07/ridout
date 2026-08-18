@@ -8,11 +8,13 @@ import { ShieldCheck, Calendar, Clock, MapPin, Building, User, Phone, Mail, Aler
 
 interface BookingFormProps {
   preselectedServiceId?: string;
+  isEmergency?: boolean;
   onRequestSubmitted: (request: ServiceRequest, whatsappUrl: string) => void;
 }
 
 export const BookingForm: React.FC<BookingFormProps> = ({
   preselectedServiceId,
+  isEmergency = false,
   onRequestSubmitted,
 }) => {
   const [formData, setFormData] = useState<BookingFormData>({
@@ -26,7 +28,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     preferred_date: new Date().toISOString().split('T')[0],
     preferred_time: '10:00 AM',
     notes: '',
-    is_urgent: false,
+    is_urgent: isEmergency,
     photo_name: '',
     photo_data: ''
   });
@@ -35,10 +37,12 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    if (preselectedServiceId) {
-      setFormData((prev) => ({ ...prev, service_id: [preselectedServiceId] }));
-    }
-  }, [preselectedServiceId]);
+    setFormData((prev) => ({ 
+      ...prev, 
+      ...(preselectedServiceId ? { service_id: [preselectedServiceId] } : {}),
+      is_urgent: isEmergency 
+    }));
+  }, [preselectedServiceId, isEmergency]);
 
   const handleServiceToggle = (id: string) => {
     setFormData((prev) => {
