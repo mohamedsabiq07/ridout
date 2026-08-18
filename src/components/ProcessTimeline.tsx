@@ -54,6 +54,17 @@ export const ProcessTimeline: React.FC = () => {
 
         {/* Desktop Horizontal Timeline / Mobile Vertical Timeline */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+          
+          {/* Animated Connecting Line (Hidden on Mobile) */}
+          <div className="hidden md:block absolute top-[48px] left-0 w-full h-[2px] bg-neutral-800/50 z-0">
+            <motion.div 
+              initial={{ width: 0 }}
+              whileInView={{ width: '100%' }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="h-full bg-gradient-to-r from-[#E8871E] to-[#7A9E7E]"
+            />
+          </div>
           {steps.map((item, index) => {
             const IconComponent = item.icon;
             return (
@@ -63,13 +74,14 @@ export const ProcessTimeline: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative flex flex-col items-start group bg-white/5 bg-noise backdrop-blur-md p-6 rounded-lg border border-white/10 hover:border-[#7A9E7E] transition-all"
+                whileHover={{ y: -8, scale: 1.03 }}
+                className="relative flex flex-col items-start group bg-[#171717] bg-noise p-6 rounded-lg border border-[#2A2A2A] hover:border-[#E8871E] hover:shadow-[0_10px_40px_rgba(232,135,30,0.15)] transition-all duration-300 z-10"
               >
                 
                 {/* Step Number & Icon */}
                 <div className="flex items-center justify-between w-full mb-6 border-b border-[#2A2A2A] pb-4">
-                  <div className="w-12 h-12 bg-[#0A0A0A] border border-neutral-800 text-[#E8871E] rounded flex items-center justify-center font-mono font-black text-sm transition-colors shadow-lg">
-                    <IconComponent className="w-6 h-6 text-[#E8871E]" />
+                  <div className="w-12 h-12 bg-[#0A0A0A] border border-[#2A2A2A] text-[#E8871E] rounded flex items-center justify-center transition-all duration-300 shadow-lg group-hover:scale-110 group-hover:bg-[#E8871E] group-hover:text-white">
+                    <IconComponent className="w-6 h-6 transition-colors duration-300" />
                   </div>
                   <span className="text-xs font-mono font-bold text-[#7A9E7E] bg-[#0A0A0A] border border-neutral-800 px-2.5 py-1 rounded">
                     STEP {item.step}
