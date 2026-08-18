@@ -1,6 +1,6 @@
 import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { AnimatedCounter } from './AnimatedCounter';
 
 interface HeroProps {
   onBookClick: () => void;
@@ -122,73 +122,57 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
               </div>
             </motion.div>
 
-            {/* Consolidated Trust Features */}
+            {/* Consolidated Trust Features as Clean Text */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.8 }}
               className="pt-12 border-t border-[#2A2A2A] mt-12 w-full"
             >
-              <div className="text-center mb-6">
+              <div className="text-center mb-10">
                 <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-[#7A9E7E]">
                   Why Customers Trust Ridout
                 </h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-4 w-full">
                 
-                {/* Card 1 */}
-                <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors relative overflow-hidden group text-left">
-                  <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
-                  <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5 relative z-10" />
-                  <div className="relative z-10">
-                    <div className="text-sm font-bold text-white uppercase tracking-wide font-['Montserrat']">
-                      1,000+ Properties
-                    </div>
-                    <div className="text-xs text-neutral-400 mt-0.5 font-medium">
-                      Treated with success
-                    </div>
+                {/* Stat 1 */}
+                <div className="text-center">
+                  <div className="text-3xl lg:text-4xl font-black text-white font-['Montserrat']">
+                    <AnimatedCounter value={1000} suffix="+" duration={2.5} />
+                  </div>
+                  <div className="text-xs text-neutral-400 mt-2 font-medium uppercase tracking-wider">
+                    Properties Treated
                   </div>
                 </div>
 
-                {/* Card 2 */}
-                <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors relative overflow-hidden group text-left">
-                  <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
-                  <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5 relative z-10" />
-                  <div className="relative z-10">
-                    <div className="text-sm font-bold text-white uppercase tracking-wide font-['Montserrat']">
-                      Eco-Friendly
-                    </div>
-                    <div className="text-xs text-neutral-400 mt-0.5 font-medium">
-                      Family & pet safe
-                    </div>
+                {/* Stat 2 */}
+                <div className="text-center">
+                  <div className="text-3xl lg:text-4xl font-black text-white font-['Montserrat']">
+                    100%
+                  </div>
+                  <div className="text-xs text-neutral-400 mt-2 font-medium uppercase tracking-wider">
+                    Eco-Friendly
                   </div>
                 </div>
 
-                {/* Card 3 */}
-                <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors relative overflow-hidden group text-left">
-                  <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
-                  <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5 relative z-10" />
-                  <div className="relative z-10">
-                    <div className="text-sm font-bold text-white uppercase tracking-wide font-['Montserrat']">
-                      Same-Day Dispatch
-                    </div>
-                    <div className="text-xs text-neutral-400 mt-0.5 font-medium">
-                      Dubai, Sharjah & Ajman
-                    </div>
+                {/* Stat 3 */}
+                <div className="text-center">
+                  <div className="text-3xl lg:text-4xl font-black text-white font-['Montserrat']">
+                    Same-Day
+                  </div>
+                  <div className="text-xs text-neutral-400 mt-2 font-medium uppercase tracking-wider">
+                    Dispatch
                   </div>
                 </div>
 
-                {/* Card 4 */}
-                <div className="bg-[#171717] border border-[#2A2A2A] p-5 rounded flex items-start gap-3 hover:border-[#7A9E7E] transition-colors relative overflow-hidden group text-left">
-                  <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
-                  <CheckCircle2 className="w-5 h-5 text-[#7A9E7E] shrink-0 mt-0.5 relative z-10" />
-                  <div className="relative z-10">
-                    <div className="text-sm font-bold text-white uppercase tracking-wide font-['Montserrat']">
-                      4-Month Guarantee
-                    </div>
-                    <div className="text-xs text-neutral-400 mt-0.5 font-medium">
-                      Free re-treatment included
-                    </div>
+                {/* Stat 4 */}
+                <div className="text-center">
+                  <div className="text-3xl lg:text-4xl font-black text-white font-['Montserrat']">
+                    <AnimatedCounter value={4} suffix="-Month" duration={1.5} />
+                  </div>
+                  <div className="text-xs text-neutral-400 mt-2 font-medium uppercase tracking-wider">
+                    Guarantee
                   </div>
                 </div>
 
