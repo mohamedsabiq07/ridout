@@ -4,7 +4,7 @@ import type { ServiceRequest } from '../types/booking';
 interface PrintableInvoiceProps {
   request: ServiceRequest;
   documentType: 'Quotation' | 'Invoice';
-  cost: string;
+  lineItems: { name: string; cost: string }[];
   notes: string;
   referenceNumber: string;
   jobNumber: string;
@@ -12,7 +12,7 @@ interface PrintableInvoiceProps {
 }
 
 export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoiceProps>(
-  ({ request, documentType, cost, notes, referenceNumber, jobNumber, accountDetails }, ref) => {
+  ({ request, documentType, lineItems, notes, referenceNumber, jobNumber, accountDetails }, ref) => {
     
     const prefix = documentType === 'Invoice' ? 'INV' : 'QUO';
     const documentNumber = `${prefix}-${String(referenceNumber).padStart(4, '0')}`;
@@ -28,8 +28,6 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
 2) Service includes a 4-month warranty; free re-treatment if pests return within this period.
 3) Prices are subject to site inspection and may vary based on actual infestation level.
 4) Payment accepted cash only after the services done.`;
-
-    const serviceName = Array.isArray(request.service_name) ? request.service_name.join(', ') : request.service_name;
 
     return (
       <div className="hidden">
@@ -91,32 +89,40 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white">
-                <td className="border border-gray-400 p-2 text-center">1</td>
-                <td className="border border-gray-400 p-2">{serviceName}</td>
-                <td className="border border-gray-400 p-2 text-center">1</td>
-                <td className="border border-gray-400 p-2 text-center"></td>
-                <td className="border border-gray-400 p-2 text-right">{cost}</td>
-                <td className="border border-gray-400 p-2 text-right">{cost}</td>
-              </tr>
-              {/* Optional secondary rows can be added here if needed */}
-              <tr className="bg-white">
-                <td className="border border-gray-400 p-2 text-center">2</td>
-                <td className="border border-gray-400 p-2"></td>
-                <td className="border border-gray-400 p-2 text-center"></td>
-                <td className="border border-gray-400 p-2 text-center"></td>
-                <td className="border border-gray-400 p-2 text-right"></td>
-                <td className="border border-gray-400 p-2 text-right"></td>
-              </tr>
+              {lineItems.map((item, index) => (
+                <tr key={index} className="bg-white">
+                  <td className="border border-gray-400 p-2 text-center">{index + 1}</td>
+                  <td className="border border-gray-400 p-2">{item.name}</td>
+                  <td className="border border-gray-400 p-2 text-center">1</td>
+                  <td className="border border-gray-400 p-2 text-center"></td>
+                  <td className="border border-gray-400 p-2 text-right">{item.cost || '0'}</td>
+                  <td className="border border-gray-400 p-2 text-right">{item.cost || '0'}</td>
+                </tr>
+              ))}
+              {/* Fill remaining rows up to min rows if needed, just a spacer */}
+              {lineItems.length === 1 && (
+                <tr className="bg-white">
+                  <td className="border border-gray-400 p-2 text-center">2</td>
+                  <td className="border border-gray-400 p-2"></td>
+                  <td className="border border-gray-400 p-2 text-center"></td>
+                  <td className="border border-gray-400 p-2 text-center"></td>
+                  <td className="border border-gray-400 p-2 text-right"></td>
+                  <td className="border border-gray-400 p-2 text-right"></td>
+                </tr>
+              )}
               
               {/* Totals */}
               <tr className="bg-[#F3F4F6] font-bold">
                 <td colSpan={5} className="border border-gray-400 p-2 text-right">Subtotal (AED)</td>
-                <td className="border border-gray-400 p-2 text-right">{cost}</td>
+                <td className="border border-gray-400 p-2 text-right">
+                  {lineItems.reduce((sum, item) => sum + (Number(item.cost) || 0), 0)}
+                </td>
               </tr>
               <tr className="bg-[#1C2C54] text-white font-bold">
                 <td colSpan={5} className="border border-gray-400 p-2 text-right">GRAND TOTAL (AED)</td>
-                <td className="border border-gray-400 p-2 text-right bg-white text-black">{cost}</td>
+                <td className="border border-gray-400 p-2 text-right bg-white text-black">
+                  {lineItems.reduce((sum, item) => sum + (Number(item.cost) || 0), 0)}
+                </td>
               </tr>
             </tbody>
           </table>
