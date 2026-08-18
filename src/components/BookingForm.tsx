@@ -35,18 +35,28 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     photo_data: ''
   });
 
+  const [propertyCategory, setPropertyCategory] = useState<'residential' | 'commercial'>(
+    preselectedPropertyCategory || 'residential'
+  );
+
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (preselectedPropertyCategory) {
+      setPropertyCategory(preselectedPropertyCategory);
+    }
+  }, [preselectedPropertyCategory]);
 
   useEffect(() => {
     setFormData((prev) => ({ 
       ...prev, 
       ...(preselectedServiceId ? { service_id: [preselectedServiceId] } : {}),
-      ...(preselectedPropertyCategory === 'commercial' && prev.property_type === 'Apartment' ? { property_type: 'Office' } : {}),
-      ...(preselectedPropertyCategory === 'residential' && prev.property_type === 'Office' ? { property_type: 'Apartment' } : {}),
+      ...(propertyCategory === 'commercial' && prev.property_type === 'Apartment' ? { property_type: 'Office' } : {}),
+      ...(propertyCategory === 'residential' && prev.property_type === 'Office' ? { property_type: 'Apartment' } : {}),
       is_urgent: isEmergency 
     }));
-  }, [preselectedServiceId, isEmergency, preselectedPropertyCategory]);
+  }, [preselectedServiceId, isEmergency, propertyCategory]);
 
   const handleServiceToggle = (id: string) => {
     setFormData((prev) => {
@@ -349,6 +359,43 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             {/* Grid 3: Property Type & Location */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
+              {/* Residential or Commercial Choice */}
+              <div className="md:col-span-2">
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-3">
+                  Is this a Residential or Commercial property? <span className="text-red-500">*</span>
+                </label>
+                <div className="flex gap-4">
+                  <label className={`flex-1 flex items-center justify-center gap-2 p-3 rounded border cursor-pointer transition-colors ${
+                    propertyCategory === 'residential' 
+                      ? 'bg-[#E8871E] border-[#E8871E] text-white font-bold' 
+                      : 'bg-white border-[#E2DFD7] text-[#5A5A5A] hover:border-[#0A0A0A]'
+                  }`}>
+                    <input 
+                      type="radio" 
+                      name="property_category" 
+                      className="hidden" 
+                      checked={propertyCategory === 'residential'}
+                      onChange={() => setPropertyCategory('residential')}
+                    />
+                    Residential
+                  </label>
+                  <label className={`flex-1 flex items-center justify-center gap-2 p-3 rounded border cursor-pointer transition-colors ${
+                    propertyCategory === 'commercial' 
+                      ? 'bg-[#E8871E] border-[#E8871E] text-white font-bold' 
+                      : 'bg-white border-[#E2DFD7] text-[#5A5A5A] hover:border-[#0A0A0A]'
+                  }`}>
+                    <input 
+                      type="radio" 
+                      name="property_category" 
+                      className="hidden" 
+                      checked={propertyCategory === 'commercial'}
+                      onChange={() => setPropertyCategory('commercial')}
+                    />
+                    Commercial
+                  </label>
+                </div>
+              </div>
+
               {/* Property Type */}
               <div>
                 <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
@@ -362,14 +409,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                     onChange={handleChange}
                     className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors cursor-pointer"
                   >
-                    {(!preselectedPropertyCategory || preselectedPropertyCategory === 'residential') && (
+                    {propertyCategory === 'residential' && (
                       <>
                         <option value="Apartment">Apartment</option>
                         <option value="Villa">Villa</option>
                         <option value="Partition">Partition</option>
                       </>
                     )}
-                    {(!preselectedPropertyCategory || preselectedPropertyCategory === 'commercial') && (
+                    {propertyCategory === 'commercial' && (
                       <>
                         <option value="Office">Office</option>
                         <option value="Shop">Shop</option>
