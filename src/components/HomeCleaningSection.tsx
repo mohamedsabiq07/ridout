@@ -47,13 +47,13 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#171717] border border-[#2A2A2A] text-xs font-mono font-bold text-neutral-300">
             <Sparkles className="w-4 h-4 text-[#E8871E]" />
-            <span>Dedicated Specialized Cleaning</span>
+            <span>Residential & Commercial Cleaning</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-['Montserrat'] text-white">
-            Cleaning Services
+            Professional Cleaning Services
           </h2>
           <p className="text-neutral-300 text-base sm:text-lg">
-            Professional cleaning for the spaces that matter most.
+            Expert cleaning solutions for apartments, villas, offices, and commercial properties across the UAE.
           </p>
         </motion.div>
 
