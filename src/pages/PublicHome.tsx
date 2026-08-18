@@ -70,10 +70,6 @@ export const PublicHome = () => {
       <main>
         <Hero
           onBookClick={() => scrollToBooking()}
-          onViewServicesClick={() => {
-            const el = document.getElementById('services');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
         />
 
         <PropertySelector 

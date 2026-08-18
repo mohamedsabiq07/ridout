@@ -1,14 +1,13 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { AnimatedCounter } from './AnimatedCounter';
 
 interface HeroProps {
   onBookClick: () => void;
-  onViewServicesClick: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) => {
+export const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
   return (
     <section id="hero" className="relative bg-[#0A0A0A] text-white pt-16 pb-20 lg:pt-20 lg:pb-28 overflow-hidden border-b border-[#2A2A2A]">
       
@@ -53,59 +52,57 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onViewServicesClick }) 
             </motion.div>
 
             {/* Headline */}
-            <div className="space-y-3">
-              <motion.span 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="block text-xl sm:text-2xl font-bold uppercase tracking-wider text-[#7A9E7E] font-['Montserrat']"
-              >
-                PESTS OUT. PEACE IN.
-              </motion.span>
+            <div className="space-y-3 mt-4">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-['Montserrat'] tracking-tight leading-tight text-white"
+                className="text-5xl sm:text-6xl lg:text-[5rem] font-black font-['Montserrat'] tracking-tight leading-[1.05] text-white uppercase"
               >
-                24 Hours Pest Control Services <br />
-                <span className="text-[#E8871E]">Protecting You.</span>
+                <span className="text-[#E8871E]">FAST. EFFECTIVE.</span><br />
+                PEST CONTROL.
               </motion.h1>
             </div>
 
             {/* Subtext */}
-            <motion.p 
+            <motion.h2 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-lg sm:text-xl text-neutral-300 max-w-2xl font-normal leading-relaxed"
+              className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#E2DFD7] max-w-3xl leading-relaxed uppercase tracking-wider font-['Montserrat']"
             >
-              Professional, eco-friendly pest management for apartments, villas, offices, and commercial properties across Dubai, Sharjah, and Ajman. Safe for families, pets, and the environment.
-            </motion.p>
+              RID YOUR HOME OF PESTS TODAY.
+            </motion.h2>
 
             {/* CTAs */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+              className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 pt-4"
             >
               <button
                 onClick={onBookClick}
-                className="flex items-center justify-center gap-3 bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold text-base tracking-wide transition-all shadow-xl hover:shadow-2xl active:scale-98 cursor-pointer group uppercase font-['Montserrat'] relative overflow-hidden"
+                className="flex items-center justify-center bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold text-base sm:text-lg tracking-wide transition-all shadow-xl hover:shadow-2xl active:scale-98 cursor-pointer uppercase font-['Montserrat'] relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-[radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:10px_10px] pointer-events-none" />
                 <span className="relative z-10">Get a Free Quote</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
               </button>
 
-              <button
-                onClick={onViewServicesClick}
-                className="flex items-center justify-center gap-2 bg-[#171717] hover:bg-neutral-800 text-white border border-[#2A2A2A] px-7 py-4 rounded font-semibold text-base transition-all cursor-pointer uppercase font-['Montserrat'] relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:10px_10px] pointer-events-none" />
-                <span className="relative z-10">View Services</span>
-              </button>
+              <div className="flex items-center gap-6 text-left">
+                <div className="flex items-center gap-3">
+                  <div className="text-[#E8871E]">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+                  </div>
+                  <span className="text-white font-['Montserrat'] font-semibold text-sm sm:text-base leading-tight">Certified<br/>Technicians</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="text-[#E8871E]">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <span className="text-white font-['Montserrat'] font-semibold text-sm sm:text-base leading-tight">24/7<br/>Response</span>
+                </div>
+              </div>
             </motion.div>
 
             {/* Certifications Logo Strip */}
