@@ -603,6 +603,21 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               )}
             </div>
 
+            {/* Notes */}
+            <div>
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                Additional Notes / Cleaning Instructions
+              </label>
+              <textarea
+                name="notes"
+                rows={3}
+                value={formData.notes}
+                onChange={handleChange}
+                placeholder="e.g. Focus on stove degreasing, bathroom tiles limescale removal, or specific pest location..."
+                className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded p-4 outline-none transition-colors"
+              />
+            </div>
+
             {/* Submit Button */}
             <div className="pt-2">
               <button
@@ -633,3 +648,4 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     </section>
   );
 };
+
