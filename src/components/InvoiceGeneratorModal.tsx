@@ -34,7 +34,7 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
   const [notes, setNotes] = useState<string>('');
   
   // New Fields
-  const [referenceNumber, setReferenceNumber] = useState<string>('1');
+  const [referenceNumber, setReferenceNumber] = useState<string>('1037');
   const [jobNumber, setJobNumber] = useState<string>(request.request_number || '');
   const [accountDetails, setAccountDetails] = useState<string>('Bank Name: \nAccount Name: \nAccount Number: \nIBAN: ');
   
