@@ -41,7 +41,10 @@ export const InvoiceGeneratorModal: React.FC<InvoiceGeneratorModalProps> = ({ re
 
     const result = [...pestControl];
     if (cleaning.length > 1) {
-      result.push(`${cleaning.join(' & ')}`);
+      // Strip out the word "Cleaning" from each service name (case-insensitive)
+      const strippedCleaning = cleaning.map(c => c.replace(/\s+cleaning$/i, '').trim());
+      // Join them with " & " and append " Cleaning" at the end
+      result.push(`${strippedCleaning.join(' & ')} Cleaning`);
     } else if (cleaning.length === 1) {
       result.push(cleaning[0]);
     }
