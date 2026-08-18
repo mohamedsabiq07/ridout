@@ -200,7 +200,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             Get a Free Quote & Schedule
           </h2>
           <p className="text-[#5A5A5A] text-base max-w-xl mx-auto">
-            Fill in your property details below for Pest Control or Home Cleaning. Our certified team will contact you immediately to confirm arrival.
+            Fill in your property details below for Pest Control or Cleaning Services. Our certified team will contact you immediately to confirm arrival.
           </p>
         </div>
 
@@ -310,7 +310,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                   errors.service_id ? 'border-red-500' : 'border-[#E2DFD7]'
                 }`}>
                   <div className="col-span-full mb-1">
-                    <span className="text-xs font-bold text-[#5A5A5A]">🧹 Home Cleaning</span>
+                    <span className="text-xs font-bold text-[#5A5A5A]">🧹 Cleaning Services</span>
                   </div>
                   {cleaningServices.map((s) => (
                     <label key={s.id} className="flex items-center gap-2 cursor-pointer group">

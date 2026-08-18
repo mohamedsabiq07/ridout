@@ -49,7 +49,7 @@ export const LocationPage: React.FC = () => {
     <div className="min-h-screen bg-[#F7F7F7] text-[#0A0A0A] font-sans">
       <SEO 
         title={`Pest Control in ${locationName} | Fast & Reliable Service`} 
-        description={`Professional, eco-friendly pest control and home cleaning services in ${locationName}. Safe for families and pets. Get a free quote today!`} 
+        description={`Professional, eco-friendly pest control and cleaning services in ${locationName}. Safe for families and pets. Get a free quote today!`} 
         canonicalUrl={`/locations/${slug}`}
         schemaMarkup={schemaMarkup}
       />
@@ -70,7 +70,7 @@ export const LocationPage: React.FC = () => {
               <span className="text-[#E8871E]">{locationName}</span>
             </h1>
             <p className="text-xl text-neutral-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Serving {locationName} with fast, eco-safe, and highly effective pest elimination. Whether it's cockroaches, bed bugs, or general home cleaning, we dispatch our certified technicians directly to you.
+              Serving {locationName} with fast, eco-safe, and highly effective pest elimination. Whether it's cockroaches, bed bugs, or general cleaning, we dispatch our certified technicians directly to you.
             </p>
             <button 
               onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
