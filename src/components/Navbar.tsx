@@ -31,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <img
               src="/logo-white.png"
               alt="Rid Out Pest Control Services"
-              className="h-20 sm:h-28 w-auto object-contain -ml-4 sm:-ml-8 shrink-0 transition-transform scale-[1.8] sm:scale-[2.2] origin-left group-hover:scale-[1.9] sm:group-hover:scale-[2.3]"
+              className="h-20 sm:h-28 w-auto object-contain -ml-6 sm:-ml-8 shrink-0 transition-transform scale-[2.2] sm:scale-[2.2] origin-left group-hover:scale-[2.3] sm:group-hover:scale-[2.3]"
             />
           </a>
 

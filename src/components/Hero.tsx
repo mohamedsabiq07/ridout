@@ -18,7 +18,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-70 hidden md:block"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-90 hidden md:block"
         >
           <source src="/ridout-v1.mp4" type="video/mp4" />
         </video>
@@ -28,11 +28,11 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-70 block md:hidden"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-90 block md:hidden"
         >
           <source src="/portrait-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-[#0A0A0A]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/80 via-[#0A0A0A]/40 to-transparent" />
       </div>
 
       {/* Subtle Background Pattern */}
