@@ -56,7 +56,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-5xl sm:text-6xl lg:text-[5rem] font-black font-['Montserrat'] tracking-tight leading-[1.05] text-white uppercase"
+                className="text-4xl sm:text-5xl lg:text-6xl font-black font-['Montserrat'] tracking-tight leading-[1.05] text-white uppercase"
               >
                 <span className="text-[#E8871E]">FAST. EFFECTIVE.</span><br />
                 PEST CONTROL.
