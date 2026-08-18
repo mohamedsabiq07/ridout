@@ -173,7 +173,7 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
           </div>
 
           {/* Signatures */}
-          <div className="mt-12 flex justify-between text-xs italic">
+          <div className="mt-8 flex justify-between text-xs italic break-inside-avoid">
             <div>
               <p>Authorized by: Rid Out Pest Control Services</p>
               <p className="mt-4">Customer Acceptance / Signature: ___________________</p>
@@ -181,11 +181,11 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
           </div>
 
           {/* Footer naturally flows below */}
-          <div className="mt-8">
+          <div className="mt-4 break-inside-avoid">
             <div className="bg-[#FAE3D9] text-center py-2 text-xs text-[#1C2C54]">
               <span className="underline">Rid Out Pest Control Services</span> &nbsp;|&nbsp; <span className="underline">055 4720124</span> &nbsp;|&nbsp; <span className="underline">Available 24/7</span> &nbsp;|&nbsp; <span className="underline">Serving Dubai, Sharjah, Ajman</span>
             </div>
-            <div className="text-center text-[10px] text-gray-500 mt-1">
+            <div className="text-center text-[10px] text-gray-500 mt-1 pb-2">
               This is a computer-generated {documentType.toLowerCase()}. No signature is required.
             </div>
           </div>
