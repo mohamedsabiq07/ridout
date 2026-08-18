@@ -158,6 +158,26 @@ export const PEST_SERVICES: PestService[] = [
   },
   // Home Cleaning Services
   {
+    id: 'deep-cleaning',
+    name: 'Deep Cleaning',
+    slug: 'deep-cleaning',
+    iconName: 'Sparkles',
+    imageUrl: '/placeholder-cleaning.jpg',
+    category: 'cleaning',
+    shortDesc: 'Comprehensive top-to-bottom deep cleaning for apartments and villas, reaching every corner.',
+    fullDesc: 'Intensive deep cleaning service targeting accumulated dirt and grime. Includes detailed scrubbing of all rooms, inside windows, deep dusting, floor scrubbing, and sanitizing hard-to-reach areas.',
+    startingPrice: 'Based on Size',
+    problems: ['Heavy Grime', 'Dust Accumulation', 'Move-in / Move-out', 'Post Construction'],
+    method: 'Industrial-grade vacuums, steam sanitization, and specialized deep-action chemical cleaners.',
+    suitableFor: ['Apartments', 'Villas', 'Offices'],
+    duration: '4 - 8 hours',
+    preparationSteps: [
+      'Ensure clear access to all rooms.',
+      'Secure or remove valuable fragile items.',
+      'Empty cabinets if interior cleaning is requested.'
+    ]
+  },
+  {
     id: 'kitchen-cleaning',
     name: 'Kitchen Cleaning',
     slug: 'kitchen-cleaning',
