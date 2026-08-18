@@ -38,6 +38,9 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
           {/* Header */}
           <div className="flex justify-between items-center mb-1">
             <div>
+              <img src="/logo-black.png" alt="Rid Out Pest Control" className="h-32 w-auto object-contain" />
+            </div>
+            <div className="text-right">
               <h1 className="text-2xl font-bold text-[#1C2C54] uppercase tracking-wide mb-1">
                 RID OUT PEST CONTROL SERVICES
               </h1>
@@ -47,9 +50,6 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
               <p className="text-[#E8871E] font-bold text-xs">
                 Mobile: 055 4720124 &nbsp;|&nbsp; Available 24/7
               </p>
-            </div>
-            <div>
-              <img src="/logo-black.png" alt="Rid Out Pest Control" className="h-32 w-auto object-contain" />
             </div>
           </div>
 
