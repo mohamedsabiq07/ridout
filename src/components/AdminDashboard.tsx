@@ -414,6 +414,7 @@ export const AdminDashboard: React.FC = () => {
                   <th className="p-3.5">Request ID</th>
                   <th className="p-3.5">Customer & Phone</th>
                   <th className="p-3.5">Service</th>
+                  <th className="p-3.5">Source</th>
                   <th className="p-3.5">Property & Area</th>
                   <th className="p-3.5">Preferred Slot</th>
                   <th className="p-3.5">Status</th>
@@ -423,7 +424,7 @@ export const AdminDashboard: React.FC = () => {
               <tbody className="divide-y divide-neutral-800">
                 {filteredRequests.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="p-8 text-center text-neutral-500 font-mono">
+                    <td colSpan={9} className="p-8 text-center text-neutral-500 font-mono">
                       No service requests match your search filter.
                     </td>
                   </tr>
@@ -479,6 +480,10 @@ export const AdminDashboard: React.FC = () => {
                               {Array.isArray(req.service_name) ? req.service_name.join(', ') : (req.service_name as unknown as string)}
                             </span>
                           </div>
+                        </td>
+
+                        <td className="p-3.5 text-neutral-400 text-xs">
+                          {req.discovery_source || '-'}
                         </td>
 
                         <td className="p-3.5 text-neutral-300 whitespace-nowrap">
