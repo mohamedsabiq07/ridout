@@ -16,7 +16,7 @@ import { Footer } from '../components/Footer';
 import { ServiceModal } from '../components/ServiceModal';
 import { SuccessModal } from '../components/SuccessModal';
 import { EmergencyPestAlert } from '../components/EmergencyPestAlert';
-import { InsectAnimations } from '../components/InsectAnimations';
+import { RealisticCockroach } from '../components/RealisticCockroach';
 import { FloatingContact } from '../components/FloatingContact';
 import { LiveSocialProof } from '../components/LiveSocialProof';
 import { MobileActionDock } from '../components/MobileActionDock';
@@ -73,15 +73,6 @@ export const PublicHome = () => {
     setWhatsappUrl(waUrl);
   };
 
-  const handleInsectClick = (type: string) => {
-    let serviceId = 'general-pest-control';
-    if (type === 'cockroach') serviceId = 'cockroach-control';
-    if (type === 'ant') serviceId = 'ant-control';
-    if (type === 'mosquito') serviceId = 'mosquito-control';
-    
-    scrollToBooking(serviceId);
-  };
-
   return (
     <div className="min-h-screen bg-[#F7F7F7] text-[#0A0A0A] font-sans selection:bg-[#0A0A0A] selection:text-white relative pb-16 md:pb-0">
       {/* Rich Homepage SEO & 4.9 Star Aggregate Rating Schema */}
@@ -96,8 +87,8 @@ export const PublicHome = () => {
       <LiveSocialProof />
       <MobileActionDock onBookClick={() => scrollToBooking()} />
       
-      {/* 3 Micro Insect Animations Easter Egg */}
-      <InsectAnimations onInsectClick={handleInsectClick} />
+      {/* Realistic Background Crawling Cockroach Easter Egg */}
+      <RealisticCockroach onSpotCockroach={() => scrollToBooking('cockroach-control')} />
 
       {/* Navigation */}
       <Navbar
