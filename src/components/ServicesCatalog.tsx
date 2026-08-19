@@ -47,7 +47,7 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
                 whileHover={{ y: -8 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="bg-white/80 backdrop-blur-md border border-[#E2DFD7] hover:border-[#E8871E] rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-[0_10px_35px_rgba(232,135,30,0.22)] group relative h-full cursor-pointer"
+                className="bg-white hover:bg-gradient-to-br hover:from-white hover:via-[#FEF3C7]/60 hover:to-[#E6F4EA]/60 border border-[#E2DFD7] hover:border-[#E8871E] rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-[0_15px_40px_-5px_rgba(232,135,30,0.3),0_0_0_1px_rgba(232,135,30,0.4)] group relative h-full cursor-pointer"
               >
                 <Link to={`/services/${service.slug}`} className="absolute inset-0 z-10" aria-label={`View ${service.name} details`} />
                 {service.imageUrl && (
