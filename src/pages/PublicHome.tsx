@@ -4,17 +4,23 @@ import { Hero } from '../components/Hero';
 import { PropertySelector } from '../components/PropertySelector';
 import { ServicesCatalog } from '../components/ServicesCatalog';
 import { HomeCleaningSection } from '../components/HomeCleaningSection';
-import { ServiceModal } from '../components/ServiceModal';
+import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
 import { WhyUs } from '../components/WhyUs';
 import { ProcessTimeline } from '../components/ProcessTimeline';
+import { PriceEstimator } from '../components/PriceEstimator';
 import { CustomerReviews } from '../components/CustomerReviews';
+import { FAQSection } from '../components/FAQSection';
 import { BookingForm } from '../components/BookingForm';
 import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
+import { ServiceModal } from '../components/ServiceModal';
 import { SuccessModal } from '../components/SuccessModal';
 import { EmergencyPestAlert } from '../components/EmergencyPestAlert';
 import { InsectAnimations } from '../components/InsectAnimations';
 import { FloatingContact } from '../components/FloatingContact';
+import { LiveSocialProof } from '../components/LiveSocialProof';
+import { MobileActionDock } from '../components/MobileActionDock';
+import { SEO } from '../components/SEO';
 import type { PestService, ServiceRequest } from '../types/booking';
 
 export const PublicHome = () => {
@@ -28,7 +34,6 @@ export const PublicHome = () => {
 
   // Emergency Modal states
   const [emergencyOpen, setEmergencyOpen] = useState(false);
-
   const [isEmergencyBooking, setIsEmergencyBooking] = useState(false);
 
   const scrollToBooking = (serviceId?: string, isEmergency: boolean = false) => {
@@ -57,13 +62,23 @@ export const PublicHome = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F7F7] text-[#0A0A0A] font-sans selection:bg-[#0A0A0A] selection:text-white relative">
+    <div className="min-h-screen bg-[#F7F7F7] text-[#0A0A0A] font-sans selection:bg-[#0A0A0A] selection:text-white relative pb-16 md:pb-0">
+      {/* Rich Homepage SEO & 4.9 Star Aggregate Rating Schema */}
+      <SEO
+        title="Best Pest Control & Deep Cleaning Dubai, Sharjah, Ajman"
+        description="Municipality-approved pest control and professional deep cleaning services in Dubai, Sharjah, and Ajman. Odorless, family-safe, 4-month guarantee. Get a free quote now!"
+        canonicalUrl="/"
+      />
+
+      {/* Floating UI Elements */}
       <FloatingContact />
+      <LiveSocialProof />
+      <MobileActionDock onBookClick={() => scrollToBooking()} />
       
       {/* 3 Micro Insect Animations Easter Egg */}
       <InsectAnimations onInsectClick={handleInsectClick} />
 
-      {/* Navigation - No admin specific counts passed anymore */}
+      {/* Navigation */}
       <Navbar
         onBookClick={() => scrollToBooking()}
         onEmergencyClick={() => setEmergencyOpen(true)}
@@ -90,9 +105,23 @@ export const PublicHome = () => {
           onBookCleaning={(serviceId) => scrollToBooking(serviceId)}
         />
 
+        {/* Option A: Interactive Visual Transformation Slider */}
+        <BeforeAfterSlider
+          onBookClick={(serviceId) => scrollToBooking(serviceId)}
+        />
+
         <WhyUs />
+        
+        {/* Option C: Instant Rate Calculator */}
+        <PriceEstimator
+          onSelectAndBook={(serviceId) => scrollToBooking(serviceId)}
+        />
+
         <ProcessTimeline />
         <CustomerReviews />
+
+        {/* Option C: High-Ranking FAQ Accordion with Schema */}
+        <FAQSection />
 
         <BookingForm
           preselectedServiceId={preselectedBookingServiceId}

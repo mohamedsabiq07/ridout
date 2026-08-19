@@ -1,0 +1,8 @@
+# Allow all compliant search engine crawlers
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://ridoutpest.com/sitemap.xml

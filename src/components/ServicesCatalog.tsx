@@ -44,19 +44,23 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
                 key={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/60 bg-noise backdrop-blur-md border border-[#E2DFD7] hover:border-[#0A0A0A] rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl group relative h-full cursor-pointer"
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="bg-white/80 backdrop-blur-md border border-[#E2DFD7] hover:border-[#E8871E] rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-[#E8871E]/15 group relative h-full cursor-pointer"
               >
                 <Link to={`/services/${service.slug}`} className="absolute inset-0 z-10" aria-label={`View ${service.name} details`} />
                 {service.imageUrl && (
-                  <div className="w-full h-40 overflow-hidden bg-[#E2DFD7] relative">
+                  <div className="w-full h-44 overflow-hidden bg-[#E2DFD7] relative">
                     <img 
                       src={service.imageUrl} 
                       alt={service.name} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+                    <span className="absolute bottom-2.5 left-3 text-[10px] font-mono font-bold bg-black/70 backdrop-blur-md text-[#E8871E] px-2 py-0.5 rounded border border-[#E8871E]/30">
+                      Municipality Approved
+                    </span>
                   </div>
                 )}
                 
