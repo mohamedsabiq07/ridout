@@ -16,10 +16,8 @@ import { Footer } from '../components/Footer';
 import { ServiceModal } from '../components/ServiceModal';
 import { SuccessModal } from '../components/SuccessModal';
 import { EmergencyPestAlert } from '../components/EmergencyPestAlert';
-import { RealisticCockroach } from '../components/RealisticCockroach';
 import { FloatingContact } from '../components/FloatingContact';
 import { LiveSocialProof } from '../components/LiveSocialProof';
-import { MobileActionDock } from '../components/MobileActionDock';
 import { SEO } from '../components/SEO';
 import type { PestService, ServiceRequest } from '../types/booking';
 
@@ -74,7 +72,7 @@ export const PublicHome = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F7F7] text-[#0A0A0A] font-sans selection:bg-[#0A0A0A] selection:text-white relative pb-16 md:pb-0">
+    <div className="min-h-screen bg-[#F7F7F7] text-[#0A0A0A] font-sans selection:bg-[#0A0A0A] selection:text-white relative">
       {/* Rich Homepage SEO & 4.9 Star Aggregate Rating Schema */}
       <SEO
         title="Best Pest Control & Deep Cleaning Dubai, Sharjah, Ajman"
@@ -85,10 +83,6 @@ export const PublicHome = () => {
       {/* Floating UI Elements */}
       <FloatingContact />
       <LiveSocialProof />
-      <MobileActionDock onBookClick={() => scrollToBooking()} />
-      
-      {/* Realistic Background Crawling Cockroach Easter Egg */}
-      <RealisticCockroach onSpotCockroach={() => scrollToBooking('cockroach-control')} />
 
       {/* Navigation */}
       <Navbar
