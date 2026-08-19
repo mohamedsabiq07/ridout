@@ -26,6 +26,8 @@ import type { PestService, ServiceRequest } from '../types/booking';
 export const PublicHome = () => {
   const [selectedServiceForModal, setSelectedServiceForModal] = useState<PestService | null>(null);
   const [preselectedBookingServiceId, setPreselectedBookingServiceId] = useState<string>('general-pest-control');
+  const [preselectedPropertyType, setPreselectedPropertyType] = useState<string>('2 BHK');
+  const [prefilledNotes, setPrefilledNotes] = useState<string>('');
   const [serviceFilter, setServiceFilter] = useState<'all' | 'residential' | 'commercial'>('all');
   
   // Submission & Success state
@@ -45,6 +47,25 @@ export const PublicHome = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handlePriceEstimateBook = (
+    serviceId: string,
+    propertyType: string,
+    rate: { min: number; max: number },
+    serviceName: string
+  ) => {
+    setPreselectedBookingServiceId(serviceId);
+    setPreselectedPropertyType(propertyType);
+
+    // Apart from general pest, auto-populate the chosen service details in the notes section
+    if (serviceId !== 'general-pest-control') {
+      setPrefilledNotes(`[Rate Calculator Selected: ${serviceName} | Size: ${propertyType} | Estimated: AED ${rate.min} - ${rate.max}]`);
+    } else {
+      setPrefilledNotes('');
+    }
+
+    scrollToBooking(serviceId);
   };
 
   const handleRequestSubmitted = (request: ServiceRequest, waUrl: string) => {
@@ -112,9 +133,9 @@ export const PublicHome = () => {
 
         <WhyUs />
         
-        {/* Option C: Instant Rate Calculator */}
+        {/* Option C: Instant Rate Calculator with Live Sync */}
         <PriceEstimator
-          onSelectAndBook={(serviceId) => scrollToBooking(serviceId)}
+          onSelectAndBook={handlePriceEstimateBook}
         />
 
         <ProcessTimeline />
@@ -126,6 +147,8 @@ export const PublicHome = () => {
         <BookingForm
           preselectedServiceId={preselectedBookingServiceId}
           preselectedPropertyCategory={serviceFilter === 'all' ? null : serviceFilter}
+          preselectedPropertyType={preselectedPropertyType}
+          prefilledNotes={prefilledNotes}
           isEmergency={isEmergencyBooking}
           onRequestSubmitted={handleRequestSubmitted}
         />

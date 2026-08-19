@@ -9,6 +9,8 @@ import { ShieldCheck, Calendar, Clock, MapPin, Building, User, Phone, Mail, Aler
 interface BookingFormProps {
   preselectedServiceId?: string;
   preselectedPropertyCategory?: 'residential' | 'commercial' | null;
+  preselectedPropertyType?: string;
+  prefilledNotes?: string;
   isEmergency?: boolean;
   onRequestSubmitted: (request: ServiceRequest, whatsappUrl: string) => void;
 }
@@ -16,6 +18,8 @@ interface BookingFormProps {
 export const BookingForm: React.FC<BookingFormProps> = ({
   preselectedServiceId,
   preselectedPropertyCategory,
+  preselectedPropertyType,
+  prefilledNotes,
   isEmergency = false,
   onRequestSubmitted,
 }) => {
@@ -29,7 +33,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     location: '',
     preferred_date: new Date().toISOString().split('T')[0],
     preferred_time: '10:00 AM',
-    notes: '',
+    notes: prefilledNotes || '',
     is_urgent: isEmergency,
     photo_name: '',
     photo_data: ''
@@ -49,14 +53,36 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   }, [preselectedPropertyCategory]);
 
   useEffect(() => {
-    setFormData((prev) => ({ 
-      ...prev, 
-      ...(preselectedServiceId ? { service_id: [preselectedServiceId] } : {}),
-      ...(propertyCategory === 'commercial' && prev.property_type === 'Apartment' ? { property_type: 'Office' } : {}),
-      ...(propertyCategory === 'residential' && prev.property_type === 'Office' ? { property_type: 'Apartment' } : {}),
-      is_urgent: isEmergency 
-    }));
-  }, [preselectedServiceId, isEmergency, propertyCategory]);
+    setFormData((prev) => {
+      let nextPropType = prev.property_type;
+      let nextAptSize = prev.apartment_size;
+      let nextCategory = propertyCategory;
+
+      if (preselectedPropertyType) {
+        if (preselectedPropertyType === 'Villa') {
+          nextCategory = 'residential';
+          nextPropType = 'Villa';
+        } else if (preselectedPropertyType === 'Commercial') {
+          nextCategory = 'commercial';
+          nextPropType = 'Office';
+        } else {
+          nextCategory = 'residential';
+          nextPropType = 'Apartment';
+          nextAptSize = (preselectedPropertyType === '3+ BHK' ? '3 BHK' : preselectedPropertyType) as any;
+        }
+        setPropertyCategory(nextCategory);
+      }
+
+      return {
+        ...prev,
+        ...(preselectedServiceId ? { service_id: [preselectedServiceId] } : {}),
+        property_type: nextPropType,
+        apartment_size: nextAptSize,
+        ...(prefilledNotes !== undefined ? { notes: prefilledNotes } : {}),
+        is_urgent: isEmergency
+      };
+    });
+  }, [preselectedServiceId, preselectedPropertyType, prefilledNotes, isEmergency]);
 
   const handleServiceToggle = (id: string) => {
     setFormData((prev) => {

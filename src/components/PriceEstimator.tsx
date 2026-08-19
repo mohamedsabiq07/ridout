@@ -9,7 +9,12 @@ import {
 } from '../lib/pricing';
 
 interface PriceEstimatorProps {
-  onSelectAndBook: (serviceId: string, propertyType: string) => void;
+  onSelectAndBook: (
+    serviceId: string, 
+    propertyType: PropertyTypeKey, 
+    rate: { min: number; max: number }, 
+    serviceName: string
+  ) => void;
 }
 
 export const PriceEstimator: React.FC<PriceEstimatorProps> = ({ onSelectAndBook }) => {
@@ -31,7 +36,7 @@ export const PriceEstimator: React.FC<PriceEstimatorProps> = ({ onSelectAndBook 
     : { min: 199, max: 299 };
 
   const handleBookEstimate = () => {
-    onSelectAndBook(selectedServiceId, selectedPropertyType);
+    onSelectAndBook(selectedServiceId, selectedPropertyType, currentRate, selectedService.name);
   };
 
   return (
