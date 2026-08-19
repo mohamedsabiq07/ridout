@@ -32,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between h-20">
           
           {/* Official Business Logo with Smooth Hover Glow */}
-          <a href="#hero" className="flex items-center gap-3 group py-1 shrink-0">
+          <a href="#hero" className="flex items-center gap-3 group py-1 shrink-0 min-w-[260px] sm:min-w-[300px] mr-2 sm:mr-6">
             <img
               src="/logo-white.png"
               alt="Rid Out Pest Control Services"
@@ -41,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
 
           {/* Desktop Navigation with Magnetic Mixed-Gradient Pills */}
-          <nav className="hidden lg:flex items-center gap-2 xl:gap-3">
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2.5">
             {navLinks.map((link) => (
               <a
                 key={link.label}
