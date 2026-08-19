@@ -30,20 +30,20 @@ export const EmergencyPestAlert: React.FC<EmergencyPestAlertProps> = ({
 
   return (
     <>
-      {/* Floating Circular Trigger Button (Bottom Left) */}
-      <div className="fixed bottom-6 left-6 z-40">
+      {/* Floating Emergency Badge (Middle Left Edge - Zero Overlap) */}
+      <div className="fixed top-1/2 left-0 -translate-y-1/2 z-40">
         <button
           onClick={() => setInternalOpen(true)}
-          className="group relative flex items-center gap-2 bg-[#E8871E]/90 backdrop-blur-md hover:bg-[#E8871E] text-white p-3.5 sm:px-4 sm:py-3 rounded-full border border-amber-400/50 shadow-2xl shadow-amber-500/20 transition-all cursor-pointer hover:scale-105 active:scale-95"
+          className="group relative flex items-center gap-2 bg-[#E8871E]/95 backdrop-blur-md hover:bg-[#d47817] text-white py-2.5 sm:py-3 px-3 sm:px-4 rounded-r-2xl border-y border-r border-amber-300/40 shadow-2xl shadow-[#E8871E]/30 transition-all cursor-pointer hover:pl-5 active:scale-95"
           title="Need Urgent Pest Control?"
         >
-          <span className="relative flex h-3 w-3">
+          <span className="relative flex h-2.5 w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-white" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white" />
           </span>
-          <AlertTriangle className="w-4 h-4 text-white group-hover:rotate-12 transition-transform" />
-          <span className="text-xs font-bold font-mono tracking-wider text-white hidden sm:inline uppercase">
-            Pest Alert
+          <AlertTriangle className="w-4 h-4 text-white group-hover:rotate-12 transition-transform shrink-0" />
+          <span className="text-[11px] font-extrabold font-mono tracking-wider text-white uppercase whitespace-nowrap">
+            Urgent Alert
           </span>
         </button>
       </div>
