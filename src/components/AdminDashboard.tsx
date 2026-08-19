@@ -13,12 +13,14 @@ import {
   Camera,
   FileText,
   Database,
-  FileArchive
+  FileArchive,
+  Calculator
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { CustomerExportPDF } from './CustomerExportPDF';
 import { DeleteVerificationModal } from './DeleteVerificationModal';
 import { StorageManagement } from './StorageManagement';
+import { PricingManager } from './PricingManager';
 import { deleteServiceRequests, saveAuditLog } from '../lib/supabase';
 import { useReactToPrint } from 'react-to-print';
 
@@ -32,7 +34,7 @@ export const AdminDashboard: React.FC = () => {
   const [internalNotes, setInternalNotes] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [showInvoiceModal, setShowInvoiceModal] = useState(false);
-  const [currentView, setCurrentView] = useState<'requests' | 'storage'>('requests');
+  const [currentView, setCurrentView] = useState<'requests' | 'storage' | 'pricing'>('requests');
 
   // Export & Delete State
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -237,21 +239,49 @@ export const AdminDashboard: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          {/* Customer Requests Tab */}
           <button
-            onClick={() => setCurrentView(v => v === 'requests' ? 'storage' : 'requests')}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0A0A0A] hover:bg-neutral-800 border border-neutral-700 rounded text-xs font-mono text-neutral-300 hover:text-white transition-colors cursor-pointer"
+            onClick={() => setCurrentView('requests')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono transition-colors cursor-pointer border ${
+              currentView === 'requests'
+                ? 'bg-[#E8871E] border-[#E8871E] text-white font-bold'
+                : 'bg-[#0A0A0A] hover:bg-neutral-800 border-neutral-700 text-neutral-300 hover:text-white'
+            }`}
           >
-            {currentView === 'requests' ? (
-              <><Database className="w-3.5 h-3.5" /><span>Storage & DB</span></>
-            ) : (
-              <><FileText className="w-3.5 h-3.5" /><span>Customer List</span></>
-            )}
+            <FileText className="w-3.5 h-3.5" />
+            <span>Customer Requests</span>
+          </button>
+
+          {/* Rate Calculator Pricing Tab */}
+          <button
+            onClick={() => setCurrentView('pricing')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono transition-colors cursor-pointer border ${
+              currentView === 'pricing'
+                ? 'bg-[#E8871E] border-[#E8871E] text-white font-bold'
+                : 'bg-[#0A0A0A] hover:bg-neutral-800 border-neutral-700 text-neutral-300 hover:text-white'
+            }`}
+          >
+            <Calculator className="w-3.5 h-3.5" />
+            <span>Rate Calculator Pricing</span>
+          </button>
+
+          {/* Storage & Database Tab */}
+          <button
+            onClick={() => setCurrentView('storage')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono transition-colors cursor-pointer border ${
+              currentView === 'storage'
+                ? 'bg-[#E8871E] border-[#E8871E] text-white font-bold'
+                : 'bg-[#0A0A0A] hover:bg-neutral-800 border-neutral-700 text-neutral-300 hover:text-white'
+            }`}
+          >
+            <Database className="w-3.5 h-3.5" />
+            <span>Storage & DB</span>
           </button>
 
           <button
             onClick={loadData}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0A0A0A] hover:bg-neutral-800 border border-neutral-700 rounded text-xs font-mono text-neutral-300 hover:text-white transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0A0A0A] hover:bg-neutral-800 border border-neutral-700 rounded text-xs font-mono text-neutral-300 hover:text-white transition-colors cursor-pointer ml-1"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
@@ -259,7 +289,7 @@ export const AdminDashboard: React.FC = () => {
 
           <button
             onClick={signOut}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-red-950/30 hover:bg-red-900/50 border border-red-900/50 rounded text-xs font-mono text-red-400 hover:text-red-300 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-red-950/30 hover:bg-red-900/50 border border-red-900/50 rounded text-xs font-mono text-red-400 hover:text-red-300 transition-colors cursor-pointer ml-1"
             title="Secure Logout"
           >
             <LogOut className="w-3.5 h-3.5" />
@@ -271,11 +301,12 @@ export const AdminDashboard: React.FC = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex overflow-hidden">
         
-        {currentView === 'storage' ? (
+        {currentView === 'pricing' ? (
+          <PricingManager />
+        ) : currentView === 'storage' ? (
           <StorageManagement 
             requests={requests} 
             onExportAll={() => {
-              // Same exact export-before-delete workflow but for ALL records
               if (requests.length === 0) return;
               handleExport(true);
             }} 

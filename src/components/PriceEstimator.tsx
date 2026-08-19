@@ -1,128 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calculator, Check, ArrowRight, Sparkles } from 'lucide-react';
+import { 
+  DEFAULT_PRICING_OPTIONS, 
+  fetchPricingConfig, 
+  type ServicePricingOption, 
+  type PropertyTypeKey 
+} from '../lib/pricing';
 
 interface PriceEstimatorProps {
   onSelectAndBook: (serviceId: string, propertyType: string) => void;
 }
 
-interface ServicePricingOption {
-  id: string;
-  name: string;
-  category: 'pest' | 'cleaning';
-  rates: {
-    Studio: { min: number; max: number };
-    '1 BHK': { min: number; max: number };
-    '2 BHK': { min: number; max: number };
-    '3+ BHK': { min: number; max: number };
-    Villa: { min: number; max: number };
-    Commercial: { min: number; max: number };
-  };
-  duration: string;
-  guarantee: string;
-}
-
-const PRICING_OPTIONS: ServicePricingOption[] = [
-  {
-    id: 'general-pest-control',
-    name: 'General Pest Control',
-    category: 'pest',
-    rates: {
-      Studio: { min: 149, max: 199 },
-      '1 BHK': { min: 179, max: 249 },
-      '2 BHK': { min: 219, max: 299 },
-      '3+ BHK': { min: 289, max: 379 },
-      Villa: { min: 449, max: 649 },
-      Commercial: { min: 349, max: 599 }
-    },
-    duration: '45 - 60 mins',
-    guarantee: '4-Month Warranty Included'
-  },
-  {
-    id: 'cockroach-control',
-    name: 'Cockroach Gel & Spray Treatment',
-    category: 'pest',
-    rates: {
-      Studio: { min: 169, max: 219 },
-      '1 BHK': { min: 199, max: 269 },
-      '2 BHK': { min: 239, max: 329 },
-      '3+ BHK': { min: 319, max: 419 },
-      Villa: { min: 499, max: 699 },
-      Commercial: { min: 399, max: 649 }
-    },
-    duration: '45 - 75 mins',
-    guarantee: '100% Odorless Gel + 4-Month Guarantee'
-  },
-  {
-    id: 'bed-bug-treatment',
-    name: 'Bed Bug Thermal Steam & Chemical Treatment',
-    category: 'pest',
-    rates: {
-      Studio: { min: 249, max: 349 },
-      '1 BHK': { min: 319, max: 449 },
-      '2 BHK': { min: 429, max: 599 },
-      '3+ BHK': { min: 549, max: 749 },
-      Villa: { min: 799, max: 1199 },
-      Commercial: { min: 599, max: 949 }
-    },
-    duration: '2 - 3 hours',
-    guarantee: '2-Session Protocol + 4-Month Warranty'
-  },
-  {
-    id: 'deep-cleaning',
-    name: 'Full Deep Cleaning (Kitchen + Bathrooms)',
-    category: 'cleaning',
-    rates: {
-      Studio: { min: 249, max: 329 },
-      '1 BHK': { min: 329, max: 429 },
-      '2 BHK': { min: 449, max: 589 },
-      '3+ BHK': { min: 599, max: 799 },
-      Villa: { min: 899, max: 1399 },
-      Commercial: { min: 699, max: 1199 }
-    },
-    duration: '3 - 6 hours',
-    guarantee: 'Industrial Equipment & Eco-Safe Chemicals'
-  },
-  {
-    id: 'kitchen-cleaning',
-    name: 'Kitchen Deep Degreasing & Descaling',
-    category: 'cleaning',
-    rates: {
-      Studio: { min: 149, max: 199 },
-      '1 BHK': { min: 179, max: 239 },
-      '2 BHK': { min: 199, max: 269 },
-      '3+ BHK': { min: 249, max: 329 },
-      Villa: { min: 349, max: 499 },
-      Commercial: { min: 449, max: 699 }
-    },
-    duration: '60 - 90 mins',
-    guarantee: 'Food-Grade Sanitizers Used'
-  },
-  {
-    id: 'bathroom-cleaning',
-    name: 'Bathroom Deep Tile & Grout Sanitization',
-    category: 'cleaning',
-    rates: {
-      Studio: { min: 129, max: 179 },
-      '1 BHK': { min: 149, max: 199 },
-      '2 BHK': { min: 219, max: 289 },
-      '3+ BHK': { min: 289, max: 379 },
-      Villa: { min: 399, max: 549 },
-      Commercial: { min: 349, max: 549 }
-    },
-    duration: '45 - 75 mins',
-    guarantee: 'High-Pressure Steam & Anti-Mold Scrub'
-  }
-];
-
-type PropertyTypeKey = 'Studio' | '1 BHK' | '2 BHK' | '3+ BHK' | 'Villa' | 'Commercial';
-
 export const PriceEstimator: React.FC<PriceEstimatorProps> = ({ onSelectAndBook }) => {
+  const [pricingOptions, setPricingOptions] = useState<ServicePricingOption[]>(DEFAULT_PRICING_OPTIONS);
   const [selectedServiceId, setSelectedServiceId] = useState<string>('cockroach-control');
   const [selectedPropertyType, setSelectedPropertyType] = useState<PropertyTypeKey>('2 BHK');
 
-  const selectedService = PRICING_OPTIONS.find(s => s.id === selectedServiceId) || PRICING_OPTIONS[0];
-  const currentRate = selectedService.rates[selectedPropertyType];
+  useEffect(() => {
+    fetchPricingConfig().then((data) => {
+      if (data && data.length > 0) {
+        setPricingOptions(data);
+      }
+    });
+  }, []);
+
+  const selectedService = pricingOptions.find(s => s.id === selectedServiceId) || pricingOptions[0];
+  const currentRate = (selectedService && selectedService.rates && selectedService.rates[selectedPropertyType]) 
+    ? selectedService.rates[selectedPropertyType] 
+    : { min: 199, max: 299 };
 
   const handleBookEstimate = () => {
     onSelectAndBook(selectedServiceId, selectedPropertyType);
@@ -177,7 +83,7 @@ export const PriceEstimator: React.FC<PriceEstimatorProps> = ({ onSelectAndBook 
                 1. Select Service Type
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {PRICING_OPTIONS.map((service) => (
+                {pricingOptions.map((service) => (
                   <button
                     key={service.id}
                     onClick={() => setSelectedServiceId(service.id)}
