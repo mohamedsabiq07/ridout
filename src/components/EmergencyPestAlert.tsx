@@ -30,24 +30,6 @@ export const EmergencyPestAlert: React.FC<EmergencyPestAlertProps> = ({
 
   return (
     <>
-      {/* Floating Emergency Badge (Middle Left Edge - Zero Overlap) */}
-      <div className="fixed top-1/2 left-0 -translate-y-1/2 z-40">
-        <button
-          onClick={() => setInternalOpen(true)}
-          className="group relative flex items-center gap-2 bg-[#E8871E]/95 backdrop-blur-md hover:bg-[#d47817] text-white py-2.5 sm:py-3 px-3 sm:px-4 rounded-r-2xl border-y border-r border-amber-300/40 shadow-2xl shadow-[#E8871E]/30 transition-all cursor-pointer hover:pl-5 active:scale-95"
-          title="Need Urgent Pest Control?"
-        >
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white" />
-          </span>
-          <AlertTriangle className="w-4 h-4 text-white group-hover:rotate-12 transition-transform shrink-0" />
-          <span className="text-[11px] font-extrabold font-mono tracking-wider text-white uppercase whitespace-nowrap">
-            Urgent Alert
-          </span>
-        </button>
-      </div>
-
       {/* Emergency Alert Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">

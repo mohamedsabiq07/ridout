@@ -70,21 +70,27 @@ export const LiveSocialProof: React.FC = () => {
   useEffect(() => {
     if (isDismissed) return;
 
-    // Initial delay before first popup
+    // Show initial message after 5 seconds
     const initialTimer = setTimeout(() => {
       setIsVisible(true);
-    }, 4000);
 
-    // Interval to cycle through events
-    const interval = setInterval(() => {
-      setIsVisible(false);
-
+      // Auto-hide after 6.5 seconds
       setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % SAMPLE_EVENTS.length);
-        setIsVisible(true);
-      }, 1000); // 1s pause between transitions
+        setIsVisible(false);
+      }, 6500);
+    }, 5000);
 
-    }, 18000); // Stay visible for 17s, cycle every 18s
+    // Run every 30 seconds (exactly 2 notifications per minute)
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % SAMPLE_EVENTS.length);
+      setIsVisible(true);
+
+      // Auto-hide after 6.5 seconds
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 6500);
+
+    }, 30000); // 30s cycle = 2 messages per minute
 
     return () => {
       clearTimeout(initialTimer);
