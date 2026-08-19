@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { Menu, X, PhoneCall, AlertTriangle, Sparkles } from 'lucide-react';
+import { Menu, X, PhoneCall, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
   onBookClick: () => void;
-  onEmergencyClick: () => void;
+  onEmergencyClick?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onBookClick,
-  onEmergencyClick,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -17,7 +16,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     { label: 'Pest Control', href: '/#services' },
     { label: 'Cleaning Services', href: '/#home-cleaning' },
     { label: 'Why Us', href: '/#why-us' },
-    { label: 'Calculator', href: '/#pricing-estimator' },
     { label: 'FAQ', href: '/#faq' },
     { label: 'Contact', href: '/#contact' },
   ];
@@ -32,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between h-20">
           
           {/* Official Business Logo with Smooth Hover Glow */}
-          <a href="#hero" className="flex items-center gap-3 group py-1 shrink-0 min-w-[260px] sm:min-w-[300px] mr-2 sm:mr-6">
+          <a href="#hero" className="flex items-center gap-3 group py-1 shrink-0 min-w-[260px] sm:min-w-[300px] mr-4 sm:mr-8">
             <img
               src="/logo-white.png"
               alt="Rid Out Pest Control Services"
@@ -41,43 +39,28 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
 
           {/* Desktop Navigation with Magnetic Mixed-Gradient Pills */}
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2.5">
+          <nav className="hidden lg:flex items-center gap-2 xl:gap-4">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="relative px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition-all duration-300 border border-transparent hover:border-[#E8871E]/40 hover:bg-gradient-to-r hover:from-[#E8871E]/20 hover:via-[#7A9E7E]/20 hover:to-[#E8871E]/20 hover:shadow-lg hover:shadow-[#E8871E]/20 transform hover:-translate-y-0.5 active:scale-95 group/link"
+                className="relative px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition-all duration-300 border border-transparent hover:border-[#E8871E]/40 hover:bg-gradient-to-r hover:from-[#E8871E]/20 hover:via-[#7A9E7E]/20 hover:to-[#E8871E]/20 hover:shadow-lg hover:shadow-[#E8871E]/20 transform hover:-translate-y-0.5 active:scale-95 group/link"
               >
                 <span>{link.label}</span>
                 {/* Micro glowing indicator line under each item */}
-                <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-[#E8871E] to-[#7A9E7E] rounded-full group-hover/link:w-3/4 transition-all duration-300 opacity-0 group-hover/link:opacity-100" />
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-[#E8871E] to-[#7A9E7E] rounded-full group-hover/link:w-3/4 transition-all duration-300 opacity-0 group-hover/link:opacity-100" />
               </a>
             ))}
           </nav>
 
-          {/* Desktop CTA & Actions */}
-          <div className="hidden lg:flex items-center gap-3.5">
-            
-            {/* Urgent Pest Alert Button with Pulsing Mixed Beacon */}
-            <button
-              onClick={onEmergencyClick}
-              className="group/alert relative flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#171717] hover:bg-gradient-to-r hover:from-red-950/60 hover:to-amber-950/60 border border-[#2A2A2A] hover:border-[#E8871E] text-xs font-mono font-bold text-amber-400 hover:text-amber-300 transition-all duration-300 shadow-md hover:shadow-[#E8871E]/20 cursor-pointer transform hover:scale-105 active:scale-95"
-              title="Urgent 24/7 Dispatch Alert"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E8871E]" />
-              </span>
-              <AlertTriangle className="w-3.5 h-3.5 text-[#E8871E] group-hover/alert:rotate-12 transition-transform" />
-              <span>Alert</span>
-            </button>
-
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center">
             {/* Primary Book CTA with Shimmer & Ambient Glow */}
             <button
               onClick={onBookClick}
-              className="animate-shimmer relative bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white px-6 py-2.5 rounded-full font-black text-xs sm:text-sm tracking-wider uppercase font-['Montserrat'] transition-all duration-300 shadow-lg shadow-[#E8871E]/30 hover:shadow-xl hover:shadow-[#E8871E]/50 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer border border-amber-300/30 flex items-center gap-1.5"
+              className="animate-shimmer relative bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white px-7 py-3 rounded-full font-black text-xs sm:text-sm tracking-wider uppercase font-['Montserrat'] transition-all duration-300 shadow-lg shadow-[#E8871E]/30 hover:shadow-xl hover:shadow-[#E8871E]/50 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer border border-amber-300/30 flex items-center gap-2"
             >
-              <Sparkles className="w-3.5 h-3.5" />
+              <Sparkles className="w-4 h-4" />
               <span>Get a Free Quote</span>
             </button>
           </div>
@@ -85,16 +68,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Mobile Menu & Action Trigger */}
           <div className="flex items-center gap-2 lg:hidden">
             <button
-              onClick={onEmergencyClick}
-              className="p-2 text-amber-500 bg-neutral-900 border border-neutral-800 rounded-lg hover:border-amber-500 transition-colors"
-              title="Emergency Dispatch Alert"
-            >
-              <AlertTriangle className="w-4 h-4" />
-            </button>
-
-            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-white bg-neutral-900 border border-neutral-800 rounded-lg hover:border-white transition-colors focus:outline-none"
+              className="p-2.5 text-white bg-neutral-900 border border-neutral-800 rounded-lg hover:border-white transition-colors focus:outline-none"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-white" />}
             </button>

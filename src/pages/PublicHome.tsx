@@ -109,6 +109,7 @@ export const PublicHome = () => {
       <main>
         <Hero
           onBookClick={() => scrollToBooking()}
+          onEmergencyClick={() => setEmergencyOpen(true)}
         />
 
         <PropertySelector 

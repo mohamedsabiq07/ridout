@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AnimatedCounter } from './AnimatedCounter';
+import { AlertTriangle } from 'lucide-react';
 
 interface HeroProps {
   onBookClick: () => void;
+  onEmergencyClick?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
+export const Hero: React.FC<HeroProps> = ({ onBookClick, onEmergencyClick }) => {
   return (
     <section id="hero" className="relative bg-[#0A0A0A] text-white pt-16 pb-20 lg:pt-20 lg:pb-28 overflow-hidden border-b border-[#2A2A2A]">
       
@@ -89,30 +91,29 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 pt-4"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4 w-full"
             >
               <button
                 onClick={onBookClick}
-                className="flex items-center justify-center bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold text-base sm:text-lg tracking-wide transition-all shadow-xl hover:shadow-2xl active:scale-98 cursor-pointer uppercase font-['Montserrat'] relative overflow-hidden"
+                className="w-full sm:w-auto flex items-center justify-center bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold text-base tracking-wide transition-all shadow-xl hover:shadow-2xl active:scale-98 cursor-pointer uppercase font-['Montserrat'] relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-[radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:10px_10px] pointer-events-none" />
                 <span className="relative z-10">Get a Free Quote</span>
               </button>
 
-              <div className="flex items-center gap-6 text-left">
-                <div className="flex items-center gap-3">
-                  <div className="text-[#E8871E]">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
-                  </div>
-                  <span className="text-white font-['Montserrat'] font-semibold text-sm sm:text-base leading-tight">Certified<br/>Technicians</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="text-[#E8871E]">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  </div>
-                  <span className="text-white font-['Montserrat'] font-semibold text-sm sm:text-base leading-tight">24/7<br/>Response</span>
-                </div>
-              </div>
+              {onEmergencyClick && (
+                <button
+                  onClick={onEmergencyClick}
+                  className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-4 rounded bg-[#171717]/90 hover:bg-red-950/40 border border-amber-500/50 hover:border-amber-400 text-amber-300 hover:text-amber-200 font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-lg active:scale-98"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E8871E]" />
+                  </span>
+                  <AlertTriangle className="w-4 h-4 text-[#E8871E]" />
+                  <span>24/7 Urgent Pest Alert</span>
+                </button>
+              )}
             </motion.div>
 
             {/* Certifications Logo Strip */}
