@@ -48,7 +48,7 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
                 Pest Control & Fumigation Solutions | Dubai • Sharjah • Ajman
               </p>
               <p className="text-[#E8871E] font-bold text-xs">
-                Mobile: 055 4720124 &nbsp;|&nbsp; Available 24/7
+                Mobile: +971 554720124 &nbsp;|&nbsp; Available 24/7
               </p>
             </div>
           </div>
@@ -182,7 +182,7 @@ export const PrintableInvoice = React.forwardRef<HTMLDivElement, PrintableInvoic
           {/* Footer naturally flows below */}
           <div className="mt-2 break-inside-avoid">
             <div className="bg-[#FAE3D9] text-center py-1 text-[10px] text-[#1C2C54]">
-              <span className="underline">Rid Out Pest Control Services</span> &nbsp;|&nbsp; <span className="underline">055 4720124</span> &nbsp;|&nbsp; <span className="underline">Available 24/7</span> &nbsp;|&nbsp; <span className="underline">Serving Dubai, Sharjah, Ajman</span>
+              <span className="underline">Rid Out Pest Control Services</span> &nbsp;|&nbsp; <span className="underline">+971 554720124</span> &nbsp;|&nbsp; <span className="underline">Available 24/7</span> &nbsp;|&nbsp; <span className="underline">Serving Dubai, Sharjah, Ajman</span>
             </div>
             <div className="text-center text-[9px] text-gray-500 mt-0.5 pb-1">
               This is a computer-generated {documentType.toLowerCase()}. No signature is required.

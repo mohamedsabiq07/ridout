@@ -67,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           <div>
             <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Contact</h4>
             <ul className="space-y-2">
-              <li>Call: +971 0554720124</li>
+              <li>Call: +971 554720124</li>
               <li>WhatsApp: Available 24/7</li>
               <li>support@ridoutpest.com</li>
             </ul>

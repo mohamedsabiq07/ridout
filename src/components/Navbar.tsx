@@ -122,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full flex items-center justify-center gap-2 bg-neutral-900 border border-neutral-700 text-neutral-300 py-2.5 rounded-sm text-sm font-semibold"
             >
               <PhoneCall className="w-4 h-4" />
-              <span>Call +971 0554720124</span>
+              <span>Call +971 554720124</span>
             </a>
           </div>
         </div>
