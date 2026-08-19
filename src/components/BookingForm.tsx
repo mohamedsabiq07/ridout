@@ -36,7 +36,8 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     notes: prefilledNotes || '',
     is_urgent: isEmergency,
     photo_name: '',
-    photo_data: ''
+    photo_data: '',
+    discovery_source: ''
   });
 
   const [propertyCategory, setPropertyCategory] = useState<'residential' | 'commercial'>(
@@ -192,7 +193,6 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         });
       } catch (emailErr) {
         console.error('Failed to send background email:', emailErr);
-        // We do not fail the booking if the email fails.
       }
 
       // 4. Trigger callback to display SuccessModal with Request ID and WhatsApp Option
@@ -554,79 +554,6 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                 </div>
               </div>
 
-            </div>
-
-            {/* Notes */}
-            <div>
-              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                Additional Notes / Cleaning Instructions
-              </label>
-              <textarea
-                name="notes"
-                rows={3}
-                value={formData.notes}
-                onChange={handleChange}
-                placeholder="e.g. Focus on stove degreasing, bathroom tiles limescale removal, or specific pest location..."
-                className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded p-4 outline-none transition-colors"
-              />
-            </div>
-
-            {/* Discovery Source */}
-            <div>
-              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                How did you find us? <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="discovery_source"
-                value={formData.discovery_source || ''}
-                onChange={handleChange}
-                className={`w-full bg-[#F7F5F0] border ${errors.discovery_source ? 'border-red-500' : 'border-[#E2DFD7] focus:border-[#0A0A0A]'} text-[#2D2D2D] text-sm rounded px-4 py-3 outline-none transition-colors cursor-pointer`}
-              >
-                <option value="">Select an option</option>
-                <option value="Google Search">Google Search</option>
-                <option value="Facebook">Facebook</option>
-                <option value="Instagram">Instagram</option>
-                <option value="TikTok">TikTok</option>
-                <option value="Word of Mouth / Friend">Word of Mouth / Friend</option>
-                <option value="Flyer / Print">Flyer / Print</option>
-                <option value="Other">Other</option>
-              </select>
-              {errors.discovery_source && <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.discovery_source}</p>}
-            </div>
-
-            {/* Optional Photo Upload */}
-            <div>
-              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2 flex items-center justify-between">
-                <span>Upload Inspection Photos <span className="text-[#5A5A5A] font-normal">(Optional)</span></span>
-                <span className="text-[10px] text-[#5A5A5A] font-normal">JPG, PNG up to 5MB</span>
-              </label>
-
-              {formData.photo_name ? (
-                <div className="flex items-center justify-between bg-[#F7F5F0] border border-[#E2DFD7] p-3 rounded text-xs">
-                  <div className="flex items-center gap-2 text-[#2D2D2D] truncate">
-                    <Camera className="w-4 h-4 text-[#7A9E7E] shrink-0" />
-                    <span className="truncate">{formData.photo_name}</span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={removePhoto}
-                    className="text-[#5A5A5A] hover:text-[#0A0A0A] p-1"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-              ) : (
-                <label className="flex items-center justify-center gap-2 w-full bg-[#F7F5F0] hover:bg-[#E2DFD7]/40 border border-dashed border-[#E2DFD7] hover:border-[#7A9E7E] rounded p-4 text-xs text-[#5A5A5A] hover:text-[#0A0A0A] cursor-pointer transition-colors">
-                  <Upload className="w-4 h-4 text-[#7A9E7E]" />
-                  <span>Click to attach photos of kitchen, bathroom or pest area</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handlePhotoUpload}
-                    className="hidden"
-                  />
-                </label>
-              )}
             </div>
 
             {/* Notes */}
