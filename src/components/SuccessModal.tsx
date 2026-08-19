@@ -89,7 +89,7 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2.5 bg-[#E8871E] hover:bg-[#d47817] text-white font-extrabold py-3.5 px-6 rounded text-sm transition-all shadow-lg cursor-pointer uppercase font-['Montserrat']"
+            className="animate-shimmer w-full flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white font-extrabold py-3.5 px-6 rounded-full text-sm transition-all duration-300 shadow-xl shadow-[#E8871E]/30 hover:shadow-2xl hover:shadow-[#E8871E]/50 border border-amber-300/30 cursor-pointer uppercase font-['Montserrat'] active:scale-95"
           >
             <MessageSquare className="w-5 h-5 fill-white" />
             <span>Send Direct WhatsApp Alert to Controller</span>

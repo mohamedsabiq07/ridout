@@ -47,7 +47,7 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
                 whileHover={{ y: -8 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="bg-white/80 backdrop-blur-md border border-[#E2DFD7] hover:border-[#E8871E] rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-[#E8871E]/15 group relative h-full cursor-pointer"
+                className="bg-white/80 backdrop-blur-md border border-[#E2DFD7] hover:border-[#E8871E] rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-[0_10px_35px_rgba(232,135,30,0.22)] group relative h-full cursor-pointer"
               >
                 <Link to={`/services/${service.slug}`} className="absolute inset-0 z-10" aria-label={`View ${service.name} details`} />
                 {service.imageUrl && (
@@ -106,7 +106,7 @@ export const ServicesCatalog: React.FC<ServicesCatalogProps> = ({
 
                     <button
                       onClick={() => onRequestService(service.id)}
-                      className="bg-[#E8871E] hover:bg-[#d47817] text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 sm:px-3.5 sm:py-2 rounded transition-colors cursor-pointer uppercase font-['Montserrat'] shrink-0 relative z-20"
+                      className="animate-shimmer bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white text-[10px] sm:text-xs font-bold px-4 py-2 rounded-full transition-all duration-300 shadow-md shadow-[#E8871E]/30 hover:shadow-lg hover:shadow-[#E8871E]/50 border border-amber-300/30 cursor-pointer uppercase font-['Montserrat'] shrink-0 relative z-20 active:scale-95"
                     >
                       Request
                     </button>

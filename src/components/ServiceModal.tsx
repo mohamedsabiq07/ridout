@@ -132,7 +132,7 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({
               onRequestThisService(service.id);
               onClose();
             }}
-            className="flex items-center gap-2 bg-[#0A0A0A] hover:bg-neutral-800 text-white px-6 py-3 rounded-xs font-bold text-sm transition-all cursor-pointer shadow-md"
+            className="animate-shimmer flex items-center gap-2 bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 cursor-pointer shadow-lg shadow-[#E8871E]/30 hover:shadow-xl hover:shadow-[#E8871E]/50 border border-amber-300/30 active:scale-95"
           >
             <span>Request This Service</span>
             <ArrowRight className="w-4 h-4" />

@@ -247,7 +247,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ onBookClic
                     document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="w-full py-3.5 bg-[#E8871E] hover:bg-[#d47817] text-white rounded-lg font-bold text-sm tracking-wide transition-all shadow-lg hover:shadow-xl active:scale-98 cursor-pointer uppercase font-['Montserrat']"
+                className="animate-shimmer w-full py-3.5 bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white rounded-full font-bold text-sm tracking-wide transition-all duration-300 shadow-xl shadow-[#E8871E]/30 hover:shadow-2xl hover:shadow-[#E8871E]/50 border border-amber-300/30 active:scale-95 cursor-pointer uppercase font-['Montserrat']"
               >
                 Book This Service Now
               </button>
