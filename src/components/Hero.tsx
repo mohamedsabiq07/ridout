@@ -93,10 +93,9 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
             >
               <button
                 onClick={onBookClick}
-                className="flex items-center justify-center bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold text-base sm:text-lg tracking-wide transition-all shadow-xl hover:shadow-2xl active:scale-98 cursor-pointer uppercase font-['Montserrat'] relative overflow-hidden"
+                className="animate-shimmer relative bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white px-8 py-4 rounded-full font-extrabold text-base sm:text-lg tracking-wide transition-all duration-300 shadow-xl shadow-[#E8871E]/30 hover:shadow-2xl hover:shadow-[#E8871E]/50 border border-amber-300/30 flex items-center justify-center gap-2 active:scale-95 cursor-pointer uppercase font-['Montserrat']"
               >
-                <div className="absolute inset-0 bg-[radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:10px_10px] pointer-events-none" />
-                <span className="relative z-10">Get a Free Quote</span>
+                <span>Get a Free Quote</span>
               </button>
 
               <div className="flex items-center gap-6 text-left">

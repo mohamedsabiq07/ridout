@@ -17,10 +17,10 @@ export const PropertySelector: React.FC<{ onSelect: (type: 'residential' | 'comm
           <motion.div 
             whileHover={{ scale: 1.02 }}
             onClick={() => onSelect('residential')}
-            className="bg-[#232323] border border-[#333] hover:border-[#7A9E7E] rounded-xl p-8 cursor-pointer group transition-all text-center relative overflow-hidden"
+            className="bg-[#232323] border border-[#333] hover:border-[#7A9E7E] rounded-2xl p-8 cursor-pointer group transition-all duration-300 text-center relative overflow-hidden hover:shadow-[0_0_35px_rgba(122,158,126,0.35)]"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#7A9E7E]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#7A9E7E]/20 text-[#7A9E7E] mb-6 group-hover:scale-110 transition-transform">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#7A9E7E]/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#7A9E7E]/20 text-[#7A9E7E] mb-6 group-hover:scale-110 transition-transform shadow-inner">
               <Home className="w-8 h-8" />
             </div>
             <h3 className="text-2xl font-bold font-['Montserrat'] text-white mb-2">Residential</h3>
@@ -33,10 +33,10 @@ export const PropertySelector: React.FC<{ onSelect: (type: 'residential' | 'comm
           <motion.div 
             whileHover={{ scale: 1.02 }}
             onClick={() => onSelect('commercial')}
-            className="bg-[#232323] border border-[#333] hover:border-[#E8871E] rounded-xl p-8 cursor-pointer group transition-all text-center relative overflow-hidden"
+            className="bg-[#232323] border border-[#333] hover:border-[#E8871E] rounded-2xl p-8 cursor-pointer group transition-all duration-300 text-center relative overflow-hidden hover:shadow-[0_0_35px_rgba(232,135,30,0.35)]"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#E8871E]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#E8871E]/20 text-[#E8871E] mb-6 group-hover:scale-110 transition-transform">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E8871E]/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#E8871E]/20 text-[#E8871E] mb-6 group-hover:scale-110 transition-transform shadow-inner">
               <Building2 className="w-8 h-8" />
             </div>
             <h3 className="text-2xl font-bold font-['Montserrat'] text-white mb-2">Commercial</h3>

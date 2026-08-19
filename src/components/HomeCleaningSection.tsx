@@ -124,7 +124,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
                 <div className="pt-4 border-t border-[#2A2A2A] flex items-center gap-3">
                   <button
                     onClick={() => onBookCleaning('kitchen-cleaning')}
-                    className="flex-1 bg-[#E8871E] hover:bg-[#d47817] text-white font-extrabold text-sm py-3.5 px-4 rounded transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group-hover:shadow-xl uppercase font-['Montserrat'] relative z-20"
+                    className="animate-shimmer flex-1 bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white font-extrabold text-sm py-3 px-4 rounded-full transition-all duration-300 shadow-lg shadow-[#E8871E]/25 hover:shadow-xl hover:shadow-[#E8871E]/45 border border-amber-300/30 flex items-center justify-center gap-2 cursor-pointer uppercase font-['Montserrat'] relative z-20 active:scale-95"
                   >
                     <span>Book Kitchen Cleaning</span>
                     <ArrowRight className="w-4 h-4" />
@@ -132,7 +132,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
 
                   <Link
                     to={`/services/kitchen-cleaning`}
-                    className="px-4 py-3.5 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded text-xs font-bold transition-colors cursor-pointer text-center relative z-20"
+                    className="px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded-full text-xs font-bold transition-colors cursor-pointer text-center relative z-20"
                   >
                     Specs
                   </Link>
@@ -206,7 +206,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
                 <div className="pt-4 border-t border-[#2A2A2A] flex items-center gap-3">
                   <button
                     onClick={() => onBookCleaning('bathroom-cleaning')}
-                    className="flex-1 bg-[#E8871E] hover:bg-[#d47817] text-white font-extrabold text-sm py-3.5 px-4 rounded transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group-hover:shadow-xl uppercase font-['Montserrat'] relative z-20"
+                    className="animate-shimmer flex-1 bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white font-extrabold text-sm py-3 px-4 rounded-full transition-all duration-300 shadow-lg shadow-[#E8871E]/25 hover:shadow-xl hover:shadow-[#E8871E]/45 border border-amber-300/30 flex items-center justify-center gap-2 cursor-pointer uppercase font-['Montserrat'] relative z-20 active:scale-95"
                   >
                     <span>Book Bathroom Cleaning</span>
                     <ArrowRight className="w-4 h-4" />
@@ -214,7 +214,7 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
 
                   <Link
                     to={`/services/bathroom-cleaning`}
-                    className="px-4 py-3.5 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded text-xs font-bold transition-colors cursor-pointer text-center relative z-20"
+                    className="px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded-full text-xs font-bold transition-colors cursor-pointer text-center relative z-20"
                   >
                     Specs
                   </Link>
