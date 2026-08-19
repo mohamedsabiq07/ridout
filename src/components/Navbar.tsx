@@ -27,14 +27,14 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#E8871E]/60 to-[#7A9E7E]/60 opacity-80" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-22 sm:h-24">
+        <div className="flex items-center justify-between h-20 sm:h-24">
           
-          {/* Official Business Logo - Prominent, Bold & Large */}
-          <a href="#hero" className="flex items-center group shrink-0 min-w-[220px] sm:min-w-[260px] py-1">
+          {/* Official Business Logo - Big & Bold */}
+          <a href="#hero" className="flex items-center group shrink-0 min-w-[270px] sm:min-w-[310px] py-1">
             <img
               src="/logo-white.png"
               alt="Rid Out Pest Control Services"
-              className="h-24 sm:h-28 w-auto object-contain transform scale-150 sm:scale-175 origin-left -ml-2 sm:-ml-4 transition-transform duration-300 group-hover:scale-[1.8]"
+              className="h-20 sm:h-24 w-auto object-contain transition-all duration-300 scale-[2.2] sm:scale-[2.4] origin-left -ml-4 sm:-ml-6 group-hover:scale-[2.5] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
             />
           </a>
 
