@@ -255,9 +255,233 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
           <form onSubmit={handleSubmit} className="space-y-6">
             
-            {/* Grid 1: Name & Mobile */}
+            {/* 1st Question: Residential or Commercial Choice */}
+            <div>
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                Is this a Residential or Commercial property? <span className="text-red-500">*</span>
+              </label>
+              <div className="flex gap-4">
+                <label className={`flex-1 flex items-center justify-center gap-2 p-3.5 rounded-lg border font-semibold text-sm cursor-pointer transition-all ${
+                  propertyCategory === 'residential' 
+                    ? 'bg-[#E8871E] border-[#E8871E] text-white shadow-md shadow-[#E8871E]/20' 
+                    : 'bg-white border-[#E2DFD7] text-[#5A5A5A] hover:border-[#0A0A0A]'
+                }`}>
+                  <input 
+                    type="radio" 
+                    name="property_category" 
+                    className="hidden" 
+                    checked={propertyCategory === 'residential'}
+                    onChange={() => setPropertyCategory('residential')}
+                  />
+                  Residential
+                </label>
+                <label className={`flex-1 flex items-center justify-center gap-2 p-3.5 rounded-lg border font-semibold text-sm cursor-pointer transition-all ${
+                  propertyCategory === 'commercial' 
+                    ? 'bg-[#E8871E] border-[#E8871E] text-white shadow-md shadow-[#E8871E]/20' 
+                    : 'bg-white border-[#E2DFD7] text-[#5A5A5A] hover:border-[#0A0A0A]'
+                }`}>
+                  <input 
+                    type="radio" 
+                    name="property_category" 
+                    className="hidden" 
+                    checked={propertyCategory === 'commercial'}
+                    onChange={() => setPropertyCategory('commercial')}
+                  />
+                  Commercial
+                </label>
+              </div>
+            </div>
+
+            {/* Property Type, Size & Location */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
+              {/* Property Type */}
+              <div>
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                  Property Type <span className="text-red-500">*</span>
+                </label>
+                <div className="relative">
+                  <Building className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <select
+                    name="property_type"
+                    value={formData.property_type}
+                    onChange={handleChange}
+                    className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors cursor-pointer"
+                  >
+                    {propertyCategory === 'residential' && (
+                      <>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Villa">Villa</option>
+                        <option value="Partition">Partition</option>
+                      </>
+                    )}
+                    {propertyCategory === 'commercial' && (
+                      <>
+                        <option value="Office">Office</option>
+                        <option value="Shop">Shop</option>
+                        <option value="Warehouse">Warehouse</option>
+                      </>
+                    )}
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Apartment Size (Conditional) */}
+              {formData.property_type === 'Apartment' ? (
+                <div>
+                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                    Size <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <Building className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <select
+                      name="apartment_size"
+                      value={formData.apartment_size}
+                      onChange={handleChange}
+                      className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors cursor-pointer"
+                    >
+                      <option value="Studio">Studio</option>
+                      <option value="1 BHK">1 BHK</option>
+                      <option value="2 BHK">2 BHK</option>
+                      <option value="3 BHK">3 BHK</option>
+                      <option value="4+ BHK">4+ BHK</option>
+                    </select>
+                  </div>
+                </div>
+              ) : null}
+
+              {/* Location / Area */}
+              <div className={formData.property_type === 'Apartment' ? 'md:col-span-2' : ''}>
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                  Location / Area in UAE <span className="text-red-500">*</span>
+                </label>
+                <div className="relative">
+                  <MapPin className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                    list="uae-areas-list"
+                    placeholder="e.g. Dubai Marina, Business Bay, etc."
+                    className={`w-full bg-[#F7F5F0] border ${
+                      errors.location ? 'border-red-500' : 'border-[#E2DFD7] focus:border-[#0A0A0A]'
+                    } text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors`}
+                  />
+                  <datalist id="uae-areas-list">
+                    {POPULAR_LOCATIONS.map((loc) => (
+                      <option key={loc} value={loc} />
+                    ))}
+                    {UAE_LOCATIONS.flatMap((e) => e.areas).map((area) => (
+                      <option key={area} value={area} />
+                    ))}
+                  </datalist>
+                </div>
+                {errors.location && (
+                  <p className="text-xs text-red-500 mt-1">{errors.location}</p>
+                )}
+              </div>
+
+            </div>
+
+            {/* Service Selection (Pest & Cleaning Grouped) */}
+            <div>
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                Select Service(s) <span className="text-red-500">*</span>
+              </label>
+              <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 bg-[#F7F5F0] border p-3.5 rounded max-h-60 overflow-y-auto ${
+                errors.service_id ? 'border-red-500' : 'border-[#E2DFD7]'
+              }`}>
+                <div className="col-span-full mb-1">
+                  <span className="text-xs font-bold text-[#5A5A5A]">🧹 Cleaning Services</span>
+                </div>
+                {cleaningServices.map((s) => (
+                  <label key={s.id} className="flex items-center gap-2 cursor-pointer group">
+                    <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
+                      formData.service_id.includes(s.id) ? 'bg-[#0A0A0A] border-[#0A0A0A]' : 'border-[#C2BFB7] group-hover:border-[#0A0A0A]'
+                    }`}>
+                      {formData.service_id.includes(s.id) && <span className="text-white text-[10px]">✓</span>}
+                    </div>
+                    <span className="text-sm text-[#2D2D2D] truncate">{s.name}</span>
+                    <input 
+                      type="checkbox"
+                      className="hidden"
+                      checked={formData.service_id.includes(s.id)}
+                      onChange={() => handleServiceToggle(s.id)}
+                    />
+                  </label>
+                ))}
+                
+                <div className="col-span-full mt-2 mb-1">
+                  <span className="text-xs font-bold text-[#5A5A5A]">🐜 Pest Control</span>
+                </div>
+                {pestServices.map((s) => (
+                  <label key={s.id} className="flex items-center gap-2 cursor-pointer group">
+                    <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
+                      formData.service_id.includes(s.id) ? 'bg-[#0A0A0A] border-[#0A0A0A]' : 'border-[#C2BFB7] group-hover:border-[#0A0A0A]'
+                    }`}>
+                      {formData.service_id.includes(s.id) && <span className="text-white text-[10px]">✓</span>}
+                    </div>
+                    <span className="text-sm text-[#2D2D2D] truncate">{s.name}</span>
+                    <input 
+                      type="checkbox"
+                      className="hidden"
+                      checked={formData.service_id.includes(s.id)}
+                      onChange={() => handleServiceToggle(s.id)}
+                    />
+                  </label>
+                ))}
+              </div>
+              {errors.service_id && (
+                <p className="text-xs text-red-500 mt-1">{errors.service_id}</p>
+              )}
+            </div>
+
+            {/* Date & Time */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Date */}
+              <div>
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                  Preferred Date
+                </label>
+                <div className="relative">
+                  <Calendar className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="date"
+                    name="preferred_date"
+                    value={formData.preferred_date}
+                    onChange={handleChange}
+                    className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors"
+                  />
+                </div>
+              </div>
+
+              {/* Time */}
+              <div>
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                  Preferred Time Slot
+                </label>
+                <div className="relative">
+                  <Clock className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <select
+                    name="preferred_time"
+                    value={formData.preferred_time}
+                    onChange={handleChange}
+                    className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors cursor-pointer"
+                  >
+                    <option value="09:00 AM">09:00 AM (Morning Slot)</option>
+                    <option value="11:00 AM">11:00 AM (Late Morning)</option>
+                    <option value="02:00 PM">02:00 PM (Afternoon Slot)</option>
+                    <option value="05:00 PM">05:00 PM (Evening Slot)</option>
+                    <option value="08:00 PM">08:00 PM (Night Urgent)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* Customer Details: Name & Mobile */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Name */}
               <div>
                 <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
@@ -304,13 +528,8 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                 )}
               </div>
 
-            </div>
-
-            {/* Grid 2: Email & Select Service */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
               {/* Email */}
-              <div>
+              <div className="md:col-span-2">
                 <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
                   Email Address <span className="text-[#5A5A5A] font-normal">(Optional)</span>
                 </label>
@@ -326,234 +545,6 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                   />
                 </div>
               </div>
-
-              {/* Service Selection (Pest & Cleaning Grouped - Names Only) */}
-              <div className="md:col-span-2">
-                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                  Select Service(s) <span className="text-red-500">*</span>
-                </label>
-                <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 bg-[#F7F5F0] border p-3 rounded max-h-60 overflow-y-auto ${
-                  errors.service_id ? 'border-red-500' : 'border-[#E2DFD7]'
-                }`}>
-                  <div className="col-span-full mb-1">
-                    <span className="text-xs font-bold text-[#5A5A5A]">🧹 Cleaning Services</span>
-                  </div>
-                  {cleaningServices.map((s) => (
-                    <label key={s.id} className="flex items-center gap-2 cursor-pointer group">
-                      <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
-                        formData.service_id.includes(s.id) ? 'bg-[#0A0A0A] border-[#0A0A0A]' : 'border-[#C2BFB7] group-hover:border-[#0A0A0A]'
-                      }`}>
-                        {formData.service_id.includes(s.id) && <span className="text-white text-[10px]">✓</span>}
-                      </div>
-                      <span className="text-sm text-[#2D2D2D] truncate">{s.name}</span>
-                      <input 
-                        type="checkbox"
-                        className="hidden"
-                        checked={formData.service_id.includes(s.id)}
-                        onChange={() => handleServiceToggle(s.id)}
-                      />
-                    </label>
-                  ))}
-                  
-                  <div className="col-span-full mt-2 mb-1">
-                    <span className="text-xs font-bold text-[#5A5A5A]">🐜 Pest Control</span>
-                  </div>
-                  {pestServices.map((s) => (
-                    <label key={s.id} className="flex items-center gap-2 cursor-pointer group">
-                      <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
-                        formData.service_id.includes(s.id) ? 'bg-[#0A0A0A] border-[#0A0A0A]' : 'border-[#C2BFB7] group-hover:border-[#0A0A0A]'
-                      }`}>
-                        {formData.service_id.includes(s.id) && <span className="text-white text-[10px]">✓</span>}
-                      </div>
-                      <span className="text-sm text-[#2D2D2D] truncate">{s.name}</span>
-                      <input 
-                        type="checkbox"
-                        className="hidden"
-                        checked={formData.service_id.includes(s.id)}
-                        onChange={() => handleServiceToggle(s.id)}
-                      />
-                    </label>
-                  ))}
-                </div>
-                {errors.service_id && (
-                  <p className="text-xs text-red-500 mt-1">{errors.service_id}</p>
-                )}
-              </div>
-
-            </div>
-
-            {/* Grid 3: Property Type & Location */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
-              {/* Residential or Commercial Choice */}
-              <div className="md:col-span-2">
-                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-3">
-                  Is this a Residential or Commercial property? <span className="text-red-500">*</span>
-                </label>
-                <div className="flex gap-4">
-                  <label className={`flex-1 flex items-center justify-center gap-2 p-3 rounded border cursor-pointer transition-colors ${
-                    propertyCategory === 'residential' 
-                      ? 'bg-[#E8871E] border-[#E8871E] text-white font-bold' 
-                      : 'bg-white border-[#E2DFD7] text-[#5A5A5A] hover:border-[#0A0A0A]'
-                  }`}>
-                    <input 
-                      type="radio" 
-                      name="property_category" 
-                      className="hidden" 
-                      checked={propertyCategory === 'residential'}
-                      onChange={() => setPropertyCategory('residential')}
-                    />
-                    Residential
-                  </label>
-                  <label className={`flex-1 flex items-center justify-center gap-2 p-3 rounded border cursor-pointer transition-colors ${
-                    propertyCategory === 'commercial' 
-                      ? 'bg-[#E8871E] border-[#E8871E] text-white font-bold' 
-                      : 'bg-white border-[#E2DFD7] text-[#5A5A5A] hover:border-[#0A0A0A]'
-                  }`}>
-                    <input 
-                      type="radio" 
-                      name="property_category" 
-                      className="hidden" 
-                      checked={propertyCategory === 'commercial'}
-                      onChange={() => setPropertyCategory('commercial')}
-                    />
-                    Commercial
-                  </label>
-                </div>
-              </div>
-
-              {/* Property Type */}
-              <div>
-                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                  Property Type <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <Building className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
-                  <select
-                    name="property_type"
-                    value={formData.property_type}
-                    onChange={handleChange}
-                    className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors cursor-pointer"
-                  >
-                    {propertyCategory === 'residential' && (
-                      <>
-                        <option value="Apartment">Apartment</option>
-                        <option value="Villa">Villa</option>
-                        <option value="Partition">Partition</option>
-                      </>
-                    )}
-                    {propertyCategory === 'commercial' && (
-                      <>
-                        <option value="Office">Office</option>
-                        <option value="Shop">Shop</option>
-                        <option value="Warehouse">Warehouse</option>
-                      </>
-                    )}
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Apartment Size (Conditional) */}
-              {formData.property_type === 'Apartment' && (
-                <div>
-                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                    Size <span className="text-red-500">*</span>
-                  </label>
-                  <div className="relative">
-                    <Building className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
-                    <select
-                      name="apartment_size"
-                      value={formData.apartment_size}
-                      onChange={handleChange}
-                      className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors cursor-pointer"
-                    >
-                      <option value="Studio">Studio</option>
-                      <option value="1 BHK">1 BHK</option>
-                      <option value="2 BHK">2 BHK</option>
-                      <option value="3 BHK">3 BHK</option>
-                      <option value="4+ BHK">4+ BHK</option>
-                    </select>
-                  </div>
-                </div>
-              )}
-
-              {/* Location / Area */}
-              <div>
-                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                  Location / Area in UAE <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <MapPin className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="text"
-                    name="location"
-                    value={formData.location}
-                    onChange={handleChange}
-                    list="uae-areas-list"
-                    placeholder="e.g. Dubai Marina, Business Bay, etc."
-                    className={`w-full bg-[#F7F5F0] border ${
-                      errors.location ? 'border-red-500' : 'border-[#E2DFD7] focus:border-[#0A0A0A]'
-                    } text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors`}
-                  />
-                  <datalist id="uae-areas-list">
-                    {POPULAR_LOCATIONS.map((loc) => (
-                      <option key={loc} value={loc} />
-                    ))}
-                    {UAE_LOCATIONS.flatMap((e) => e.areas).map((area) => (
-                      <option key={area} value={area} />
-                    ))}
-                  </datalist>
-                </div>
-                {errors.location && (
-                  <p className="text-xs text-red-500 mt-1">{errors.location}</p>
-                )}
-              </div>
-
-            </div>
-
-            {/* Grid 4: Date & Time */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
-              {/* Date */}
-              <div>
-                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                  Preferred Date
-                </label>
-                <div className="relative">
-                  <Calendar className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="date"
-                    name="preferred_date"
-                    value={formData.preferred_date}
-                    onChange={handleChange}
-                    className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* Time */}
-              <div>
-                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                  Preferred Time Slot
-                </label>
-                <div className="relative">
-                  <Clock className="w-4 h-4 text-[#7A9E7E] absolute left-3.5 top-1/2 -translate-y-1/2" />
-                  <select
-                    name="preferred_time"
-                    value={formData.preferred_time}
-                    onChange={handleChange}
-                    className="w-full bg-[#F7F5F0] border border-[#E2DFD7] focus:border-[#0A0A0A] text-[#2D2D2D] text-sm rounded pl-10 pr-4 py-3 outline-none transition-colors cursor-pointer"
-                  >
-                    <option value="09:00 AM">09:00 AM (Morning Slot)</option>
-                    <option value="11:00 AM">11:00 AM (Late Morning)</option>
-                    <option value="02:00 PM">02:00 PM (Afternoon Slot)</option>
-                    <option value="05:00 PM">05:00 PM (Evening Slot)</option>
-                    <option value="08:00 PM">08:00 PM (Night Urgent)</option>
-                  </select>
-                </div>
-              </div>
-
             </div>
 
             {/* Notes */}
