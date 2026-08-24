@@ -28,39 +28,51 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "RIDOUT Pest Control & Cleaning Services",
-      "image": "https://ridoutpestcontrol.ae/favicon-512x512.png",
-      "logo": "https://ridoutpestcontrol.ae/favicon-512x512.png",
-      "@id": "https://ridoutpestcontrol.ae",
-      "url": "https://ridoutpestcontrol.ae",
-      "telephone": "+971554720124",
-      "priceRange": "AED 120 - AED 950",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Dubai",
-        "addressRegion": "Dubai",
-        "addressCountry": "AE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 25.2048,
-        "longitude": 55.2708
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "00:00",
-        "closes": "23:59"
-      }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://ridoutpestcontrol.ae/#website",
+          "url": "https://ridoutpestcontrol.ae",
+          "name": "RIDOUT Pest Control & Cleaning UAE",
+          "description": "Professional pest control and cleaning services across Dubai, Sharjah, and Ajman.",
+          "image": "https://ridoutpestcontrol.ae/favicon-512x512.png"
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://ridoutpestcontrol.ae/#organization",
+          "name": "RIDOUT Pest Control & Cleaning Services",
+          "image": "https://ridoutpestcontrol.ae/favicon-512x512.png",
+          "logo": "https://ridoutpestcontrol.ae/favicon-512x512.png",
+          "url": "https://ridoutpestcontrol.ae",
+          "telephone": "+971554720124",
+          "priceRange": "AED 99 - AED 950",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dubai",
+            "addressRegion": "Dubai",
+            "addressCountry": "AE"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 25.2048,
+            "longitude": 55.2708
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        }
+      ]
     }
     </script>
 
