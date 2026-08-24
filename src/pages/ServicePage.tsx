@@ -56,11 +56,12 @@ export const ServicePage: React.FC = () => {
     "name": `${service.name} in Dubai, Sharjah, and Ajman`,
     "provider": {
       "@type": "LocalBusiness",
-      "name": "Ridout Pest Control UAE",
+      "name": "RIDOUT Pest Control & Cleaning Services UAE",
       "telephone": "+971554720124",
+      "url": "https://ridoutpestcontrol.ae",
       "address": {
         "@type": "PostalAddress",
-        "addressRegion": "Dubai",
+        "addressRegion": "Dubai, Sharjah, Ajman",
         "addressCountry": "AE"
       }
     },

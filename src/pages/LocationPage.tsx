@@ -44,10 +44,11 @@ export const LocationPage: React.FC = () => {
   const schemaMarkup = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: `Ridout Pest Control & Cleaning ${locationName}`,
-    image: 'https://ridoutpest.com/hero-bg.jpg',
+    name: `RIDOUT Pest Control & Cleaning ${locationName}`,
+    image: 'https://ridoutpestcontrol.ae/favicon-512x512.png',
     telephone: '+971554720124',
-    priceRange: 'AED 129 - AED 999',
+    url: `https://ridoutpestcontrol.ae/locations/${slug}`,
+    priceRange: 'AED 99 - AED 950',
     areaServed: locationName,
     address: {
       '@type': 'PostalAddress',

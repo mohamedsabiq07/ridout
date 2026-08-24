@@ -13,21 +13,22 @@ export const SEO: React.FC<SEOProps> = ({
   title,
   description,
   canonicalUrl,
-  imageUrl = 'https://ridoutpest.com/hero-bg.jpg',
+  imageUrl = 'https://ridoutpestcontrol.ae/favicon-512x512.png',
   schemaMarkup
 }) => {
-  const fullTitle = `${title} | Ridout Pest Control & Cleaning UAE`;
-  const pageUrl = `https://ridoutpest.com${canonicalUrl || ''}`;
+  const fullTitle = `${title} | RIDOUT Pest Control & Cleaning UAE`;
+  const cleanCanonical = canonicalUrl?.startsWith('/') ? canonicalUrl : `/${canonicalUrl || ''}`;
+  const pageUrl = `https://ridoutpestcontrol.ae${cleanCanonical === '/' ? '' : cleanCanonical}`;
 
   // Default rich LocalBusiness schema with 4.9 Star Aggregate Rating
   const defaultLocalBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Ridout Pest Control & Home Cleaning Services UAE',
+    name: 'RIDOUT Pest Control & Cleaning Services UAE',
     image: imageUrl,
     telephone: '+971554720124',
-    url: 'https://ridoutpest.com',
-    priceRange: 'AED 129 - AED 999',
+    url: 'https://ridoutpestcontrol.ae',
+    priceRange: 'AED 99 - AED 950',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Dubai',
@@ -72,7 +73,8 @@ export const SEO: React.FC<SEOProps> = ({
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
-      <meta name="keywords" content="pest control dubai, pest control sharjah, pest control ajman, bed bug treatment dubai, cockroach control uae, deep cleaning dubai, kitchen cleaning sharjah, municipality approved pest control" />
+      <meta name="keywords" content="pest control dubai, pest control sharjah, pest control ajman, bed bug treatment dubai, cockroach control uae, deep cleaning dubai, kitchen cleaning sharjah, municipality approved pest control, residential pest control, commercial pest control" />
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
       {/* Local UAE Geo Meta Tags */}
       <meta name="geo.region" content="AE-DU" />
@@ -89,7 +91,8 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
-      <meta property="og:site_name" content="Rid Out Pest Control UAE" />
+      <meta property="og:site_name" content="RIDOUT Pest Control UAE" />
+      <meta property="og:locale" content="en_AE" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -105,3 +108,4 @@ export const SEO: React.FC<SEOProps> = ({
     </Helmet>
   );
 };
+

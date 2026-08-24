@@ -1,8 +1,20 @@
-# Allow all compliant search engine crawlers
+# Robots.txt for RIDOUT Pest Control & Cleaning Services UAE
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /admin/*
 Disallow: /api/
 
+# Explicit search crawler directives
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 # Sitemap location
-Sitemap: https://ridoutpest.com/sitemap.xml
+Sitemap: https://ridoutpestcontrol.ae/sitemap.xml
+

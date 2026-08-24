@@ -38,38 +38,45 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-8 border-t border-[#1F1F1F]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-[#1F1F1F]">
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Service Areas</h4>
+            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Service Areas (UAE)</h4>
             <ul className="space-y-2">
-              <li><Link to="/locations/dubai" className="hover:text-white transition-colors">Pest Control in Dubai</Link></li>
-              <li><Link to="/locations/sharjah" className="hover:text-white transition-colors">Pest Control in Sharjah</Link></li>
-              <li><Link to="/locations/ajman" className="hover:text-white transition-colors">Pest Control in Ajman</Link></li>
+              <li><Link to="/locations/dubai" className="hover:text-white transition-colors">Pest Control Dubai</Link></li>
+              <li><Link to="/locations/sharjah" className="hover:text-white transition-colors">Pest Control Sharjah</Link></li>
+              <li><Link to="/locations/ajman" className="hover:text-white transition-colors">Pest Control Ajman</Link></li>
+              <li><Link to="/locations/dubai-marina" className="hover:text-white transition-colors">Dubai Marina &amp; JBR</Link></li>
+              <li><Link to="/locations/downtown-dubai" className="hover:text-white transition-colors">Downtown &amp; Business Bay</Link></li>
+              <li><Link to="/locations/jvc" className="hover:text-white transition-colors">JVC &amp; Dubai Hills</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Top Services</h4>
+            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Pest Treatments</h4>
             <ul className="space-y-2">
-              <li><Link to="/services/cockroach-control" className="hover:text-white transition-colors">Cockroach Control</Link></li>
-              <li><Link to="/services/bed-bug-control" className="hover:text-white transition-colors">Bed Bug Treatment</Link></li>
-              <li><Link to="/services/termite-control" className="hover:text-white transition-colors">Termite Control</Link></li>
-              <li><Link to="/services/ant-control" className="hover:text-white transition-colors">Ant Control</Link></li>
+              <li><Link to="/services/cockroach-control" className="hover:text-white transition-colors">Cockroach Gel Treatment</Link></li>
+              <li><Link to="/services/bed-bug-treatment" className="hover:text-white transition-colors">Bed Bug Thermal &amp; Spray</Link></li>
+              <li><Link to="/services/termite-treatment" className="hover:text-white transition-colors">Termite Barrier Treatment</Link></li>
+              <li><Link to="/services/ant-control" className="hover:text-white transition-colors">Ant Elimination</Link></li>
+              <li><Link to="/services/rodent-control" className="hover:text-white transition-colors">Rodent Control</Link></li>
+              <li><Link to="/services/general-pest-control" className="hover:text-white transition-colors">General Pest Control</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Cleaning</h4>
+            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Deep Cleaning</h4>
             <ul className="space-y-2">
-              <li><Link to="/services/kitchen-cleaning" className="hover:text-white transition-colors">Kitchen Cleaning</Link></li>
-              <li><Link to="/services/bathroom-cleaning" className="hover:text-white transition-colors">Bathroom Cleaning</Link></li>
-              <li><Link to="/services/move-in-out-cleaning" className="hover:text-white transition-colors">Move-in / Move-out Cleaning</Link></li>
+              <li><Link to="/services/kitchen-cleaning" className="hover:text-white transition-colors">Kitchen Degreasing</Link></li>
+              <li><Link to="/services/bathroom-cleaning" className="hover:text-white transition-colors">Bathroom Descaling</Link></li>
+              <li><Link to="/services/deep-cleaning" className="hover:text-white transition-colors">Move-in / Move-out Cleaning</Link></li>
+              <li><Link to="/services/disinfection-sanitization" className="hover:text-white transition-colors">Disinfection &amp; Sanitization</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Contact</h4>
+            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Contact &amp; Support</h4>
             <ul className="space-y-2">
-              <li>Call: +971 554720124</li>
-              <li>WhatsApp: Available 24/7</li>
-              <li>support@ridoutpest.com</li>
+              <li><a href="tel:+971554720124" className="hover:text-[#E8871E] transition-colors">Call: +971 554720124</a></li>
+              <li><a href="https://wa.me/971554720124" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">WhatsApp: Available 24/7</a></li>
+              <li>support@ridoutpestcontrol.ae</li>
+              <li className="text-neutral-500 pt-2">Dubai • Sharjah • Ajman</li>
             </ul>
           </div>
         </div>
@@ -77,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
         {/* Bottom Copyright Row */}
         <div className="pt-8 border-t border-[#1F1F1F] flex flex-col items-center justify-center text-center text-neutral-500">
           <p className="text-[11px] font-mono">
-            © {new Date().getFullYear()} Rid Out Pest Control Services. All rights reserved. Municipality Certified.
+            © {new Date().getFullYear()} RIDOUT Pest Control &amp; Cleaning Services UAE. All rights reserved. Municipality Certified.
           </p>
         </div>
       </div>
