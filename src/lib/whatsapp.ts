@@ -80,3 +80,27 @@ export function generateWhatsAppLink(
   const message = formatWhatsAppMessage(request, requestNumber);
   return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 }
+
+/**
+ * 1-Tap Direct WhatsApp Consultation for instant booking & inquiry
+ */
+export function generateQuickServiceWhatsAppLink(
+  serviceName: string,
+  priceInfo?: string,
+  location?: string
+): string {
+  const locText = location ? ` in ${location}` : '';
+  const priceText = priceInfo ? ` (${priceInfo})` : '';
+  const msg = `Hi RIDOUT Team! 👋 I would like to book a 1-tap consultation for *${serviceName}*${priceText}${locText}. Please share available dispatch slots and instant confirmation.`;
+  return `https://wa.me/971554720124?text=${encodeURIComponent(msg)}`;
+}
+
+/**
+ * 1-Tap Emergency WhatsApp Alert
+ */
+export function generateEmergencyWhatsAppLink(serviceName?: string): string {
+  const specific = serviceName ? ` for *${serviceName}*` : '';
+  const msg = `🚨 *URGENT 60-MIN DISPATCH REQUEST*${specific}\nI need immediate emergency pest control / sanitization assistance at my property in Dubai/Sharjah/Ajman. Please connect me to the nearest active technician.`;
+  return `https://wa.me/971554720124?text=${encodeURIComponent(msg)}`;
+}
+

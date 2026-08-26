@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, Check, ArrowRight, Sparkles } from 'lucide-react';
+import { Calculator, Check, ArrowRight, Sparkles, MessageCircle } from 'lucide-react';
 import { 
   DEFAULT_PRICING_OPTIONS, 
   fetchPricingConfig, 
@@ -186,13 +186,23 @@ export const PriceEstimator: React.FC<PriceEstimatorProps> = ({ onSelectAndBook 
               </div>
             </div>
 
-            {/* CTA Button */}
-            <div className="mt-8 relative z-10">
+            {/* CTA Buttons: WhatsApp 1-Tap + Schedule Form */}
+            <div className="mt-8 space-y-3 relative z-10">
+              <a
+                href={`https://wa.me/971554720124?text=${encodeURIComponent(`Hi RIDOUT Team! 👋 I calculated a price estimate on your website:\n\n• Service: ${selectedService.name}\n• Property: ${selectedPropertyType}\n• Est. Total: AED ${currentRate.min} - ${currentRate.max}\n\nPlease confirm availability for earliest dispatch.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-bold text-xs tracking-wider transition-colors shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2 cursor-pointer uppercase font-['Montserrat'] active:scale-95"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Book via WhatsApp (1-Tap)</span>
+              </a>
+
               <button
                 onClick={handleBookEstimate}
-                className="animate-shimmer w-full py-4 bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white rounded-full font-extrabold text-sm tracking-wide transition-all duration-300 shadow-xl shadow-[#E8871E]/30 hover:shadow-2xl hover:shadow-[#E8871E]/50 border border-amber-300/30 active:scale-95 cursor-pointer uppercase font-['Montserrat'] flex items-center justify-center gap-2"
+                className="animate-shimmer w-full py-3.5 bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white rounded-full font-extrabold text-xs tracking-wider transition-all duration-300 shadow-xl shadow-[#E8871E]/30 hover:shadow-2xl hover:shadow-[#E8871E]/50 border border-amber-300/30 active:scale-95 cursor-pointer uppercase font-['Montserrat'] flex items-center justify-center gap-2"
               >
-                <span>Lock In This Rate & Schedule</span>
+                <span>Lock In Rate &amp; Schedule Form</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

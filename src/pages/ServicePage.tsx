@@ -94,19 +94,42 @@ export const ServicePage: React.FC = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#E8871E]/20 text-[#E8871E] mb-6">
                   <IconComponent className="w-8 h-8" />
                 </div>
+
+                {/* Price & Compliance Header */}
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <span className="px-3.5 py-1.5 rounded-full bg-[#E8871E]/20 border border-[#E8871E]/40 text-[#E8871E] text-xs font-mono font-bold uppercase tracking-wider">
+                    {service.startingPrice || 'Starting from AED 99'}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-600/30 text-emerald-400 text-xs font-mono font-semibold">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Dubai Municipality Section Approved</span>
+                  </span>
+                </div>
+
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-['Montserrat'] mb-6 leading-tight">
                   Professional {service.name} <br />
-                  <span className="text-[#E8871E]">in Dubai & Sharjah</span>
+                  <span className="text-[#E8871E]">in Dubai, Sharjah &amp; Ajman</span>
                 </h1>
                 <p className="text-xl text-neutral-300 mb-8 leading-relaxed">
                   {service.fullDesc}
                 </p>
-                <div className="flex items-center gap-4">
+                
+                {/* 1-Tap WhatsApp + Booking CTA Actions */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <a
+                    href={`https://wa.me/971554720124?text=${encodeURIComponent(`Hi RIDOUT Team! 👋 I would like to book a 1-tap consultation for *${service.name}* (${service.startingPrice || 'Starting Price'}). Please share earliest available dispatch slots.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-4 rounded font-extrabold uppercase tracking-wider text-xs flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-950/40 cursor-pointer font-mono"
+                  >
+                    <span>WhatsApp 1-Tap Booking</span>
+                  </a>
+
                   <button 
                     onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="bg-[#E8871E] hover:bg-[#d47817] text-white px-8 py-4 rounded font-extrabold uppercase tracking-wide transition-colors"
+                    className="bg-[#E8871E] hover:bg-[#d47817] text-white px-7 py-4 rounded font-extrabold uppercase tracking-wide text-xs transition-colors cursor-pointer"
                   >
-                    Book This Service
+                    Book Online Form
                   </button>
                 </div>
               </div>

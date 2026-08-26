@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-[#1F1F1F]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 py-8 border-t border-[#1F1F1F]">
           <div>
             <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Service Areas (UAE)</h4>
             <ul className="space-y-2">
@@ -62,6 +62,17 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             </ul>
           </div>
           <div>
+            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Pest Guides (UAE)</h4>
+            <ul className="space-y-2">
+              <li><Link to="/guide/cockroaches-dubai-apartments" className="hover:text-[#E8871E] transition-colors">Cockroach Apartment Guide</Link></li>
+              <li><Link to="/guide/dubai-pest-control-cost" className="hover:text-[#E8871E] transition-colors">Dubai Pest Control Cost</Link></li>
+              <li><Link to="/guide/apartment-prep-pest-control" className="hover:text-[#E8871E] transition-colors">Apartment Prep Checklist</Link></li>
+              <li><Link to="/guide/bed-bugs-dubai-signs-treatment" className="hover:text-[#E8871E] transition-colors">Bed Bug Signs &amp; Steam</Link></li>
+              <li><Link to="/guide/termites-dubai-signs-inspection" className="hover:text-[#E8871E] transition-colors">Termite Warning Signs</Link></li>
+              <li><Link to="/guides" className="text-[#E8871E] font-bold hover:underline">View All 8 Guides →</Link></li>
+            </ul>
+          </div>
+          <div>
             <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Deep Cleaning</h4>
             <ul className="space-y-2">
               <li><Link to="/services/kitchen-cleaning" className="hover:text-white transition-colors">Kitchen Degreasing</Link></li>
@@ -73,10 +84,11 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           <div>
             <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Contact &amp; Support</h4>
             <ul className="space-y-2">
-              <li><a href="tel:+971554720124" className="hover:text-[#E8871E] transition-colors">Call: +971 554720124</a></li>
-              <li><a href="https://wa.me/971554720124" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">WhatsApp: Available 24/7</a></li>
+              <li><a href="tel:+971554720124" className="hover:text-[#E8871E] transition-colors font-semibold">Call: +971 554720124</a></li>
+              <li><a href="https://wa.me/971554720124" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors font-semibold">WhatsApp: 24/7 Dispatch</a></li>
               <li>support@ridoutpestcontrol.ae</li>
-              <li className="text-neutral-500 pt-2">Dubai • Sharjah • Ajman</li>
+              <li className="text-neutral-500 pt-2 text-xs">Dubai • Sharjah • Ajman</li>
+              <li className="text-emerald-400 text-xs font-mono font-semibold pt-1">Municipality Registered</li>
             </ul>
           </div>
         </div>
@@ -84,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
         {/* Bottom Copyright Row */}
         <div className="pt-8 border-t border-[#1F1F1F] flex flex-col items-center justify-center text-center text-neutral-500">
           <p className="text-[11px] font-mono">
-            © {new Date().getFullYear()} RIDOUT Pest Control &amp; Cleaning Services UAE. All rights reserved. Municipality Certified.
+            © {new Date().getFullYear()} RIDOUT Pest Control &amp; Cleaning Services UAE. All rights reserved. Registered with Dubai Municipality Public Health Pest Control Section.
           </p>
         </div>
       </div>

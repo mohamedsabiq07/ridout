@@ -121,18 +121,28 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#2A2A2A] flex items-center gap-3">
+                <div className="pt-4 border-t border-[#2A2A2A] flex flex-col sm:flex-row items-center gap-3 relative z-20">
+                  <a
+                    href="https://wa.me/971554720124?text=Hi%20RIDOUT%20Team!%20%F0%9F%91%8B%20I%20would%20like%20to%20book%20a%201-tap%20consultation%20for%20*Kitchen%20Deep%20Cleaning*.%20Please%20let%20me%20know%20available%20slots."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-3 px-4 rounded-full flex items-center justify-center gap-1.5 transition-colors shadow-sm cursor-pointer"
+                  >
+                    <span>WhatsApp (1-Tap)</span>
+                  </a>
+
                   <button
                     onClick={() => onBookCleaning('kitchen-cleaning')}
-                    className="animate-shimmer flex-1 bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white font-extrabold text-sm py-3 px-4 rounded-full transition-all duration-300 shadow-lg shadow-[#E8871E]/25 hover:shadow-xl hover:shadow-[#E8871E]/45 border border-amber-300/30 flex items-center justify-center gap-2 cursor-pointer uppercase font-['Montserrat'] relative z-20 active:scale-95"
+                    className="animate-shimmer flex-1 w-full bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white font-extrabold text-sm py-3 px-4 rounded-full transition-all duration-300 shadow-lg shadow-[#E8871E]/25 hover:shadow-xl hover:shadow-[#E8871E]/45 border border-amber-300/30 flex items-center justify-center gap-2 cursor-pointer uppercase font-['Montserrat'] active:scale-95"
                   >
-                    <span>Book Kitchen Cleaning</span>
+                    <span>Book Cleaning</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
 
                   <Link
                     to={`/services/kitchen-cleaning`}
-                    className="px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded-full text-xs font-bold transition-colors cursor-pointer text-center relative z-20"
+                    className="px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded-full text-xs font-bold transition-colors cursor-pointer text-center"
                   >
                     Specs
                   </Link>
@@ -203,18 +213,28 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#2A2A2A] flex items-center gap-3">
+                <div className="pt-4 border-t border-[#2A2A2A] flex flex-col sm:flex-row items-center gap-3 relative z-20">
+                  <a
+                    href="https://wa.me/971554720124?text=Hi%20RIDOUT%20Team!%20%F0%9F%91%8B%20I%20would%20like%20to%20book%20a%201-tap%20consultation%20for%20*Bathroom%20Deep%20Cleaning*.%20Please%20let%20me%20know%20available%20slots."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-3 px-4 rounded-full flex items-center justify-center gap-1.5 transition-colors shadow-sm cursor-pointer"
+                  >
+                    <span>WhatsApp (1-Tap)</span>
+                  </a>
+
                   <button
                     onClick={() => onBookCleaning('bathroom-cleaning')}
-                    className="animate-shimmer flex-1 bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white font-extrabold text-sm py-3 px-4 rounded-full transition-all duration-300 shadow-lg shadow-[#E8871E]/25 hover:shadow-xl hover:shadow-[#E8871E]/45 border border-amber-300/30 flex items-center justify-center gap-2 cursor-pointer uppercase font-['Montserrat'] relative z-20 active:scale-95"
+                    className="animate-shimmer flex-1 w-full bg-gradient-to-r from-[#E8871E] to-[#d47817] hover:from-[#f0922b] hover:to-[#E8871E] text-white font-extrabold text-sm py-3 px-4 rounded-full transition-all duration-300 shadow-lg shadow-[#E8871E]/25 hover:shadow-xl hover:shadow-[#E8871E]/45 border border-amber-300/30 flex items-center justify-center gap-2 cursor-pointer uppercase font-['Montserrat'] active:scale-95"
                   >
-                    <span>Book Bathroom Cleaning</span>
+                    <span>Book Cleaning</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
 
                   <Link
                     to={`/services/bathroom-cleaning`}
-                    className="px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded-full text-xs font-bold transition-colors cursor-pointer text-center relative z-20"
+                    className="px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] hover:border-neutral-500 text-neutral-300 hover:text-white rounded-full text-xs font-bold transition-colors cursor-pointer text-center"
                   >
                     Specs
                   </Link>

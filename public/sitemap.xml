@@ -2,163 +2,217 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ridoutpestcontrol.ae/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ridoutpestcontrol.ae/services/general-pest-control</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://ridoutpestcontrol.ae/guides</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/guide/cockroaches-dubai-apartments</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/guide/dubai-pest-control-cost</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/guide/apartment-prep-pest-control</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/guide/bed-bugs-dubai-signs-treatment</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/guide/prevent-bed-bugs-shared-accommodation</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/guide/prevent-mosquitoes-dubai-villas</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/guide/termites-dubai-signs-inspection</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/guide/restaurant-pest-control-dubai-municipality</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/services/general-pest-control</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/services/cockroach-control</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/services/bed-bug-treatment</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/services/ant-control</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/services/mosquito-control</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/services/rodent-control</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/services/termite-treatment</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/services/disinfection-sanitization</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/services/deep-cleaning</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/services/kitchen-cleaning</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/services/bathroom-cleaning</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/dubai</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/sharjah</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/ajman</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/dubai-marina</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/downtown-dubai</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ridoutpestcontrol.ae/locations/palm-jumeirah</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/business-bay</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/jvc</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ridoutpestcontrol.ae/locations/jlt</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/al-barsha</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/locations/palm-jumeirah</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/locations/deira</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ridoutpestcontrol.ae/locations/bur-dubai</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/arabian-ranches</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/mirdif</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ridoutpestcontrol.ae/locations/al-nahda-sharjah</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ridoutpestcontrol.ae/locations/al-majaz</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ridoutpestcontrol.ae/locations/ajman-downtown</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://ridoutpestcontrol.ae/locations/al-majaz</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
