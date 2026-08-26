@@ -518,13 +518,13 @@ export const PEST_SERVICES: PestService[] = [
   },
   {
     "id": "rodent-control",
-    "name": "Rat & Mouse Control in Dubai",
+    "name": "Rodent Pest Control in Dubai",
     "slug": "rodent-control",
     "iconName": "Rat",
     "imageUrl": "/rodent.jpg",
     "category": "pest",
-    "subtitle": "Commercial & residential rodent management, tamper-proof bait stations, electronic tracking, and architectural exclusion sealing.",
-    "shortDesc": "Eradication and entry proofing for roof rats, Norway rats, and house mice in villa ceilings, restaurant kitchens, and logistics warehouses.",
+    "subtitle": "Commercial & residential rodent pest control, tamper-proof bait stations, electronic tracking, and architectural exclusion sealing across Dubai & Sharjah.",
+    "shortDesc": "Eradication and entry proofing for rats and mice in villa ceilings, restaurant kitchens, and logistics warehouses.",
     "fullDesc": "Killing rodents without sealing their entry routes leads to rapid recurrence. RIDOUT provides complete Integrated Pest Management (IPM) that combines locked safety bait stations with architectural proofing (>0.5cm gaps).",
     "startingPrice": "AED 229",
     "problems": [
@@ -633,110 +633,6 @@ export const PEST_SERVICES: PestService[] = [
     "duration": "60 - 90 mins",
     "warrantyDetails": "Guaranteed Rodent Exclusion & Maintenance Contracts",
     "importantNote": "Permanent rodent elimination requires combining professional trapping with structural entry proofing."
-  },
-  {
-    "id": "silverfish-control",
-    "name": "Silverfish Control in Dubai",
-    "slug": "silverfish-control",
-    "iconName": "Sparkles",
-    "imageUrl": "/placeholder-cleaning.jpg",
-    "category": "pest",
-    "subtitle": "Targeted silverfish eradication for bathrooms, wardrobes, bookshelves, and humid indoor spaces across Dubai & Sharjah.",
-    "shortDesc": "Micro-dusting and desiccant barrier protection targeting silverfish in dark wardrobes, baseboard voids, and humid bathroom ceilings.",
-    "fullDesc": "Silverfish thrive in dark, humid environments eating starch, cellulose, and wallpaper glue. In Dubai, high bathroom humidity and unventilated wardrobes create ideal habitats. RIDOUT applies non-staining micro-dusting and targeted perimeter treatments.",
-    "startingPrice": "AED 149",
-    "problems": [
-      "Silverfish in Bathrooms",
-      "Wardrobe Fabric Damage",
-      "Damaged Books & Documents",
-      "Baseboard Crevices",
-      "High Humidity Pests"
-    ],
-    "whatWeTreat": [
-      "Silverfish (Lepisma saccharinum) in bathroom tile voids",
-      "Wardrobes, walk-in closets, and fitted cabinetry",
-      "Bookshelves, document archives, and photo albums",
-      "False ceiling gypsum voids and bathroom exhaust ducts",
-      "Laminate flooring and skirting board expansion gaps"
-    ],
-    "whyTheyAppearInDubai": [
-      {
-        "title": "High Bathroom Humidity & Steam",
-        "description": "Showers create persistent 80%+ relative humidity in enclosed bathrooms, which silverfish require to survive."
-      },
-      {
-        "title": "Cellulose & Starch in Wardrobes",
-        "description": "Silverfish feed on clothing starch, book bindings, synthetic silk, and wallpaper paste inside dark cupboards."
-      },
-      {
-        "title": "Cardboard Box Storage",
-        "description": "Moist corrugated cardboard in storage rooms provides both food (glue) and secluded breeding cavities."
-      }
-    ],
-    "dubaiClimateObservation": "In Dubai apartments, silverfish are predominantly found in bathroom vanity cabinets, behind unsealed mirrors, and in master bedroom walk-in closets eating cotton and linen starch.",
-    "processSteps": [
-      {
-        "stepNumber": 1,
-        "title": "Humidity & Void Inspection",
-        "description": "Inspecting bathroom ceiling hatches, baseboards, and dark closet corners to locate hiding silverfish."
-      },
-      {
-        "stepNumber": 2,
-        "title": "Precision Micro-Dusting",
-        "description": "Applying odorless desiccant dust (boric/silica-based) into closed wardrobe hinges, skirting voids, and document storage areas."
-      },
-      {
-        "stepNumber": 3,
-        "title": "Residual Perimeter Barrier",
-        "description": "Spraying non-staining low-toxicity barrier spray along bathroom floor perimeters and pipe collars."
-      },
-      {
-        "stepNumber": 4,
-        "title": "Ventilation & Moisture Advice",
-        "description": "Guiding clients on exhaust fan run times and dehumidification strategies to prevent recurrence."
-      }
-    ],
-    "technicianFindings": [
-      {
-        "title": "Silverfish vs Cockroach Nymphs",
-        "detail": "Customers often confuse silverfish with cockroach nymphs; silverfish have silvery tapered bodies, move in fish-like wiggles, and lack wings."
-      }
-    ],
-    "preparationSteps": [
-      "Empty lower shelves in wardrobes and bathrooms where silverfish are seen.",
-      "Remove clutter and damp cardboard boxes from closet floors.",
-      "Keep bathroom ventilation fans running after showers."
-    ],
-    "aftercareSteps": [
-      "Keep treated wardrobe corners undisturbed for 14 days.",
-      "Maintain good ventilation in bathrooms and use dehumidifiers where needed.",
-      "Store valuable paper archives in airtight plastic containers."
-    ],
-    "postTreatmentWhatHappens": [
-      "Within 24 Hours: Desiccant micro-dust dehydrates silverfish upon contact.",
-      "Days 3-7: Complete population suppression across treated closets and bathroom voids."
-    ],
-    "faqs": [
-      {
-        "question": "Are silverfish dangerous to humans or pets?",
-        "answer": "No. Silverfish do not bite, sting, or transmit diseases. However, they cause expensive damage to clothing, cotton, linen, silk, wallpaper, and book collections."
-      },
-      {
-        "question": "How do I prevent silverfish from returning?",
-        "answer": "Reduce indoor humidity using bathroom exhaust fans, eliminate standing water, store paper/clothing in sealed containers, and apply our professional 4-month residual barrier."
-      }
-    ],
-    "method": "Precision micro-dusting in concealed voids + odorless non-staining residual perimeter barrier spray.",
-    "suitableFor": [
-      "Apartments",
-      "Villas",
-      "Libraries",
-      "Walk-in Closets",
-      "Offices"
-    ],
-    "duration": "30 - 45 mins",
-    "warrantyDetails": "4-Month Free Re-Treatment Guarantee",
-    "importantNote": "Controlling indoor humidity and reducing paper clutter accelerates silverfish eradication."
   },
   {
     "id": "ant-control",

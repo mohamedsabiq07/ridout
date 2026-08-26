@@ -57,8 +57,8 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <li><Link to="/services/bed-bug-treatment" className="hover:text-white transition-colors">Bed Bug Thermal &amp; Spray</Link></li>
               <li><Link to="/services/termite-treatment" className="hover:text-white transition-colors">Termite Barrier Treatment</Link></li>
               <li><Link to="/services/mosquito-control" className="hover:text-white transition-colors">Mosquito Misting &amp; Larvicide</Link></li>
-              <li><Link to="/services/rodent-control" className="hover:text-white transition-colors">Rat &amp; Mouse Control</Link></li>
-              <li><Link to="/services/silverfish-control" className="hover:text-white transition-colors">Silverfish Control</Link></li>
+              <li><Link to="/services/rodent-control" className="hover:text-white transition-colors">Rodent Pest Control</Link></li>
+              <li><Link to="/services/ant-control" className="hover:text-white transition-colors">Ant Elimination</Link></li>
               <li><Link to="/services/general-pest-control" className="hover:text-white transition-colors">General Pest Control</Link></li>
             </ul>
           </div>
