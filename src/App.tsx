@@ -6,6 +6,7 @@ import { ServicePage } from './pages/ServicePage';
 import { LocationPage } from './pages/LocationPage';
 import { GuidePage } from './pages/GuidePage';
 import { GuidesHubPage } from './pages/GuidesHubPage';
+import { PropertyPage } from './pages/PropertyPage';
 import { AdminLogin } from './pages/AdminLogin';
 import { AdminRoute } from './components/AdminRoute';
 import { AdminDashboard } from './components/AdminDashboard';
@@ -22,6 +23,7 @@ export function App() {
             {/* SEO DEDICATED PAGES */}
             <Route path="/services/:slug" element={<ServicePage />} />
             <Route path="/locations/:slug" element={<LocationPage />} />
+            <Route path="/property/:slug" element={<PropertyPage />} />
             <Route path="/guide/:slug" element={<GuidePage />} />
             <Route path="/guides" element={<GuidesHubPage />} />
             

@@ -16,6 +16,27 @@ export type PropertyType =
   | 'Partition'
   | 'Other';
 
+export interface ServiceProcessStep {
+  stepNumber: number;
+  title: string;
+  description: string;
+}
+
+export interface ServiceMechanism {
+  title: string;
+  description: string;
+}
+
+export interface ServiceTechnicianFinding {
+  title: string;
+  detail: string;
+}
+
+export interface ServiceFAQ {
+  question: string;
+  answer: string;
+}
+
 export interface PestService {
   id: string;
   name: string;
@@ -33,6 +54,17 @@ export interface PestService {
   aftercareSteps?: string[];
   importantNote?: string;
   category?: 'pest' | 'cleaning';
+  
+  // Rich Technical UAE SEO Data
+  subtitle?: string;
+  whatWeTreat?: string[];
+  whyTheyAppearInDubai?: ServiceMechanism[];
+  dubaiClimateObservation?: string;
+  processSteps?: ServiceProcessStep[];
+  technicianFindings?: ServiceTechnicianFinding[];
+  postTreatmentWhatHappens?: string[];
+  faqs?: ServiceFAQ[];
+  warrantyDetails?: string;
 }
 
 export interface ServiceRequest {

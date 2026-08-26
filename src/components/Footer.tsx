@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 py-8 border-t border-[#1F1F1F]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 py-8 border-t border-[#1F1F1F]">
           <div>
             <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Service Areas (UAE)</h4>
             <ul className="space-y-2">
@@ -56,9 +56,21 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <li><Link to="/services/cockroach-control" className="hover:text-white transition-colors">Cockroach Gel Treatment</Link></li>
               <li><Link to="/services/bed-bug-treatment" className="hover:text-white transition-colors">Bed Bug Thermal &amp; Spray</Link></li>
               <li><Link to="/services/termite-treatment" className="hover:text-white transition-colors">Termite Barrier Treatment</Link></li>
-              <li><Link to="/services/ant-control" className="hover:text-white transition-colors">Ant Elimination</Link></li>
-              <li><Link to="/services/rodent-control" className="hover:text-white transition-colors">Rodent Control</Link></li>
+              <li><Link to="/services/mosquito-control" className="hover:text-white transition-colors">Mosquito Misting &amp; Larvicide</Link></li>
+              <li><Link to="/services/rodent-control" className="hover:text-white transition-colors">Rat &amp; Mouse Control</Link></li>
+              <li><Link to="/services/silverfish-control" className="hover:text-white transition-colors">Silverfish Control</Link></li>
               <li><Link to="/services/general-pest-control" className="hover:text-white transition-colors">General Pest Control</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-4 uppercase tracking-wider font-mono">Property Solutions</h4>
+            <ul className="space-y-2">
+              <li><Link to="/property/apartments" className="hover:text-[#E8871E] transition-colors">Dubai Apartments</Link></li>
+              <li><Link to="/property/villas" className="hover:text-[#E8871E] transition-colors">Villas &amp; Gardens</Link></li>
+              <li><Link to="/property/shared-accommodation" className="hover:text-[#E8871E] transition-colors">Shared &amp; Staff Camps</Link></li>
+              <li><Link to="/property/restaurants" className="hover:text-[#E8871E] transition-colors">Restaurants &amp; Cafes</Link></li>
+              <li><Link to="/property/warehouses" className="hover:text-[#E8871E] transition-colors">Warehouses &amp; Logistics</Link></li>
+              <li><Link to="/property/hotels" className="hover:text-[#E8871E] transition-colors">Hotels &amp; Holiday Homes</Link></li>
             </ul>
           </div>
           <div>
