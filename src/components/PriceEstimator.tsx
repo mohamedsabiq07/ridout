@@ -7,6 +7,7 @@ import {
   type ServicePricingOption, 
   type PropertyTypeKey 
 } from '../lib/pricing';
+import { ENABLE_COMMERCIAL } from '../config/features';
 
 interface PriceEstimatorProps {
   onSelectAndBook: (
@@ -112,8 +113,10 @@ export const PriceEstimator: React.FC<PriceEstimatorProps> = ({ onSelectAndBook 
               <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-3">
                 2. Select Property Size
               </label>
-              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                {(['Studio', '1 BHK', '2 BHK', '3+ BHK', 'Villa', 'Commercial'] as PropertyTypeKey[]).map((type) => (
+              <div className={`grid grid-cols-3 ${ENABLE_COMMERCIAL ? 'sm:grid-cols-6' : 'sm:grid-cols-5'} gap-2`}>
+                {((ENABLE_COMMERCIAL 
+                  ? ['Studio', '1 BHK', '2 BHK', '3+ BHK', 'Villa', 'Commercial'] 
+                  : ['Studio', '1 BHK', '2 BHK', '3+ BHK', 'Villa']) as PropertyTypeKey[]).map((type) => (
                   <button
                     key={type}
                     onClick={() => setSelectedPropertyType(type)}

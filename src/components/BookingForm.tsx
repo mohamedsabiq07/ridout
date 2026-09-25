@@ -4,6 +4,7 @@ import { UAE_LOCATIONS, POPULAR_LOCATIONS } from '../data/locations';
 import type { BookingFormData, ServiceRequest } from '../types/booking';
 import { createServiceRequest } from '../lib/supabase';
 import { generateWhatsAppLink } from '../lib/whatsapp';
+import { ENABLE_COMMERCIAL } from '../config/features';
 import { ShieldCheck, Calendar, Clock, MapPin, Building, User, Phone, Mail, AlertCircle, Loader2, Upload, Camera, X } from 'lucide-react';
 
 interface BookingFormProps {
@@ -255,42 +256,44 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
           <form onSubmit={handleSubmit} className="space-y-6">
             
-            {/* 1st Question: Residential or Commercial Choice */}
-            <div>
-              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
-                Is this a Residential or Commercial property? <span className="text-red-500">*</span>
-              </label>
-              <div className="flex gap-4">
-                <label className={`flex-1 flex items-center justify-center gap-2 p-3.5 rounded-lg border font-semibold text-sm cursor-pointer transition-all ${
-                  propertyCategory === 'residential' 
-                    ? 'bg-[#E8871E] border-[#E8871E] text-white shadow-md shadow-[#E8871E]/20' 
-                    : 'bg-white border-[#E2DFD7] text-[#5A5A5A] hover:border-[#0A0A0A]'
-                }`}>
-                  <input 
-                    type="radio" 
-                    name="property_category" 
-                    className="hidden" 
-                    checked={propertyCategory === 'residential'}
-                    onChange={() => setPropertyCategory('residential')}
-                  />
-                  Residential
+            {/* 1st Question: Residential or Commercial Choice (Enabled when Commercial is active) */}
+            {ENABLE_COMMERCIAL && (
+              <div>
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#0A0A0A] mb-2">
+                  Is this a Residential or Commercial property? <span className="text-red-500">*</span>
                 </label>
-                <label className={`flex-1 flex items-center justify-center gap-2 p-3.5 rounded-lg border font-semibold text-sm cursor-pointer transition-all ${
-                  propertyCategory === 'commercial' 
-                    ? 'bg-[#E8871E] border-[#E8871E] text-white shadow-md shadow-[#E8871E]/20' 
-                    : 'bg-white border-[#E2DFD7] text-[#5A5A5A] hover:border-[#0A0A0A]'
-                }`}>
-                  <input 
-                    type="radio" 
-                    name="property_category" 
-                    className="hidden" 
-                    checked={propertyCategory === 'commercial'}
-                    onChange={() => setPropertyCategory('commercial')}
-                  />
-                  Commercial
-                </label>
+                <div className="flex gap-4">
+                  <label className={`flex-1 flex items-center justify-center gap-2 p-3.5 rounded-lg border font-semibold text-sm cursor-pointer transition-all ${
+                    propertyCategory === 'residential' 
+                      ? 'bg-[#E8871E] border-[#E8871E] text-white shadow-md shadow-[#E8871E]/20' 
+                      : 'bg-white border-[#E2DFD7] text-[#5A5A5A] hover:border-[#0A0A0A]'
+                  }`}>
+                    <input 
+                      type="radio" 
+                      name="property_category" 
+                      className="hidden" 
+                      checked={propertyCategory === 'residential'}
+                      onChange={() => setPropertyCategory('residential')}
+                    />
+                    Residential
+                  </label>
+                  <label className={`flex-1 flex items-center justify-center gap-2 p-3.5 rounded-lg border font-semibold text-sm cursor-pointer transition-all ${
+                    propertyCategory === 'commercial' 
+                      ? 'bg-[#E8871E] border-[#E8871E] text-white shadow-md shadow-[#E8871E]/20' 
+                      : 'bg-white border-[#E2DFD7] text-[#5A5A5A] hover:border-[#0A0A0A]'
+                  }`}>
+                    <input 
+                      type="radio" 
+                      name="property_category" 
+                      className="hidden" 
+                      checked={propertyCategory === 'commercial'}
+                      onChange={() => setPropertyCategory('commercial')}
+                    />
+                    Commercial
+                  </label>
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Property Type, Size & Location */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

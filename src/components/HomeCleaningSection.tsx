@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { HOME_CLEANING_SERVICES } from '../data/services';
 import { motion } from 'framer-motion';
 import { UtensilsCrossed, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ENABLE_COMMERCIAL } from '../config/features';
 
 interface HomeCleaningSectionProps {
   onBookCleaning: (serviceId: string) => void;
@@ -47,13 +48,15 @@ export const HomeCleaningSection: React.FC<HomeCleaningSectionProps> = ({
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#171717] border border-[#2A2A2A] text-xs font-mono font-bold text-neutral-300">
             <Sparkles className="w-4 h-4 text-[#E8871E]" />
-            <span>Residential & Commercial Cleaning</span>
+            <span>{ENABLE_COMMERCIAL ? 'Residential & Commercial Cleaning' : 'Residential & Home Deep Cleaning'}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-['Montserrat'] text-white">
             Professional Cleaning Services
           </h2>
           <p className="text-neutral-300 text-base sm:text-lg">
-            Expert cleaning solutions for apartments, villas, offices, and commercial properties across the UAE.
+            {ENABLE_COMMERCIAL 
+              ? 'Expert cleaning solutions for apartments, villas, offices, and commercial properties across the UAE.'
+              : 'Expert deep cleaning solutions for apartments, luxury villas, and residential homes across the UAE.'}
           </p>
         </motion.div>
 

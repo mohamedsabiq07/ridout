@@ -6,6 +6,7 @@ import {
   type ServicePricingOption, 
   type PropertyTypeKey 
 } from '../lib/pricing';
+import { ENABLE_COMMERCIAL } from '../config/features';
 import { Calculator, Save, RefreshCw, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const PricingManager: React.FC = () => {
@@ -95,7 +96,9 @@ export const PricingManager: React.FC = () => {
   };
 
   const activeService = pricing.find((s) => s.id === activeServiceId) || pricing[0];
-  const propertyTypes: PropertyTypeKey[] = ['Studio', '1 BHK', '2 BHK', '3+ BHK', 'Villa', 'Commercial'];
+  const propertyTypes: PropertyTypeKey[] = ENABLE_COMMERCIAL
+    ? ['Studio', '1 BHK', '2 BHK', '3+ BHK', 'Villa', 'Commercial']
+    : ['Studio', '1 BHK', '2 BHK', '3+ BHK', 'Villa'];
 
   if (loading) {
     return (

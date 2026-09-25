@@ -14,13 +14,15 @@ import {
   FileText,
   Database,
   FileArchive,
-  Calculator
+  Calculator,
+  Users
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { CustomerExportPDF } from './CustomerExportPDF';
 import { DeleteVerificationModal } from './DeleteVerificationModal';
 import { StorageManagement } from './StorageManagement';
 import { PricingManager } from './PricingManager';
+import { VisitorAnalyticsView } from './VisitorAnalyticsView';
 import { deleteServiceRequests, saveAuditLog } from '../lib/supabase';
 import { useReactToPrint } from 'react-to-print';
 
@@ -34,7 +36,7 @@ export const AdminDashboard: React.FC = () => {
   const [internalNotes, setInternalNotes] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [showInvoiceModal, setShowInvoiceModal] = useState(false);
-  const [currentView, setCurrentView] = useState<'requests' | 'storage' | 'pricing'>('requests');
+  const [currentView, setCurrentView] = useState<'requests' | 'storage' | 'pricing' | 'visitors'>('requests');
 
   // Export & Delete State
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -266,6 +268,19 @@ export const AdminDashboard: React.FC = () => {
             <span>Rate Calculator Pricing</span>
           </button>
 
+          {/* Website Visitors Tab */}
+          <button
+            onClick={() => setCurrentView('visitors')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono transition-colors cursor-pointer border ${
+              currentView === 'visitors'
+                ? 'bg-[#E8871E] border-[#E8871E] text-white font-bold'
+                : 'bg-[#0A0A0A] hover:bg-neutral-800 border-neutral-700 text-neutral-300 hover:text-white'
+            }`}
+          >
+            <Users className="w-3.5 h-3.5" />
+            <span>Website Visitors</span>
+          </button>
+
           {/* Storage & Database Tab */}
           <button
             onClick={() => setCurrentView('storage')}
@@ -303,6 +318,8 @@ export const AdminDashboard: React.FC = () => {
         
         {currentView === 'pricing' ? (
           <PricingManager />
+        ) : currentView === 'visitors' ? (
+          <VisitorAnalyticsView />
         ) : currentView === 'storage' ? (
           <StorageManagement 
             requests={requests} 

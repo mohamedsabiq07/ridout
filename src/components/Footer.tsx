@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ENABLE_COMMERCIAL } from '../config/features';
 
 interface FooterProps {
   onBookClick: () => void;
@@ -68,9 +69,13 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <li><Link to="/property/apartments" className="hover:text-[#E8871E] transition-colors">Dubai Apartments</Link></li>
               <li><Link to="/property/villas" className="hover:text-[#E8871E] transition-colors">Villas &amp; Gardens</Link></li>
               <li><Link to="/property/shared-accommodation" className="hover:text-[#E8871E] transition-colors">Shared &amp; Staff Camps</Link></li>
-              <li><Link to="/property/restaurants" className="hover:text-[#E8871E] transition-colors">Restaurants &amp; Cafes</Link></li>
-              <li><Link to="/property/warehouses" className="hover:text-[#E8871E] transition-colors">Warehouses &amp; Logistics</Link></li>
-              <li><Link to="/property/hotels" className="hover:text-[#E8871E] transition-colors">Hotels &amp; Holiday Homes</Link></li>
+              {ENABLE_COMMERCIAL && (
+                <>
+                  <li><Link to="/property/restaurants" className="hover:text-[#E8871E] transition-colors">Restaurants &amp; Cafes</Link></li>
+                  <li><Link to="/property/warehouses" className="hover:text-[#E8871E] transition-colors">Warehouses &amp; Logistics</Link></li>
+                  <li><Link to="/property/hotels" className="hover:text-[#E8871E] transition-colors">Hotels &amp; Holiday Homes</Link></li>
+                </>
+              )}
             </ul>
           </div>
           <div>

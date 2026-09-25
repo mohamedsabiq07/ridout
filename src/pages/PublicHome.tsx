@@ -19,6 +19,7 @@ import { EmergencyPestAlert } from '../components/EmergencyPestAlert';
 import { FloatingContact } from '../components/FloatingContact';
 import { LiveSocialProof } from '../components/LiveSocialProof';
 import { SEO } from '../components/SEO';
+import { ENABLE_COMMERCIAL } from '../config/features';
 import type { PestService, ServiceRequest } from '../types/booking';
 
 export const PublicHome = () => {
@@ -96,12 +97,14 @@ export const PublicHome = () => {
           onBookClick={() => scrollToBooking()}
         />
 
-        <PropertySelector 
-          onSelect={(type) => {
-            setServiceFilter(type);
-            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-          }} 
-        />
+        {ENABLE_COMMERCIAL && (
+          <PropertySelector 
+            onSelect={(type) => {
+              setServiceFilter(type);
+              document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+            }} 
+          />
+        )}
 
         <ServicesCatalog
           onRequestService={(serviceId) => scrollToBooking(serviceId)}

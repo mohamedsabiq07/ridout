@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, ShieldCheck, Leaf, Building, Tag, RotateCcw } from 'lucide-react';
+import { ENABLE_COMMERCIAL } from '../config/features';
 
 export const WhyUs: React.FC = () => {
   const pillars = [
@@ -20,8 +21,10 @@ export const WhyUs: React.FC = () => {
       icon: Leaf,
     },
     {
-      title: 'Residential & Commercial',
-      desc: 'Customized solutions for studio apartments, luxury villas, commercial towers, food outlets, and warehouses.',
+      title: ENABLE_COMMERCIAL ? 'Residential & Commercial' : 'Homes, Villas & Apartments',
+      desc: ENABLE_COMMERCIAL 
+        ? 'Customized solutions for studio apartments, luxury villas, commercial towers, food outlets, and warehouses.'
+        : 'Customized solutions for studio apartments, high-rise flats, luxury villas, and residential communities.',
       icon: Building,
     },
     {
@@ -81,7 +84,9 @@ export const WhyUs: React.FC = () => {
                 Why Customers Choose Us
               </h2>
               <p className="text-neutral-400 text-sm sm:text-base max-w-xl">
-                Delivering uncompromised technical pest management for UAE residential and commercial properties.
+                {ENABLE_COMMERCIAL
+                  ? 'Delivering uncompromised technical pest management for UAE residential and commercial properties.'
+                  : 'Delivering uncompromised technical pest management for UAE homes, apartments, and villas.'}
               </p>
             </motion.div>
 
